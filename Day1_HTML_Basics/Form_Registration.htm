@@ -1,126 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form Exercise</title>
     <style>
-        *{
-           box-sizing: border-box;
-           margin: 0;
-        }
-        .heading{
-            background-color: grey;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 10vh;
-        }
-        
-        nav ul{
-            display:  flex;
-            justify-content: center;
-            align-items: center;
-            background-color: black;
-            height: 5vh;
-        }
-        li{
-            list-style-type: none;
-            padding-right: 20px ;
-            color: white;
-        }
-        section{
-            border: 1px solid black;
-            width: 400px;
-            background-color:rgb(247, 250, 253);
-            
-        }
-        section h1{
-            margin: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .FormCenter{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 50vh;
-            width: 100vw;
-            margin-top: 8%;
-        }
-        .FormContents{
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 15px;
-        }
-        label{
-            font-weight: bold;
-        }
-        input{
-            height: 5vh;
-        }
-        button{
-            height: 5vh;
-            background-color: black;
-            color: white;
-            border-style: solid ;
-        }
-        footer{
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background-color: grey;
-            width: 100vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        body{
-            margin: 5px;
-            font-family:Arial, Helvetica, sans-serif;
-        }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      .heading {
+        background-color: grey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70px;
+      }
+
+      nav ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        height: 5vh;
+      }
+      li {
+        list-style-type: none;
+        padding-right: 20px;
+        color: white;
+      }
+      section {
+        border: 1px solid black;
+        width: 400px;
+        background-color: rgb(247, 250, 253);
+      }
+      section h1 {
+        margin: 20px;
+        display: flex;
+        justify-content: center;
+      }
+      .form-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+      }
+      .form-contents {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+      }
+      label {
+        font-weight: bold;
+      }
+      input {
+        height: 35px;
+      }
+      button {
+        height: 35px;
+        background-color: black;
+        color: white;
+        border-style: solid;
+      }
+      textarea {
+        height: 70px;
+      }
+      footer {
+        background-color: grey;
+        text-align: center;
+        padding: 5px 5px;
+        margin-top: 10px;
+        box-sizing: border-box;
+      }
+      button {
+        margin-top: 20px;
+      }
+      body {
+        margin: 5px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
     </style>
-</head>
-<body>
-    <div class="heading">
+  </head>
+  <body>
+    <header>
+      <div class="heading">
         <h1>Contact Form Exercise</h1>
-    </div>
-    <nav>
+      </div>
+      <nav>
         <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
         </ul>
-    </nav>
-    <div class="FormCenter">
+      </nav>
+    </header>
+
+    <main>
+      <form class="form-center">
         <section>
-            <h1>Contact Us</h1>
-            <div class="FormContents">
-                <div>
-                    <label for="">Name:</label>
-                </div>
-                <input type="text">
-                <div>
-                    <label for="">Email:</label>
-                </div>
-                <input type="text">
-                <div>
-                    <label for="">Phone:</label>
-                </div>
-                <input type="text">
-                <div>
-                    <label for="">Message:</label>
-                </div>
-                <textarea style="height: 10vh;"></textarea>
-                <br>
-                <button type="submit">Submit</button>
+          <h1>Contact Us</h1>
+          <div class="form-contents">
+            <div>
+              <label>Name:</label>
             </div>
+            <input type="text" />
+            <div>
+              <label>Email:</label>
+            </div>
+            <input type="text" />
+            <div>
+              <label>Phone:</label>
+            </div>
+            <input type="text" />
+            <div>
+              <label>Message:</label>
+            </div>
+            <textarea></textarea>
+
+            <button type="submit">Submit</button>
+          </div>
         </section>
-    </div>
-    
+      </form>
+    </main>
+
     <footer>
-        <p>&#169; 2024 Training Website</p>
+      <p>&#169; 2024 My First HTML Form</p>
     </footer>
-</body>
+  </body>
 </html>

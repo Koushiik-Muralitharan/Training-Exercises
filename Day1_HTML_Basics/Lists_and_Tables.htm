@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>HTML Lists and Tables Exercise</title>
     <style>
       * {
         box-sizing: border-box;
@@ -11,14 +11,15 @@
       }
       body{
         margin : 5px;
+        font-family: Arial, Helvetica, sans-serif;
       }
      
-      .heading {
+      header h1 {
         background-color: rgb(216, 210, 210);
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 10vh;
+        height: 60px;
       }
       nav li {
         padding-right: 50px;
@@ -28,7 +29,7 @@
         background-color: black;
         list-style-type: none;
         display: flex;
-        height: 5vh;
+        height: 30px;
         justify-content: center;
         align-items: center;
       }
@@ -38,24 +39,19 @@
       }
       footer {
         background-color: grey;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100vw;
-        height: 4vh;
+        text-align: center;
+        padding: 10px 5px; 
+        box-sizing: border-box; 
       }
       .partition {
         display: flex;
         justify-content: center;
       }
-      div section ul,ol {
+      main section ul,ol {
         margin: 20px;
         margin-left: -10px;
       }
-      div section dl{
+      main section dl{
         margin: 20px;
         margin-left: 10px;
       }
@@ -72,17 +68,17 @@
     </style>
   </head>
   <body>
-    <div class="heading">
-      <h1>HTML Lists and Table</h1>
-    </div>
-    <nav>
-      <ul class="navstyle">
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact</li>
-      </ul>
-    </nav>
-    <div class="partition">
+    <header>
+        <h1>HTML Lists and Table</h1>
+      <nav>
+        <ul class="navstyle">
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </header>
+    <main class="partition">
       <section>
         <div>
           <h1>Ordered List</h1>
@@ -144,7 +140,7 @@
           </tbody>
         </table>
       </section>
-    </div>
+    </main>
 
     <footer>
       <p>&#169; 2024 Training Website</p>
