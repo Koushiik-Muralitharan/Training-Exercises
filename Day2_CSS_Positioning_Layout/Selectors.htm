@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        margin: 5px;
+      }
+      ul > li {
+        font-family: sans-serif;
+      }
+      nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        color: white;
+        height: 35px;
+      }
+      nav ul li {
+        padding-right: 20px;
+      }
+      header h1 {
+        display: flex;
+        background-color: rgb(226, 217, 217);
+        height: 100px;
+        justify-content: center;
+        align-items: center;
+      }
+      section {
+        margin: 10px;
+        background-color: rgb(226, 217, 217);
+        padding: 10px;
+      }
+      section h4,
+      h3,
+      h2,
+      strong {
+        padding-bottom: 20px;
+      }
+      footer {
+        width: 100vw;
+        background-color: grey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30%;
+      }
+      strong {
+        color: blue;
+      }
+
+      input[type="text"]:hover {
+        background-color: aqua;
+        outline: 2px solid red;
+      }
+      .highlight {
+        background-color: yellow;
+      }
+      #unique {
+        color: red;
+      }
+      section.container p {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        font-style: italic;
+      }
+
+      h5 + p {
+        color: purple;
+        padding: 20px 0 20px 0;
+      }
+      h4 ~ p {
+        color: crimson;
+      }
+      span {
+        display: block;
+        padding-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>CSS Selectors Practice</h1>
+      <nav>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Services</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <h4>Universal Selector Example</h4>
+        <p>
+          This page is styled using the universal selector (*) which applies to
+          all elements.
+        </p>
+      </section>
+      <section>
+        <h3>Type Selector Example</h3>
+        <p>
+          <span><strong>Headings and Paragraphs</strong></span>
+          The above is a text that is styled using the Type selector.
+        </p>
+      </section>
+      <section class="highlight">
+        <h4>Class Selector Example</h4>
+        <p>This section is styled using a class selector named .highlight.</p>
+      </section>
+      <section id="unique">
+        <h4>ID Selector Example</h4>
+        <p>This section is styled using an ID selector named #unique.</p>
+      </section>
+      <section>
+        <h4>Attribute Selector Example</h4>
+        <p>Type your name:</p>
+        <input type="text" />
+      </section>
+      <section class="container">
+        <h4>Descendent Selector Example</h4>
+        <p>
+          This paragraph is inside a div and styled by a descendent selector
+          (div p).
+        </p>
+      </section>
+      <section>
+        <h4>Child Selector Example</h4>
+
+        <ul>
+          <li>First child item styled using child selector (ul>li)</li>
+          <li>Another child item in the list</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Adjacent Sibling Selector Example</h2>
+        <h5>This is a heading</h5>
+        <p>
+          This paragraph is styled as an adjacent sibling to the above heading
+          (h4 ~ p). Another sibling paragraph styled the same way.
+        </p>
+      </section>
+      <section>
+        <h3>General Sibling Selector Example</h3>
+        <h4>Another heading</h4>
+        <p>
+          This paragraph is styled as an adjacent sibling to the above heading
+          (h5 + p).
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p>&#169; 2024 Training Website</p>
+    </footer>
+  </body>
+</html>

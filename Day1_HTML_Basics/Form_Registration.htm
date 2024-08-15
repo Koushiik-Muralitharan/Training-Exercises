@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+           box-sizing: border-box;
+           margin: 0;
+        }
+        .heading{
+            background-color: grey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+        }
+        
+        nav ul{
+            display:  flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            height: 5vh;
+        }
+        li{
+            list-style-type: none;
+            padding-right: 20px ;
+            color: white;
+        }
+        section{
+            border: 1px solid black;
+            width: 400px;
+            background-color:rgb(247, 250, 253);
+            
+        }
+        section h1{
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .FormCenter{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            width: 100vw;
+            margin-top: 8%;
+        }
+        .FormContents{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 15px;
+        }
+        label{
+            font-weight: bold;
+        }
+        input{
+            height: 5vh;
+        }
+        button{
+            height: 5vh;
+            background-color: black;
+            color: white;
+            border-style: solid ;
+        }
+        footer{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: grey;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        body{
+            margin: 5px;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="heading">
+        <h1>Contact Form Exercise</h1>
+    </div>
+    <nav>
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+    <div class="FormCenter">
+        <section>
+            <h1>Contact Us</h1>
+            <div class="FormContents">
+                <div>
+                    <label for="">Name:</label>
+                </div>
+                <input type="text">
+                <div>
+                    <label for="">Email:</label>
+                </div>
+                <input type="text">
+                <div>
+                    <label for="">Phone:</label>
+                </div>
+                <input type="text">
+                <div>
+                    <label for="">Message:</label>
+                </div>
+                <textarea style="height: 10vh;"></textarea>
+                <br>
+                <button type="submit">Submit</button>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&#169; 2024 Training Website</p>
+    </footer>
+</body>
+</html>
