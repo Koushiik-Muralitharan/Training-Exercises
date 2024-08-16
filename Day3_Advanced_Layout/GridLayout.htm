@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Layout Example</title>
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      body {
+        margin: 7px;
+      }
+      header h1 {
+        background-color: green;
+        padding: 20px 0;
+        text-align: center;
+        color: white;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns:  1.5fr  5fr;
+        gap: 10px;
+
+      }
+      section {
+        background-color: rgb(167, 162, 162);
+        margin-top: 10px;
+      }
+      .side {
+        height: 500px;
+        background-color: rgb(231, 225, 225);
+      }
+      footer{
+        margin-top: 10px;
+        background: green;
+        height: 40px;
+        text-align: center;
+        padding: 10px 0px ;
+        color: white;
+      }
+
+      section > p{
+        padding: 10px;
+      }     
+      /* Responsive Styles */
+      @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: 1fr; /* Stack sidebar and main content in a single column */
+            }
+            
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em; /* Adjust font size for smaller screens */
+            }
+            .grid {
+                grid-template-columns: 1fr; /* Single column layout for small screens */
+                gap: 5px; /* Reduce gap between items */
+            }
+            section {
+                padding: 5px; /* Adjust padding for smaller screens */
+            }
+            footer {
+                font-size: 0.9em; /* Adjust font size for smaller screens */
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Grid Layout Example</h1>
+    </header>
+    <main class="grid">
+      <section class="side">
+        <p>
+            SideBar
+        </p>
+      </section>
+      <section>
+        <p>
+           Main Content Area
+        </p>
+      </section>
+    </main>
+    <footer>
+        <p>
+           &#169; 2024 Grid Layout Example
+        </p>
+    </footer>
+  </body>
+</html>

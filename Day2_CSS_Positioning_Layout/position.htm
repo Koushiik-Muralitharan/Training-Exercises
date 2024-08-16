@@ -41,11 +41,11 @@
       }
       .outside-box {
         background-color: blue;
-        position: absolute;
+        position: fixed;
         padding: 20px;
         cursor: grabbing;
-        bottom: 30px;
-        left: 20px;
+        /* bottom: 30px;
+        left: 20px; */
       }
       footer {
         position: absolute;
@@ -79,5 +79,60 @@
     <footer>
       <p>&#169; 2024 Draggable Divs Exercise</p>
     </footer>
+
+    <script>
+      // This for the container and the inside box.
+      const container = document.querySelector(".container");
+      const insidebox = document.querySelector(".inside-box");
+
+      let offsetX, offsetY;
+
+      const startDrag = (e) => {
+        offsetX = e.clientX - insidebox.getBoundingClientRect().left;
+        offsetY = e.clientY - insidebox.getBoundingClientRect().top;
+        window.addEventListener("mousemove", drag);
+      };
+
+      const drag = (e) => {
+        const rect = container.getBoundingClientRect();
+        let x = e.clientX - offsetX - rect.left;
+        let y = e.clientY - offsetY - rect.top;
+
+        x = Math.max(
+          0,
+          Math.min(x, container.clientWidth - insidebox.offsetWidth)
+        );
+        y = Math.max(
+          0,
+          Math.min(y, container.clientHeight - insidebox.offsetHeight)
+        );
+        insidebox.style.left = x + "px";
+        insidebox.style.top = y + "px";
+      };
+
+      const stopDrag = () => {
+        window.removeEventListener("mousemove", drag);
+      };
+
+      insidebox.addEventListener("mousedown", startDrag);
+      window.addEventListener("mouseup", stopDrag);
+
+      //This for the outside box with respect to the window.
+
+      const outsidebox = document.querySelector(".outside-box");
+
+      const drags = (e) => {
+        outsidebox.style.top = e.pageY + "px";
+        outsidebox.style.left = e.pageX + "px";
+      };
+
+      outsidebox.addEventListener("mousedown", () => {
+        window.addEventListener("mousemove", drags);
+      });
+
+      window.addEventListener("mouseup", () => {
+        window.removeEventListener("mousemove", drags);
+      });
+    </script>
   </body>
 </html>
