@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bringova</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+      header nav {
+        background-color: rgb(247, 209, 160);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-left-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 35%;
+      }
+
+      img {
+        width: 200px;
+        height: 60px;
+        border-radius: 10px;
+        margin-left: 20px;
+        
+      }
+      .search-bar {
+        display: inline-block;
+        border: 1px solid rgb(88, 88, 88);
+        border-radius: 10px;
+      }
+      div.search-bar div {
+        display: flex;
+        justify-content: flex-start;
+        padding: 10px 100px 10px 10px;
+        gap: 10px;
+      }
+      .order-toggle {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .nav-right-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 30%;
+        margin-right: 50px;
+      }
+
+      .profile {
+        display: flex;
+        width: 30%;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .fa-toggle-on {
+        font-size: 30px;
+        color: green;
+      }
+      .fa-bell {
+        font-size: 25px;
+      }
+      .fa-user {
+        font-size: 25px;
+      }
+      section {
+        background-color: rgb(183, 183, 233);
+      }
+      main {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        grid-template-rows: 85vh;
+        gap: 5px;
+      }
+      .main-section{
+           display: grid;
+           grid-template-rows: 1fr 2fr;
+           gap: 20px;
+      }
+      /* main section div{
+        background-color: rgb(241, 147, 147);
+      } */
+      .sidebar-contents{
+        display: flex;
+        justify-content: center;
+      }
+       div.sidebar-contents div  {
+        display: flex;
+        flex-direction: column; 
+        gap: 20px;  
+       }
+       span{
+        background-color: green;
+       }
+       .card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid black;
+        border-radius: 5px;
+        flex-basis: 100%;
+        margin: 2%;
+        padding: 5%;
+       }
+       .live-orders{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center; 
+       }
+       .order{
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        gap: 20px;
+       
+       
+       }
+       section div div div{
+        background-color: blue;
+        border-radius: 5px ;
+        display: flex;
+        justify-content: center;
+        padding: px 0;
+       }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-left-section">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI4OpXm06mrifAFph0yvg5TgPYtL3pEYphCQ&s"
+            alt=""
+          />
+          <div class="search-bar">
+            <div>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <p>Search</p>
+            </div>
+          </div>
+        </div>
+        <div class="nav-right-section">
+          <!-- toggle -->
+          <div class="order-toggle">
+            <p>Open For Order</p>
+            <i class="fa-solid fa-toggle-on"></i>
+          </div>
+          <!-- notification -->
+          <div>
+            <i class="fa-regular fa-bell"></i>
+          </div>
+          <!-- profile -->
+
+          <div class="profile">
+            <i class="fa-regular fa-user"></i>
+            <p>Koushiik</p>
+            <i class="fa-solid fa-caret-down"></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <p>Side Bar</p>
+        <div class="sidebar-contents">
+            <div>
+            <span>Live Orders</span>
+            <span>Order History</span>
+            <span>Offers</span>
+            <span>Products</span>
+            <span>Stock</span>
+            <span>Message</span>
+            <span>Settings</span>
+
+            </div>
+        </div>
+      </section>
+      <section class="main-section">
+        
+        <div class="live-orders">
+           
+            <span class="card">
+                   <p>47 Orders</p>
+            </span>
+            <span class="card">
+                    <p>56 Total Pending</p>
+            </span>
+            <span class="card">
+                    <p>Total Dispatch</p>
+            </span>
+        </div>
+        <div>
+            <div class="order">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                
+            </div>          
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
