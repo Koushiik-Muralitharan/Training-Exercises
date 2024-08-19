@@ -21,9 +21,8 @@
       }
       .grid {
         display: grid;
-        grid-template-columns:  1.5fr  5fr;
+        grid-template-columns: 1.5fr 5fr;
         gap: 10px;
-
       }
       section {
         background-color: rgb(167, 162, 162);
@@ -32,19 +31,38 @@
       .side {
         height: 500px;
         background-color: rgb(231, 225, 225);
+        height: 80vh;
       }
-      footer{
+      footer {
         margin-top: 10px;
         background: green;
         height: 40px;
         text-align: center;
-        padding: 10px 0px ;
+        padding: 10px 0px;
         color: white;
       }
 
-      section > p{ 
+      section > p {
         padding: 10px;
-      }     
+      }
+
+      @media screen and (max-width: 700px) {
+        .grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-areas:
+            "s"
+            "m";
+        }
+        .side {
+          grid-area: s;
+          height: 10vh;
+        }
+        section {
+          grid-area: m;
+          height: 70vh;
+        }
+      }
     </style>
   </head>
   <body>
@@ -53,20 +71,14 @@
     </header>
     <main class="grid">
       <section class="side">
-        <p>
-            SideBar
-        </p>
+        <p>SideBar</p>
       </section>
       <section>
-        <p>
-           Main Content Area
-        </p>
+        <p>Main Content Area</p>
       </section>
     </main>
     <footer>
-        <p>
-           &#169; 2024 Grid Layout Example
-        </p>
+      <p>&#169; 2024 Grid Layout Example</p>
     </footer>
   </body>
 </html>

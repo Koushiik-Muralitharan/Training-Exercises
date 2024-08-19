@@ -29,17 +29,16 @@
         display: inline;
         padding: 0px 20px;
       }
-      main{ 
-            margin: 0px 200px
-        }
+      main {
+        margin: 0px 200px;
+      }
       section {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        
+
         margin-bottom: 130px;
-       
       }
       section div {
         display: inline-block;
@@ -57,8 +56,26 @@
         text-align: center;
         padding: 10px;
       }
-      main{
+      main {
         margin-top: 50px;
+      }
+
+      @media screen and (max-width: 400px) {
+        ul {
+          padding: 5px 0px;
+          font-size: smaller;
+        }
+
+        header ul li {
+          padding: 0px 10px;
+        }
+        body {
+          margin: 2px;
+        }
+
+        main {
+          margin: 0px 20px;
+        }
       }
     </style>
   </head>
