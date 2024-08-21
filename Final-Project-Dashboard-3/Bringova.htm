@@ -8,12 +8,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     />
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      rel="stylesheet"
-    /> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,23 +20,30 @@
     <main>
       <section>
         <div class="img-close">
-          <img src="../Final-Project-Dashboard-3/images/bingova.jpg" alt="bringova logo" />
+          <img
+            src="../Final-Project-Dashboard-3/images/bingova.jpg"
+            alt="company bringova"
+          />
         </div>
       </section>
       <section class="navbar">
         <nav>
           <div class="img-onside-bar">
-            <img src="../Final-Project-Dashboard-3/images/bingova.jpg" alt="bringova logo" />
+            <img
+              src="../Final-Project-Dashboard-3/images/bingova.jpg"
+              alt="company bringova"
+            />
           </div>
           <div class="search">
             <span class="search-contents">
-              <i class="fa-solid fa-magnifying-glass"></i> <span>Search</span>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span class="search-div-content">Search</span>
             </span>
           </div>
           <div class="account-details">
             <div class="open-toggle-close">
               <div class="open-toggle">
-                <p>Open For Order</p>
+                <span>Open For Order</span>
                 <i class="fa-solid fa-toggle-on"></i>
               </div>
             </div>
@@ -64,24 +65,34 @@
                 </div>
               </div>
             </div>
-            <div class="bell">
-              <i class="fa-regular fa-bell"></i>
-              <div class="bell-items">
-                <div class="open-toggle">
-                  <p>Open For Order</p>
-                  <i class="fa-solid fa-toggle-on"></i>
+            <div>
+              <div class="bell">
+                <div class="icon-container">
+                  <i class="fa-regular fa-bell"></i>
                 </div>
-                <div class="busy-modes">
-                  <p>Busy Mode</p>
-                  <div class="toggle-wrapper">
-                    <span class="toggle-slider"></span>
+
+                <div class="bell-items">
+                  <div class="open-toggle">
+                    <p>Open For Order</p>
+                    <i class="fa-solid fa-toggle-on"></i>
+                  </div>
+                  <div class="busy-modes">
+                    <span>Busy Mode</span>
+                    <div class="toggle-wrapper">
+                      <span class="toggle-slider"></span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="profile-contents">
-              <div class="profile-img"><img src="../Final-Project-Dashboard-3/images/m3.jpg" alt="user img" /></div>
-              <p>Lubomir Dvořák</p>
+              <div class="profile-img">
+                <img
+                  src="../Final-Project-Dashboard-3/images/profile.jpg"
+                  alt="user image"
+                />
+              </div>
+              <span class="name-resize">Lubomir Dvořák</span>
               <i class="fa-solid fa-chevron-down"></i>
             </div>
           </div>
@@ -89,36 +100,47 @@
       </section>
       <section class="sidebar">
         <div class="side-bar-contents">
-          <div class="hover-effect">
-            <span><i class="fa-solid fa-box"></i></span>
-            <span class="menu-names-no font-span">Live Orders</span>
+          <div class="sidebar-component test-div">
+            <button>
+              <i class="fa-solid fa-box"></i>
+              <span class="menu-names-no">Live Orders</span>
+            </button>
           </div>
-          <div class="hover-effect">
-            <span><i class="fa-solid fa-suitcase"></i></span>
-            <span class="menu-names-no font-span">Order History</span>
+          <div class="sidebar-component test-div">
+            <button>
+              <i class="fa-solid fa-suitcase"></i>
+              <span class="menu-names-no">Order History</span>
+            </button>
           </div>
-
-          <div class="hover-effect">
-            <span><i class="fa-solid fa-tag"></i></span>
-            <span class="menu-names-no font-span">Offers</span>
+          <div class="sidebar-component test-div">
+            <button>
+              <i class="fa-solid fa-tag"></i>
+              <span class="menu-names-no">Offers</span>
+            </button>
           </div>
-          <div class="hover-effect">
-            <span><i class="fa-solid fa-cube"></i></span>
-            <span class="menu-names-no font-span">Products</span>
+          <div class="sidebar-component test-div">
+            <button>
+              <i class="fa-solid fa-cube"></i>
+              <span class="menu-names-no">Products</span>
+            </button>
           </div>
-          <div class="hover-effect">
-            <span><i class="fa-solid fa-layer-group"></i></span>
-            <span class="menu-names-no font-span">Stock</span>
+          <div class="sidebar-component test-div">
+            <button>
+              <i class="fa-solid fa-layer-group"></i>
+              <span class="menu-names-no">Stock</span>
+            </button>
           </div>
-
-          <div class="hover-effect">
-            <span><i class="fa-solid fa-comments"></i></span>
-            <span class="menu-names-no font-span">Message</span>
+          <div class="sidebar-component test-div">
+            <button>
+              <i class="fa-solid fa-comments"></i>
+              <span class="menu-names-no">Message</span>
+            </button>
           </div>
-
-          <div class="hover-effect">
-            <span><i class="fa-solid fa-gear"></i></span>
-            <span class="menu-names-no font-span">Settings</span>
+          <div class="sidebar-component test-div">
+            <button>
+              <i class="fa-solid fa-gear"></i>
+              <span class="menu-names-no">Settings</span>
+            </button>
           </div>
         </div>
 
@@ -132,7 +154,7 @@
       <section class="main-content">
         <div class="sub-main-content">
           <div class="sub1-main-content">
-            <h3>Live Orders</h3>
+            <h3><strong>Live Orders</strong></h3>
             <div class="card-container">
               <div class="card">
                 <div class="card-img-bag">
@@ -163,184 +185,198 @@
               </div>
             </div>
           </div>
-          <div class="col sub2-main-content">
+          <div class="sub2-main-content">
             <div class="orders">
-              <h3>Orders</h3>
+              <span>Orders</span>
               <span class="recent"
                 >Recent Orders <i class="fa-solid fa-caret-down"></i>
               </span>
             </div>
-
-            <div class="reponsive">
-              <div class="customers-orders">
-                <div class="div-first">
-                  <span class="id"
-                    >id <i class="fa-solid fa-caret-down"></i
+            <div class="customers-orders">
+              <div class="div-first">
+                <span class="id"
+                  >id <i class="fa-solid fa-caret-down"></i
+                ></span>
+                <span class="name">Name</span>
+                <span class="payment">Payment</span>
+                <span class="time"
+                  ><span class="span-main-time"
+                    >Time remaining <i class="fa-solid fa-caret-down"></i
                   ></span>
-                  <span class="name">Name</span>
-                  <span class="payment">Payment</span>
-                  <span class="time"
-                    ><span class="span-main-time"
-                      >Time remaining <i class="fa-solid fa-caret-down"></i
-                    ></span>
-                    <span class="span-time"
-                      >Time <i class="fa-solid fa-caret-down"></i></span
+                  <span class="span-time"
+                    >Time <i class="fa-solid fa-caret-down"></i></span
+                ></span>
+                <span class="type">Type</span>
+                <span class="status">status</span>
+                <span class="total">Total</span>
+                <span class="action-heading">Action</span>
+              </div>
+              <div class="customer-details">
+                <span class="id">#2632</span>
+                <span class="name customer-name"
+                  ><span class="account-img-time"
+                    ><div class="customer-img">
+                      <img
+                        src="../Final-Project-Dashboard-3/images/m2.jpg"
+                        alt="user image"
+                      /></div
                   ></span>
-                  <span class="type">Type</span>
-                  <span class="status">status</span>
-                  <span class="total">Total</span>
-                  <span class="action-heading">Action</span>
-                </div>
-                <div class="customer-details">
-                  <span class="id">#2632</span>
-                  <span class="name customer-name"
-                    ><span class="account-img-time"
-                      ><div class="customer-img">
-                        <img src="../Final-Project-Dashboard-3/images/m2.jpg" alt="" /></div
+                  Brooklyn Zoe</span
+                >
+                <span class="payment">Cash</span>
+                <span class="time"
+                  ><i class="fa-regular fa-clock account-img-time"></i> 13
+                  min</span
+                >
+                <span class="type type-delivery">Delivery</span>
+                <span class="status"
+                  ><span class="status-box-on-the-way">On the way</span></span
+                >
+                <span class="total">12.00</span>
+                <span class="action"
+                  ><div class="action-center">
+                    <span
+                      ><i class="fa-solid fa-ellipsis-vertical"></i
                     ></span>
-                    Brooklyn Zoe</span
-                  >
-                  <span class="payment">Cash</span>
-                  <span class="time"
-                    ><i class="fa-regular fa-clock account-img-time"></i> 13
-                    min</span
-                  >
-                  <span class="type type-delivery">Delivery</span>
-                  <span class="status"
-                    ><span class="status-box-on-the-way">On the way</span></span
-                  >
-                  <span class="total">12.00</span>
-                  <span class="action"
-                    ><div class="action-center">
-                      <i class="fa-solid fa-ellipsis-vertical"></i>
-                      <div class="display-options">
-                        <span>Cancel</span>
-                        <span class="type-delivery">Cancel Product</span>
-                        <span>Message</span>
-                      </div>
-                    </div></span
-                  >
-                </div>
-                <div class="customer-details">
-                  <span class="id">#2632</span>
-                  <span class="name customer-name"
-                    ><span class="account-img-time"
-                      ><div class="customer-img">
-                        <img src="../Final-Project-Dashboard-3/images/m3.jpg" alt="user img" /></div
-                    ></span>
-                    Alice Krejcova</span
-                  >
-                  <span class="payment">Paid</span>
-                  <span class="time"
-                    ><i class="fa-regular fa-clock account-img-time"></i> 49
-                    min</span
-                  >
-                  <span class="type">Collection</span>
-                  <span class="status"
-                    ><span class="status-ready">Ready</span></span
-                  >
-                  <span class="total">12.00</span>
-                  <span class="action"
-                    ><div class="action-center">
-                      <i class="fa-solid fa-ellipsis-vertical"></i>
-                      <div class="display-options">
-                        <span>Cancel</span>
-                        <span class="type-delivery">Cancel Product</span>
-                        <span>Message</span>
-                      </div>
-                    </div></span
-                  >
-                </div>
-                <div class="customer-details">
-                  <span class="id">#2632</span>
-                  <span class="name customer-name"
-                    ><span class="account-img-time"
-                      ><div class="customer-img">
-                        <img src="../Final-Project-Dashboard-3/images/m1.jpg" alt="" /></div
-                    ></span>
-                    Jurriaan van</span
-                  >
-                  <span class="payment">Cash</span>
-                  <span class="time"
-                    ><i class="fa-regular fa-clock account-img-time"></i> 7
-                    min</span
-                  >
-                  <span class="type type-delivery">Delivery</span>
-                  <span class="status"
-                    ><span class="status-box-on-the-way">On the way</span></span
-                  >
-                  <span class="total">12.00</span>
-                  <span class="action"
-                    ><div class="action-center">
-                      <i class="fa-solid fa-ellipsis-vertical"></i>
-                      <div class="display-options">
-                        <span>Cancel</span>
-                        <span class="type-delivery">Cancel Product</span>
-                        <span>Message</span>
-                      </div>
-                    </div></span
-                  >
-                </div>
-                <div class="customer-details">
-                  <span class="id">#2632</span>
-                  <span class="name customer-name"
-                    ><span class="account-img-time"
-                      ><div class="customer-img">
-                        <img src="../Final-Project-Dashboard-3/images/f2.jpg" alt="" /></div
-                    ></span>
-                    Ya Chin-Ho</span
-                  >
-                  <span class="payment">Paid</span>
-                  <span class="time"
-                    ><i class="fa-regular fa-clock account-img-time"></i> 49
-                    min</span
-                  >
-                  <span class="type">Collection</span>
-                  <span class="status"
-                    ><span class="status-ready">Ready</span></span
-                  >
-                  <span class="total">12.00</span>
-                  <span class="action"
-                    ><div class="action-center">
-                      <i class="fa-solid fa-ellipsis-vertical"></i>
-                      <div class="display-options">
-                        <span>Cancel</span>
-                        <span class="type-delivery">Cancel Product</span>
-                        <span>Message</span>
-                      </div>
-                    </div></span
-                  >
-                </div>
-                <div class="customer-details">
-                  <span class="id">#2632</span>
-                  <span class="name customer-name"
-                    ><span class="account-img-time"
-                      ><div class="customer-img">
-                        <img src="../Final-Project-Dashboard-3/images/f1.jpg" alt="" /></div
-                    ></span>
-                    Shaamikh AI</span
-                  >
-                  <span class="payment">Cash</span>
-                  <span class="time"
-                    ><i class="fa-regular fa-clock account-img-time"></i> 13
-                    min</span
-                  >
-                  <span class="type type-delivery">Delivery</span>
-                  <span class="status"
-                    ><span class="status-box-on-the-way">On the way</span></span
-                  >
-                  <span class="total">12.00</span>
-                  <span class="action"
-                    ><div class="action-center">
-                      <i class="fa-solid fa-ellipsis-vertical"></i>
-                      <div class="display-options">
-                        <span>Cancel</span>
-                        <span class="type-delivery">Cancel Product</span>
-                        <span>Message</span>
-                      </div>
-                    </div></span
-                  >
-                </div>
+                    <div class="display-options">
+                      <span>Cancel</span>
+                      <span>Cancel Product</span>
+                      <span>Message</span>
+                    </div>
+                  </div></span
+                >
+              </div>
+              <div class="customer-details">
+                <span class="id">#2632</span>
+                <span class="name customer-name"
+                  ><span class="account-img-time"
+                    ><div class="customer-img">
+                      <img
+                        src="../Final-Project-Dashboard-3/images/m3.jpg"
+                        alt="user image"
+                      /></div
+                  ></span>
+                  Alice Krejcova</span
+                >
+                <span class="payment">Paid</span>
+                <span class="time"
+                  ><i class="fa-regular fa-clock account-img-time"></i> 49
+                  min</span
+                >
+                <span class="type">Collection</span>
+                <span class="status"
+                  ><span class="status-ready">Ready</span></span
+                >
+                <span class="total">12.00</span>
+                <span class="action"
+                  ><div class="action-center">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                    <div class="display-options">
+                      <span>Cancel</span>
+                      <span>Cancel Product</span>
+                      <span>Message</span>
+                    </div>
+                  </div></span
+                >
+              </div>
+              <div class="customer-details">
+                <span class="id">#2632</span>
+                <span class="name customer-name"
+                  ><span class="account-img-time"
+                    ><div class="customer-img">
+                      <img
+                        src="../Final-Project-Dashboard-3/images/m1.jpg"
+                        alt="user image"
+                      /></div
+                  ></span>
+                  Jurriaan van</span
+                >
+                <span class="payment">Cash</span>
+                <span class="time"
+                  ><i class="fa-regular fa-clock account-img-time"></i> 7
+                  min</span
+                >
+                <span class="type type-delivery">Delivery</span>
+                <span class="status"
+                  ><span class="status-box-on-the-way">On the way</span></span
+                >
+                <span class="total">12.00</span>
+                <span class="action"
+                  ><div class="action-center">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                    <div class="display-options">
+                      <span>Cancel</span>
+                      <span>Cancel Product</span>
+                      <span>Message</span>
+                    </div>
+                  </div></span
+                >
+              </div>
+              <div class="customer-details">
+                <span class="id">#2632</span>
+                <span class="name customer-name"
+                  ><span class="account-img-time"
+                    ><div class="customer-img">
+                      <img
+                        src="../Final-Project-Dashboard-3/images/f1.jpg"
+                        alt="user image"
+                      /></div
+                  ></span>
+                  Ya Chin-Ho</span
+                >
+                <span class="payment">Paid</span>
+                <span class="time"
+                  ><i class="fa-regular fa-clock account-img-time"></i> 49
+                  min</span
+                >
+                <span class="type">Collection</span>
+                <span class="status"
+                  ><span class="status-ready">Ready</span></span
+                >
+                <span class="total">12.00</span>
+                <span class="action"
+                  ><div class="action-center">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                    <div class="display-options">
+                      <span>Cancel</span>
+                      <span class="type-delivery">Cancel Product</span>
+                      <span>Message</span>
+                    </div>
+                  </div></span
+                >
+              </div>
+              <div class="customer-details">
+                <span class="id">#2632</span>
+                <span class="name customer-name"
+                  ><span class="account-img-time"
+                    ><div class="customer-img">
+                      <img
+                        src="/Final-Project-Dashboard-3/images/f2.jpg"
+                        alt="user image"
+                      /></div
+                  ></span>
+                  Shaamikh AI</span
+                >
+                <span class="payment">Cash</span>
+                <span class="time"
+                  ><i class="fa-regular fa-clock account-img-time"></i> 13
+                  min</span
+                >
+                <span class="type type-delivery">Delivery</span>
+                <span class="status"
+                  ><span class="status-box-on-the-way">On the way</span></span
+                >
+                <span class="total">12.00</span>
+                <span class="action"
+                  ><div class="action-center">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                    <div class="display-options">
+                      <span>Cancel</span>
+                      <span>Cancel Product</span>
+                      <span>Message</span>
+                    </div>
+                  </div></span
+                >
               </div>
             </div>
           </div>

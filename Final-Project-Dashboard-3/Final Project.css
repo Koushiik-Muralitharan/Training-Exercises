@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  /* font-size: small; */
 }
 main {
   display: grid;
@@ -24,10 +24,10 @@ main {
   margin: 0px 3%;
 }
 img {
-  width: 120px;
+  width: 130px;
   height: 55px;
   border-radius: 10px;
-  margin: 5px;
+  margin: 10px;
 }
 
 .img-onside-bar {
@@ -42,42 +42,73 @@ nav {
   padding: 2%;
 }
 .search {
-  width: 60%;
+  width: 20%;
+}
+
+.account-details {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 80%;
+  font-weight: bolder;
+  gap: 15px;
+  margin-left: 20px;
 }
 .search-contents {
   border: 1px solid black;
   border-radius: 10px;
-  padding: 1% 20% 1% 2%;
+  padding: 2px 60px 2px 10px;
 }
 .fa-magnifying-glass {
   font-size: small;
   margin-right: 1%;
+  font-size: small;
+  font-weight: bold;
 }
-.account-details {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 40%;
-}
+
 .open-toggle {
   display: flex;
   align-items: center;
   gap: 10px;
+  font-size: small;
 }
 .profile-contents {
   display: flex;
   align-items: center;
   gap: 10px;
+  font-size: small;
+  font-weight: bolder;
+}
+
+.icon-container {
+  position: relative;
+  display: inline-block;
+}
+
+.icon-container::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 98%;
+  width: 4px;
+  height: 4px;
+  background-color: red;
+  border-radius: 50%;
+}
+.fa-bell{
+  padding: 40%;
+  background-color: rgb(228, 227, 227);
+  border-radius: 15%;
+  text-align: center;
+  font-size: large;
+
 }
 .bell-items {
   display: none;
 }
 .fa-toggle-on {
   font-size: 30px;
-  color: green;
-}
-.fa-bell {
-  font-size: 20px;
+  color: rgb(172, 252, 172);
 }
 .fa-user {
   font-size: 25px;
@@ -102,91 +133,85 @@ nav {
 .sidebar {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-around;
 }
 .side-bar-contents {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 5px;
 }
 
-.hover-effect {
-  display: inline-block;
+.side-bar-contents button {
+  color: gray;
 }
 
-.hover-effect:hover {
-  background-color: #ffe5e5;
-  padding: 10px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  color: red;
+.sidebar-component {
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
 }
 
-.hover-effect:hover .fa-suitcase {
-  color: red;
+button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: none;
+  background-color: white;
+  height: 40px;
+  width: 100%;
+  border-radius: 10px;
+  /* padding:0px 5%; */
+  margin-left: 5%;
+  gap: 10px;
 }
 
-.hover-effect:hover .fa-box {
-  color: red;
+.side-bar-contents .test-div:hover {
+  border-left: 5px solid red;
+  transition: 0.3s;
 }
 
-.hover-effect:hover .fa-tag {
-  color: red;
+.side-bar-contents div.test-div button:hover {
+  background-color: rgb(255, 210, 210);
 }
-.hover-effect:hover .fa-cube {
+button:hover {
   color: red;
-}
-.hover-effect:hover .fa-layer-group {
-  color: red;
-}
-.hover-effect:hover .fa-comments {
-  color: red;
-}
-.hover-effect:hover .fa-gear {
-  color: red;
+  justify-content: center;
 }
 
 .fa-box {
   font-size: large;
-  color: gray;
 }
 .fa-bag-shopping {
   font-size: large;
-  color: gray;
 }
 .fa-suitcase {
   font-size: large;
-  color: gray;
 }
 .fa-tag {
   font-size: large;
-  color: gray;
 }
 .fa-cube {
   font-size: large;
-  color: gray;
 }
 .fa-layer-group {
   font-size: large;
-  color: gray;
 }
 .fa-comments {
   font-size: large;
-  color: gray;
 }
 .fa-gear {
   font-size: large;
-  color: gray;
 }
 .font-span {
-  color: grey;
   font-size: small;
 }
 .busy-mode {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 5%;
+  padding-left: 15%;
+  font-size: small;
+  font-weight: bold;
 }
 
 .fa-bars {
@@ -201,13 +226,12 @@ nav {
 .sub1-main-content {
   grid-column-start: 1;
   grid-column-end: 3;
-  padding: 30px 30px;
+  padding: 2% 2%;
 }
 .sub2-main-content {
   grid-column-start: 1;
   grid-column-end: 3;
-  padding: 10px 30px;
-  overflow: auto;
+  padding: 3% 2%;
 }
 
 .card-container {
@@ -224,52 +248,69 @@ nav {
   padding: 1.5%;
   border-radius: 10px;
   margin-top: 1%;
-  gap: 4%;
+  gap: 2%;
 }
 .card-img-bag {
   display: inline-block;
   border-radius: 50%;
-  background-color: rgb(250, 209, 133);
+  background-color: rgb(255, 233, 192);
   margin-left: 10%;
 }
 .card-img-van {
   display: inline-block;
   border-radius: 50%;
-  background-color: rgb(151, 253, 151);
+  background-color: rgb(208, 255, 208);
   margin-left: 10%;
 }
 
 .card-img-stock {
   display: inline-block;
   border-radius: 50%;
-  background-color: rgb(157, 157, 252);
+  background-color: rgb(209, 209, 255);
   margin-left: 10%;
 }
+
+.fa-bag-shopping {
+  font-size: large;
+  color: orange;
+  padding: 20px;
+}
 .fa-list-check {
+  font-size: large;
   color: blue;
   padding: 20px;
 }
 .fa-truck-ramp-box {
+  font-size: large;
   color: green;
   padding: 20px;
 }
+
 .card-text {
   display: flex;
   flex-direction: column;
 }
 .card-font {
-  font-size: 30px;
+  font-size: 2em;
   font-weight: bolder;
 }
-.fa-bag-shopping {
-  color: orange;
-  padding: 20px;
+
+.card-font-text {
+  font-size: 1em;
 }
+
 .recent {
   border: 1px solid black;
   border-radius: 5px;
   padding: 1%;
+  font-size: x-small;
 }
+
+.search-div-content {
+  font-size: small;
+  color: gray;
+}
+
 .orders {
   display: flex;
   justify-content: space-between;
@@ -279,7 +320,7 @@ nav {
 .customers-orders {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 .fa-user {
   font-size: 15px;
@@ -298,7 +339,7 @@ nav {
   background-color: white;
   height: 30px;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid rgb(211, 211, 211);
   display: flex;
 
   align-items: center;
@@ -307,42 +348,37 @@ nav {
   padding: 0px 1%;
 }
 .id {
-  /* width: 10%; */
-  width: 80px;
+  width: 10%;
   display: inline-block;
 }
 .name {
-  /* width: 20%; */
-  width: 150px;
+  width: 20%;
   display: inline-block;
 }
 .payment {
-  /* width: 15%; */
-  width: 120px;
+  width: 15%;
   display: inline-block;
 }
 .time {
-  /* width: 15%; */
-  width: 150px;
+  width: 15%;
   display: inline-block;
 }
 .type {
-  /* width: 15%; */
-  width: 140px;
+  width: 15%;
   display: inline-block;
 }
 .type-delivery {
   color: rgb(255, 23, 23);
 }
 .status {
-  width: 150px;
+  width: 17%;
   display: inline-block;
 }
 .status-box-on-the-way {
   padding: 5% 10%;
   border-radius: 10px;
   color: rgba(255, 166, 0, 0.74);
-  background-color: rgba(255, 219, 152, 0.74);
+  background-color: rgba(255, 235, 197, 0.74);
 }
 .status-ready {
   padding: 5% 15%;
@@ -351,21 +387,17 @@ nav {
   color: white;
 }
 .total {
-  width: 100px;
+  width: 10%;
   display: inline-block;
 }
 .action-center {
-  padding-left: 10px;
   position: relative;
   display: inline-block;
-}
-
-.reponsive {
-  min-width: 50rem;
+  text-align: center;
 }
 
 .action {
-  width: 40px;
+  width: 5%;
   display: inline-block;
 }
 
@@ -376,8 +408,8 @@ nav {
 .display-options {
   display: none;
   position: absolute;
-  top: 100%;
-  left: 0;
+  top: 90%;
+  right: 30%;
   width: 120px;
   background: #fff;
   border: 1px solid #ddd;
@@ -385,20 +417,29 @@ nav {
   z-index: 1;
   padding: 5px 0;
   text-align: left;
-  border-radius: 20px;
+  border-radius: 10px;
+}
+
+.display-options span:hover {
+  color: red;
 }
 
 .display-options span {
   display: block;
-  color: #333;
   padding: 5px;
 }
 
+div.action-center i {
+  padding: 5px;
+  background-color: rgb(235, 235, 235);
+  border-radius: 1px;
+}
 .action-center:hover .display-options {
   display: block;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  transition: 1s;
 }
 .action-order {
   width: 10%;
@@ -416,11 +457,11 @@ div.customer-details:hover {
 .customer-details {
   background-color: rgb(255, 255, 255);
   height: 40px;
-  border-radius: 10px;
-  border: 1px solid black;
+  border-radius: 5px;
+  border: 1px solid rgb(211, 211, 211);
   display: flex;
   align-items: center;
-  font-size: small;
+  font-size: x-small;
   font-weight: bolder;
   padding: 0 1%;
 }
@@ -488,21 +529,122 @@ div.customer-details:hover {
   border-radius: 50%;
 }
 
-.fa-bag-shopping {
-  font-size: x-large;
-}
-.fa-list-check {
-  font-size: x-large;
-}
-.fa-truck-ramp-box {
-  font-size: x-large;
-}
-
 body {
   margin: 5px;
+  margin-left: 0px;
 }
 
-@media screen and (max-width: 1070px) {
+@media screen and (min-width: 1900px) {
+  * {
+    font-size: large;
+  }
+  .customers-orders {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .customer-details {
+    height: 80px;
+    border-radius: 15px;
+  }
+
+  .sidebar-component {
+    width: 100%;
+    height: 60px;
+    padding-left: 25%;
+  }
+
+  .side-bar-contents {
+    gap: 35px;
+  }
+  .fa-bell {
+    font-size: 2rem;
+  }
+  img {
+    width: 90%;
+    height: 60%;
+  }
+
+  .display-options {
+    width: 200px;
+  }
+
+  button {
+    height: 60px;
+    gap: 10px;
+  }
+
+  .div-first {
+    height: 40px;
+    padding-right: 50px;
+  }
+
+  .side-bar-contents .test-div:hover {
+    border-left: 5px solid rgb(253, 166, 166);
+    transition: 0.3s;
+  }
+
+  .side-bar-contents div.test-div button:hover {
+    background-color: rgb(253, 166, 166);
+  }
+
+  button:hover {
+    color: red;
+    justify-content: center;
+  }
+
+  .card {
+    padding: 5% 5% 5% 3%;
+    border-radius: 20px;
+    margin-top: 2%;
+    gap: 4%;
+  }
+  .fa-list-check {
+    padding: 40px;
+    font-size: x-large;
+  }
+  .fa-truck-ramp-box {
+    padding: 40px;
+    font-size: x-large;
+  }
+  .fa-bag-shopping {
+    padding: 40px;
+    font-size: x-large;
+  }
+
+  .fa-box {
+    font-size: x-large;
+  }
+  .fa-bag-shopping {
+    font-size: x-large;
+  }
+  .fa-suitcase {
+    font-size: x-large;
+  }
+  .fa-tag {
+    font-size: x-large;
+  }
+  .fa-cube {
+    font-size: x-large;
+  }
+  .fa-layer-group {
+    font-size: x-large;
+  }
+  .fa-comments {
+    font-size: x-large;
+  }
+  .fa-gear {
+    font-size: x-large;
+  }
+
+  .orders {
+    margin-bottom: 3%;
+    margin-top: 3%;
+  }
+}
+
+@media screen and (max-width: 1106px) {
   .span-time {
     display: block;
   }
@@ -510,9 +652,6 @@ body {
     display: none;
   }
   .account-details {
-    width: 50%;
-  }
-  .search {
     width: 50%;
   }
 }
@@ -529,6 +668,9 @@ body {
     grid-template-rows: auto auto auto;
   }
 
+  .div-first {
+    font-size: small;
+  }
   .navbar {
     grid-column: 1;
   }
@@ -565,7 +707,8 @@ body {
 
   .side-bar-contents {
     flex-direction: row;
-    gap: 40px;
+    gap: 15px;
+    justify-content: center;
     padding: 2% 0px 4% 0px;
   }
 
@@ -601,6 +744,30 @@ body {
     margin: 10px 0;
     width: 100%;
   }
+
+  .sidebar-component {
+    width: auto;
+    height: auto;
+  }
+
+  button {
+    border: none;
+    background-color: white;
+    height: 30px;
+    border-radius: 10px;
+    padding: 0px 5px;
+  }
+
+  .side-bar-contents .test-div:hover {
+    border-left: none;
+    transition: 0s;
+  }
+  .side-bar-contents div.test-div button:hover {
+    background-color: rgb(253, 166, 166);
+  }
+  button:hover span {
+    color: red;
+  }
 }
 
 @media screen and (max-height: 725px) {
@@ -614,6 +781,29 @@ body {
     display: flex;
     align-items: center;
     width: 30%;
+  }
+}
+@media screen and (max-width: 585px) {
+  .total {
+    display: none;
+  }
+  .account-img-time {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 521px) {
+  .total {
+    display: none;
+  }
+  .account-img-time {
+    display: none;
+  }
+  .payment {
+    display: none;
+  }
+  .status {
+    width: 20%;
   }
 }
 
@@ -693,7 +883,6 @@ body {
   }
   .account-details {
     width: 70%;
-    gap: 4%;
   }
   .main-content {
     grid-column: 1;
@@ -703,6 +892,31 @@ body {
   .sub-main-content {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
+  }
+
+  .payment {
+    display: none;
+  }
+  .time {
+    display: none;
+  }
+  .total {
+    display: none;
+  }
+  .id {
+    width: 15%;
+  }
+  .name {
+    width: 25%;
+  }
+  .type {
+    width: 20%;
+  }
+  .status {
+    width: 25%;
+  }
+  .action {
+    width: 5%;
   }
 
   .sub1-main-content,
@@ -715,8 +929,12 @@ body {
   }
 
   .card {
-    margin: 5px 0;
+    margin: 5px 0px;
     width: 100%;
+  }
+
+  .account-img-time {
+    display: none;
   }
 
   .side-bar-contents {
@@ -725,6 +943,30 @@ body {
 
   body {
     font-size: x-small;
+  }
+}
+
+@media screen and (max-width: 495px) {
+  .type {
+    display: none;
+  }
+  .id {
+    width: 20%;
+  }
+  .name {
+    width: 35%;
+  }
+  .status {
+    width: 35%;
+  }
+  .action {
+    width: 5%;
+  }
+  .search {
+    display: none;
+  }
+  .name-resize {
+    font-size: smaller;
   }
 }
 @media screen and (max-width: 375px) {
