@@ -7,7 +7,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  /* font-size: small; */
 }
 main {
   display: grid;
@@ -62,7 +61,6 @@ nav {
   width: 80%;
   font-weight: 600;
   gap: 15px;
-  /* margin-left: 20px; */
 }
 .search-contents {
   border: 1px solid black;
@@ -351,6 +349,47 @@ button:hover {
   display: none;
 }
 
+.switch{
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+.slider{
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 30px;
+}
+.switch input {display: none}
+
+.slider:before{
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 1px;
+  bottom: 5px;
+  top:2px;
+  background: black;
+  transition: 0.4s;
+  border-radius: 20px;
+
+}
+
+input:checked + .slider{
+ background-color: rgb(181, 255, 152);
+}
+input:checked + .slider::before{
+ background-color: rgb(49, 185, 15);
+ transform: translateX(22px);
+}
+
 .div-first {
   background-color: white;
   height: 30px;
@@ -520,30 +559,6 @@ div.customer-details:hover {
   object-fit: cover;
   display: block;
 }
-.toggle-wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.toggle-slider {
-  width: 40px;
-  height: 20px;
-  background-color: #e6e0e0;
-  border-radius: 20px;
-  position: relative;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.toggle-slider::before {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 16px;
-  height: 16px;
-  background-color: #000000;
-  border-radius: 50%;
-}
 
 body {
   margin: 5px;
@@ -667,9 +682,6 @@ body {
   .span-main-time {
     display: none;
   }
-  /* .account-details {
-    width: 50%;
-  } */
 }
 
 @media screen and (max-width: 900px) {
@@ -708,7 +720,7 @@ body {
   .busy-modes {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 31px;
     cursor: pointer;
     font-size: x-small;
   }
