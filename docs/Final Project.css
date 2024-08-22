@@ -268,20 +268,20 @@ button:hover {
   display: inline-block;
   border-radius: 50%;
   background-color: rgb(255, 233, 192);
-  margin-left: 10%;
+  margin: 0px 10%;
 }
 .card-img-van {
   display: inline-block;
   border-radius: 50%;
   background-color: rgb(208, 255, 208);
-  margin-left: 10%;
+  margin: 0px 10%;
 }
 
 .card-img-stock {
   display: inline-block;
   border-radius: 50%;
   background-color: rgb(209, 209, 255);
-  margin-left: 10%;
+  margin: 0px 10%;
 }
 
 .fa-bag-shopping {
@@ -303,6 +303,7 @@ button:hover {
 .card-text {
   display: flex;
   flex-direction: column;
+  /* gap: 10px; */
 }
 .card-font {
   font-size: 2em;
@@ -397,7 +398,7 @@ input:checked + .slider::before{
   border: 1px solid rgb(211, 211, 211);
   display: flex;
   align-items: center;
-  font-size: x-small;
+  font-size: small;
   font-weight: bolder;
   padding: 0px 1%;
   
