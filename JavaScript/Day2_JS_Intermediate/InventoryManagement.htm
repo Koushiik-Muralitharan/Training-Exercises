@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <main>
+        <div>
+            <h4>Inventory System</h4>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter product name">
+
+                <label for="price">Price:</label>
+                <input type="text" id="price" placeholder="Enter product price">
+
+                <label for="quantity">Quantity</label>
+                <input type="text" id="quantity" placeholder="Enter product quantity">
+
+                <button onclick="addProducts()">Add Product</button>
+            </form>
+
+            <div>
+                <span>Inventory List</span>
+                <table id="inventory-table">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
+<script>
+
+class Product {
+  constructor(name, price, quantity) {
+    this.name = name;
+    this.price = price;
+    this.quantity = quantity;
+  }
+
+  displayDetails() {
+  }
+}
+
+
+    </script>
+    
+</body>
+</html>

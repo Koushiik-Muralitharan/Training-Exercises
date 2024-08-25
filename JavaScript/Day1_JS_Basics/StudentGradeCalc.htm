@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Grades</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      main {
+        display: flex;
+        justify-content: center;
+        height: auto;
+        width: 100vw;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        border: 5px double rgb(0, 225, 255);
+        gap: 10px;
+        padding: 20px 0px;
+        margin-top: 3%;
+      }
+      h2 {
+        margin: 4% 0px;
+        text-align: center;
+      }
+      .buttons-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 15px;
+        margin-top: 20px;
+      }
+      button {
+        color: white;
+        background-color: rgb(3, 133, 209);
+        padding: 6px 10px;
+        border: none;
+        border-radius: 5px;
+      }
+      input {
+        width: 80%;
+        height: 30px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .grade-list {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+      }
+      div.buttons-container + h4 {
+        text-align: center;
+      }
+      ol {
+        padding: 17px;
+      }
+      ::placeholder {
+        font-size: medium;
+      }
+      .error-msg {
+        border-color: red;
+      }
+      /* .normal-msg {
+        border-color: black;
+      } */
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <h2>Student Grades Manager</h2>
+        <form>
+          <label for="student-name">Student Name:</label>
+          <input
+            type="text"
+            id="student-name"
+            placeholder="Enter student name"
+          />
+
+          <label for="grade">Grade:</label>
+          <input type="text" id="grade" placeholder="Enter Grades" />
+        </form>
+
+        <div class="buttons-container">
+          <button id="add-student">Add Student</button>
+          <button id="display-grades">Display Grades</button>
+        </div>
+
+        <div>
+          <div class="grade-list">
+            <h4>Grades List:</h4>
+            <ol></ol>
+          </div>
+        </div>
+        <div class="buttons-container">
+          <button id="average-calculator">Calculate Average Grade</button>
+        </div>
+        <h4>Average Grade: <span id="average"></span></h4>
+      </div>
+    </main>
+  </body>
+  <script>
+    let nameField = document.getElementById("student-name");
+    let gradeField = document.getElementById("grade");
+    nameField.onblur = function () {
+      if (nameField.value === "") {
+        nameField.style.borderColor = "red";
+        nameField.placeholder = "Student name is required";
+      }
+    };
+    nameField.onfocus = function () {
+      nameField.style.borderColor = "";
+      nameField.placeholder = "Enter student name ";
+    };
+    gradeField.onblur = function () {
+      if (gradeField.value === "") {
+        gradeField.style.borderColor = "red";
+        gradeField.placeholder = "grade is required";
+      }
+    };
+    gradeField.onfocus = function () {
+      gradeField.style.borderColor = "";
+      gradeField.placeholder = "Enter Grades";
+    };
+    let addStudent = document.getElementById("add-student");
+    addStudent.addEventListener("click", (event) => {
+      event.preventDefault();
+      let studentNameInput = document.getElementById("student-name");
+      let studentGradeInput = document.getElementById("grade");
+      let studentName = document.getElementById("student-name").value.trim();
+      let studentGrade = document.getElementById("grade").value.trim();
+
+      studentNameInput.classList.remove("error-msg");
+      studentGradeInput.classList.remove("error-msg");
+
+      if (studentName === "" || studentGrade === "") {
+        if (studentName === "") {
+          studentNameInput.classList.add("error-msg");
+          studentNameInput.placeholder = "Student name is required";
+        }
+        if (studentGrade === "") {
+          studentGradeInput.classList.add("error-msg");
+          studentGradeInput.placeholder = "Grade is required";
+        }
+        return;
+      }
+      let grade = parseInt(studentGrade);
+      if (isNaN(grade) || grade < 0 || grade > 100) {
+        studentGradeInput.classList.add("error-msg");
+        studentGradeInput.placeholder = "Grade must be between 0 and 100";
+        return;
+      }
+
+      studentNameInput.value = "";
+      studentGradeInput.value = "";
+
+      studentNameInput.placeholder = "Enter student name";
+      studentGradeInput.placeholder = "Enter student grade ";
+      studentNameInput.classList.remove("error-msg");
+      studentGradeInput.classList.remove("error-msg");
+      addingStudent(studentName, studentGrade);
+    });
+    let students = [];
+    function addingStudent(studentName, studentGrade) {
+      let student = { name: studentName, grade: parseInt(studentGrade) };
+      let len = students.length;
+      let booleans = checkIfNameExists(studentName);
+
+      function checkIfNameExists(name) {
+        let result = students.filter((student) => student.name === name);
+        return result.length > 0;
+      }
+      if (!booleans) {
+        if (students.push(student) > len) {
+          alert("student added successfully...");
+        }
+      }else{
+        alert(`${studentName} already exists...!`);
+      }
+    }
+
+    let displayStudents = document.getElementById("display-grades");
+    displayStudents.addEventListener("click", (event) => {
+      event.preventDefault();
+      let gradeList = document.querySelector(".grade-list ol");
+      gradeList.innerHTML = "";
+      students.map((student) => {
+        let listItem = document.createElement("li");
+        listItem.textContent = `${student.name} - ${student.grade}`;
+        gradeList.appendChild(listItem);
+      });
+    });
+
+    let calculateAverage = document.getElementById("average-calculator");
+    calculateAverage.addEventListener("click", (event) => {
+      event.preventDefault();
+      let count = students.length;
+      let total = students.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue.grade;
+      }, 0);
+      console.log(total);
+      parseFloat(total);
+      let ans = parseFloat(total / count);
+      let averageGrade = document.getElementById("average");
+      averageGrade.innerHTML = "";
+      averageGrade.textContent = ans.toFixed(2);
+    });
+  </script>
+</html>
