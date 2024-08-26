@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Dashboard</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      main {
+        display: flex;
+        justify-content: center;
+        margin-top: 5%;
+      }
+      .container {
+        border: 1px solid black;
+        padding: 15px;
+        width: 400px;
+        border-radius: 5px;
+      }
+      input {
+        height: 30px;
+        width: 83%;
+      }
+      h2{
+        margin-top: 10px;
+      }
+      button {
+        border: none;
+        background-color: blue;
+        color: white;
+        padding: 7px 15px;
+      }
+      .input-area {
+        display: flex;
+        margin: 15px 0px;
+      }
+      .info-part {
+        display: flex;
+        justify-content: space-between;
+      }
+      .container-info-part{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .weather-icon{
+        margin: 20px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <h2>Weather Dashboard</h2>
+
+        <div class="input-area">
+          <input type="text" id="input-field" placeholder="Enter city name" />
+          <button id="search-city">Search</button>
+        </div>
+        <div class="container-info-part">
+          <div class="info-part">
+            <span>City Name:</span>
+            <span id="city-name"></span>
+          </div>
+
+          <div class="info-part">
+            <span>Temperature:</span>
+            <span id="temperature"></span>
+          </div>
+
+          <div class="info-part">
+            <span>Humidity:</span>
+            <span id="humidity"></span>
+          </div>
+        </div>
+        <div class="weather-icon">
+            <img id="icon"></img>
+        </div>
+      </div>
+    </main>
+<script>
+   
+    const API_KEY = "7d3bf8ad01e8bf2375ca7989b24980c2";
+    const URL = 'https://api.openweathermap.org/data/2.5/weather';
+    const getWeatherData = async (city) => {
+      try {
+        const fullUrl = `${URL}?q=${city}&appid=${API_KEY}&units=imperial`;
+        const response = await fetch(fullUrl);
+        if (!response.ok) {
+          console.log("Failed to fetch weather data");
+        }
+        const weatherData = await response.json();
+        return weatherData;
+      } catch (error) {
+        console.log(error);
+        return null;
+      }
+    };
+
+    const searchCity = async () => {
+      const city = document.getElementById('input-field').value.trim();
+      if (city) {
+        const weatherData = await getWeatherData(city);
+        if (weatherData) {
+          showWeatherData(weatherData);
+          console.log(weatherData);
+        } else {
+          console.log("Could not retrieve weather data");
+        }
+      }
+    };
+
+    const showWeatherData = (weatherData) => {
+     let icon=weatherData.weather[0].icon;
+      document.getElementById('city-name').innerText = weatherData.name;
+      document.getElementById('temperature').innerText = weatherData.main.temp;
+      document.getElementById('humidity').innerText = weatherData.main.humidity;
+      document.getElementById('icon').src =  `https://openweathermap.org/img/wn/${icon}@2x.png`
+    };    
+    document.getElementById('search-city').addEventListener('click', searchCity);
+  </script>
+  </body>
+</html>

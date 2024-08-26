@@ -1,55 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory Management System</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100vw;
+      }
+      .container {
+        border: 1px solid black;
+        padding: 20px 10px;
+        margin-top: 5%;
+        width: 450px;
+      }
+      h3 {
+        margin-bottom: 15px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+      }
+      input {
+        height: 30px;
+      }
+      button {
+        width: 100%;
+        height: 30px;
+        background-color: blue;
+        color: white;
+        border: none;
+        align-self: center;
+      }
+      table,
+      td,
+      th {
+        border-collapse: collapse;
+        border: 1px solid rgb(187, 187, 187);
+        text-align: left;
+      }
+      table {
+        width: 100%;
+      }
+      td,
+      th {
+        padding: 10px;
+      }
+      .inventory-list {
+        padding: 20px 0px;
+      }
+      span {
+        color: red;
+        font-size: small;
+      }
+    </style>
+  </head>
+  <body>
     <main>
+      <div class="container">
+        <h3>Inventory System</h3>
+        <form id="submission">
+          <label for="name">Name:</label>
+          <input type="text" id="name" placeholder="Enter product name" />
+          <span id="for-name-errors"></span>
+          <label for="price">Price:</label>
+          <input type="text" id="price" placeholder="Enter product price" />
+          <span id="for-price-errors"></span>
+          <label for="quantity">Quantity:</label>
+          <input
+            type="text"
+            id="quantity"
+            placeholder="Enter product quantity"
+          />
+          <span id="for-quantity-errors"></span>
+          <span id="already-added"></span>
+          <button>Add Product</button>
+        </form>
+
         <div>
-            <h4>Inventory System</h4>
-            <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" placeholder="Enter product name">
-
-                <label for="price">Price:</label>
-                <input type="text" id="price" placeholder="Enter product price">
-
-                <label for="quantity">Quantity</label>
-                <input type="text" id="quantity" placeholder="Enter product quantity">
-
-                <button onclick="addProducts()">Add Product</button>
-            </form>
-
-            <div>
-                <span>Inventory List</span>
-                <table id="inventory-table">
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                    </tr>
-                </table>
-            </div>
+          <div class="inventory-list"><strong>Inventory List</strong></div>
+          <table id="inventory-table">
+            <tr>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Actions</th>
+            </tr>
+          </table>
         </div>
+      </div>
     </main>
-<script>
+    <script>
+      class Product {
+        constructor(name, price, quantity) {
+          this.name = name;
+          this.price = price;
+          this.quantity = quantity;
+        }
+      }
+      class Inventory {
+        constructor() {
+          this.products = [];
+        }
 
-class Product {
-  constructor(name, price, quantity) {
-    this.name = name;
-    this.price = price;
-    this.quantity = quantity;
-  }
+        checkIfNameExists(productName, excludeName = null) {
+          return this.products.some(
+            (product) =>
+              product.name === productName && product.name !== excludeName
+          );
+        }
 
-  displayDetails() {
-  }
-}
+        addProducts(product) {
+          console.log(product);
+          if (this.checkIfNameExists(product.name)) {
+            productAdded.textContent = `${product.name} already exists.`;
+            return false;
+          } else {
+            this.products.push(product);
+            console.log(this.products);
+            productAdded.textContent = "";
+            return true;
+          }
+        }
 
+        getAllProducts() {
+          // console.log(Object.values(this.products));
+          return Object.values(this.products);
+        }
 
+        removeProduct(productName) {
+          this.products = this.products.filter(
+            (product) => product.name !== productName
+          );
+          
+          updateInventoryDisplay();
+        }
+
+        editProduct(oldName, newProduct) {
+          const index = this.products.findIndex(
+            (product) => product.name === oldName
+          );
+          if (index !== -1) {
+            this.products[index] = newProduct;
+          }
+          updateInventoryDisplay();
+        }
+      }
+
+      let inventory = new Inventory();
+
+      function updateInventoryDisplay() {
+        let tableContents = document.getElementById("inventory-table");
+
+        tableContents.innerHTML = `
+    <tr>
+      <th>Product Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th colspan="2">Actions</th>
+    </tr>`;
+
+        const products = inventory.getAllProducts();
+
+        if (products.length === 0) {
+          const row = document.createElement("tr");
+          const cell = document.createElement("td");
+          cell.colSpan = 5;
+          cell.textContent = "Inventory is Empty";
+          cell.style.textAlign = "center";
+          row.appendChild(cell);
+          tableContents.appendChild(row);
+        } else {
+          products.forEach((product) => {
+            const row = document.createElement("tr");
+
+            const namecell = document.createElement("td");
+            namecell.textContent = product.name;
+            row.appendChild(namecell);
+
+            const pricecell = document.createElement("td");
+            pricecell.textContent = product.price;
+            row.appendChild(pricecell);
+
+            const quantitycell = document.createElement("td");
+            quantitycell.textContent = product.quantity;
+            row.appendChild(quantitycell);
+
+            const deleteButton = document.createElement("button");
+            deleteButton.innerText = "Remove";
+            deleteButton.addEventListener("click", () => {
+             
+              inventory.removeProduct(product.name);
+              
+            });
+            const deletecell = document.createElement("td");
+            deletecell.appendChild(deleteButton);
+            row.appendChild(deletecell);
+
+            const editButton = document.createElement("button");
+            editButton.innerText = "Edit";
+            editButton.addEventListener("click", () => {
+              inputName.value = product.name;
+              inputPrice.value = product.price;
+              inputQuantity.value = product.quantity;
+              document.getElementById("submission").onsubmit = function (event) {
+                event.preventDefault();
+                const editedProduct = new Product(
+                  inputName.value.trim(),
+                  inputPrice.value.trim(),
+                  inputQuantity.value.trim()
+                );
+                if (
+                  !inventory.checkIfNameExists(
+                    editedProduct.name,
+                    product.name
+                  ) ||
+                  editedProduct.name === product.name
+                ) {
+                  inventory.editProduct(product.name, editedProduct);
+                  resetForm();
+                } else {
+                  productAdded.textContent =
+                    "A product with this name already exists.";
+                }
+              };
+            });
+            const editcell = document.createElement("td");
+            editcell.appendChild(editButton);
+            row.appendChild(editcell);
+
+            tableContents.appendChild(row);
+          });
+        }
+      }
+
+      function resetForm() {
+        inputName.value = "";
+        inputPrice.value = "";
+        inputQuantity.value = "";
+        productAdded.textContent = "";
+        document.getElementById("submission").onsubmit = addProducts();
+      }
+
+      let inputName = document.getElementById("name");
+      let inputPrice = document.getElementById("price");
+      let inputQuantity = document.getElementById("quantity");
+      let nameError = document.getElementById("for-name-errors");
+      let priceError = document.getElementById("for-price-errors");
+      let quantityError = document.getElementById("for-quantity-errors");
+      let productAdded = document.getElementById("already-added");
+      inputName.onfocus = function () {
+        inputName.style.borderColor = "black";
+        nameError.textContent = "";
+      };
+      inputName.onblur = function () {
+        if (inputName.value.trim() === "") {
+          inputName.style.borderColor = "red";
+          nameError.textContent = "The name field is empty.*";
+        } else if (!isNaN(inputName.value.trim())) {
+          inputName.style.borderColor = "red";
+          nameError.textContent = "Please enter a valid name.";
+        }
+      };
+      inputPrice.onfocus = function () {
+        inputPrice.style.borderColor = "black";
+        priceError.textContent = "";
+      };
+      inputPrice.onblur = function () {
+        if (inputPrice.value.trim() === "") {
+          inputPrice.style.borderColor = "red";
+          priceError.textContent = "The price field is empty.*";
+        } else if (isNaN(inputPrice.value.trim())) {
+          inputPrice.style.borderColor = "red";
+          priceError.textContent = "Please enter a valid number";
+        }
+      };
+      inputQuantity.onfocus = function () {
+        inputQuantity.style.borderColor = "black";
+        quantityError.textContent = "";
+      };
+      inputQuantity.onblur = function () {
+        if (inputQuantity.value.trim() === "") {
+          inputQuantity.style.borderColor = "red";
+          quantityError.textContent = "The quantity field is empty.*";
+        } else if (isNaN(inputQuantity.value.trim())) {
+          inputQuantity.style.borderColor = "red";
+          quantityError.textContent = "Please enter a valid number";
+        }
+      };
+
+      document
+        .getElementById("submission")
+        .addEventListener("submit", (event) => {
+          event.preventDefault();
+          let productName = document.getElementById("name").value.trim();
+          let productPrice = document.getElementById("price").value.trim();
+          let productQuantity = document
+            .getElementById("quantity")
+            .value.trim();
+
+          if (
+            productName === "" ||
+            isNaN(productPrice) ||
+            isNaN(productQuantity) ||
+            productPrice === "" ||
+            productQuantity === ""
+          ) {
+            productAdded.textContent = "please fill out the fields. *";
+            return;
+          } else {
+            const newProduct = new Product(
+              productName,
+              productPrice,
+              productQuantity
+            );
+
+            const added = inventory.addProducts(newProduct);
+
+            if (added) {
+              updateInventoryDisplay();
+              resetForm();
+            }
+          }
+        });
+
+      updateInventoryDisplay();
     </script>
-    
-</body>
+  </body>
 </html>
