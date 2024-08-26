@@ -90,9 +90,11 @@
             id="student-name"
             placeholder="Enter student name"
           />
+          <span id="student-name-error"></span>
 
           <label for="grade">Grade:</label>
           <input type="text" id="grade" placeholder="Enter Grades" />
+          <span id="grade-error"></span>
         </form>
 
         <div class="buttons-container">
@@ -116,26 +118,61 @@
   <script>
     let nameField = document.getElementById("student-name");
     let gradeField = document.getElementById("grade");
-    nameField.onblur = function () {
-      if (nameField.value === "") {
+// Clear error messages and borders on focus
+nameField.onfocus = function () {
+    nameField.style.borderColor = "";
+    document.getElementById("student-name-error").textContent = "";
+};
+gradeField.onfocus = function () {
+    gradeField.style.borderColor = "";
+    document.getElementById("grade-error").textContent = "";
+};
+
+// Name validation on blur
+nameField.onblur = function () {
+    let nameValue = nameField.value.trim();
+
+    if (nameValue === "") {
         nameField.style.borderColor = "red";
-        nameField.placeholder = "Student name is required";
-      }
-    };
-    nameField.onfocus = function () {
-      nameField.style.borderColor = "";
-      nameField.placeholder = "Enter student name ";
-    };
-    gradeField.onblur = function () {
-      if (gradeField.value === "") {
+        document.getElementById("student-name-error").textContent = "Student name is required";
+    } else if (containsNumbers(nameValue)) {
+        nameField.style.borderColor = "red";
+        document.getElementById("student-name-error").textContent = "Name cannot contain numbers";
+    }
+};
+
+// Grade validation on blur
+gradeField.onblur = function () {
+    let gradeValue = gradeField.value.trim();
+
+    if (gradeValue === "") {
         gradeField.style.borderColor = "red";
-        gradeField.placeholder = "grade is required";
-      }
-    };
-    gradeField.onfocus = function () {
-      gradeField.style.borderColor = "";
-      gradeField.placeholder = "Enter Grades";
-    };
+        document.getElementById("grade-error").textContent = "Grade is required";
+    } else if (!isNumeric(gradeValue)) {
+        gradeField.style.borderColor = "red";
+        document.getElementById("grade-error").textContent = "Grade must be a number";
+    } else if (parseInt(gradeValue) < 0 || parseInt(gradeValue) > 100) {
+        gradeField.style.borderColor = "red";
+        document.getElementById("grade-error").textContent = "Grade must be between 0 and 100";
+    }
+};
+
+
+function containsNumbers(str) {
+   
+    for (let i = 0; i < str.length; i++) {
+       
+        if (str[i] >= '0' && str[i] <= '9') {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Function to check if string is numeric
+function isNumeric(str) {
+    return !isNaN(str) && !isNaN(parseFloat(str));
+}
     let addStudent = document.getElementById("add-student");
     addStudent.addEventListener("click", (event) => {
       event.preventDefault();
@@ -150,18 +187,21 @@
       if (studentName === "" || studentGrade === "") {
         if (studentName === "") {
           studentNameInput.classList.add("error-msg");
-          studentNameInput.placeholder = "Student name is required";
+          // studentNameInput.placeholder = "Student name is required";
+          document.getElementById("student-name-error").textContent = "Student name is required";
         }
         if (studentGrade === "") {
           studentGradeInput.classList.add("error-msg");
-          studentGradeInput.placeholder = "Grade is required";
+          // studentGradeInput.placeholder = "Grade is required";
+          document.getElementById("grade-error").textContent = "Grade is required";
         }
         return;
       }
       let grade = parseInt(studentGrade);
       if (isNaN(grade) || grade < 0 || grade > 100) {
         studentGradeInput.classList.add("error-msg");
-        studentGradeInput.placeholder = "Grade must be between 0 and 100";
+        // studentGradeInput.placeholder = "Grade must be between 0 and 100";
+        document.getElementById("grade-error").textContent = "Grade must be between 0 and 100";
         return;
       }
 

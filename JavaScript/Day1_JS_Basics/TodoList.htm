@@ -70,6 +70,11 @@
         flex-direction: column;
         gap: 10px;
       }
+      #error-display{
+        color: red;
+        font-size: small;
+        padding: 10px 0px;
+      }
     </style>
   </head>
   <body>
@@ -81,6 +86,7 @@
             <input type="text" id="input" placeholder="Enter new task" />
             <button id="add">Add Task</button>
           </form>
+          <span id="error-display"></span>
         </div>
         <ul id="todolist"></ul>
       </div>
@@ -95,7 +101,8 @@
       };
       inputField.onblur = function () {
         if (inputField.value === "") {
-          inputField.placeholder = "Please add task to submit";
+          // inputField.placeholder = "Please add task to submit";
+          document.getElementById('error-display').textContent="please enter a task to add."
           document.getElementById("input").style.borderColor = "red";
         }
       };
@@ -104,11 +111,13 @@
         e.preventDefault();
         if (inputField.value === "") {
           inputField.style.borderColor = "red";
-          inputField.placeholder = "Please add a task to submit";
+          // inputField.placeholder = "Please add a task to submit";
+          document.getElementById('error-display').textContent="please enter a task to add."
         } else {
           addtodo(inputField.value);
           inputField.value = "";
           inputField.style.borderColor = "";
+          document.getElementById('error-display').textContent=""
         }
       });
 

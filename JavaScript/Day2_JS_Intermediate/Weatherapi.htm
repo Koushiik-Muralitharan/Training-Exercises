@@ -51,6 +51,10 @@
       .weather-icon{
         margin: 20px 0px;
       }
+      #error-display{
+        color: red;
+        padding: 10px 0px;
+      }
     </style>
   </head>
   <body>
@@ -62,6 +66,7 @@
           <input type="text" id="input-field" placeholder="Enter city name" />
           <button id="search-city">Search</button>
         </div>
+        <p id="error-display"></p>
         <div class="container-info-part">
           <div class="info-part">
             <span>City Name:</span>
@@ -93,9 +98,13 @@
         const response = await fetch(fullUrl);
         if (!response.ok) {
           console.log("Failed to fetch weather data");
-        }
-        const weatherData = await response.json();
+          document.getElementById('error-display').textContent = "Please enter a valid city name."
+        }else{
+          document.getElementById('error-display').textContent = "";
+          const weatherData = await response.json();
         return weatherData;
+        }
+        
       } catch (error) {
         console.log(error);
         return null;
@@ -104,6 +113,9 @@
 
     const searchCity = async () => {
       const city = document.getElementById('input-field').value.trim();
+      if(city === ""){
+        document.getElementById('error-display').textContent = "Please enter a city name to search."
+      }
       if (city) {
         const weatherData = await getWeatherData(city);
         if (weatherData) {
