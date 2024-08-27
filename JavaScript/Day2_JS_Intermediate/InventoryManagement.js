@@ -39,13 +39,12 @@ class Product {
   display() {
     let tableContents = document.getElementById("inventory-table");
 
-    tableContents.innerHTML = `
-                                  <tr>
-                                  <th>Product Name</th>
-                                  <th>Price</th>
-                                  <th>Quantity</th>
-                                  <th colspan="2">Actions</th>
-                                  </tr>`;
+    tableContents.innerHTML = `<tr>
+                               <th>Product Name</th>
+                               <th>Price</th>
+                               <th>Quantity</th>
+                               <th colspan="2">Actions</th>
+                               </tr>`;
     products.forEach((product, index) => {
       createRow(product, index);
     });

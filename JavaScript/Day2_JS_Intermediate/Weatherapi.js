@@ -2,8 +2,10 @@
     const URL = 'https://api.openweathermap.org/data/2.5/weather';
     const getWeatherData = async (city) => {
       try {
+        document.getElementById('loader').style.display = 'block';
         const fullUrl = `${URL}?q=${city}&appid=${API_KEY}&units=imperial`;
         const response = await fetch(fullUrl);
+        document.getElementById('loader').style.display = 'none';
         if (!response.ok) {
           console.log("Failed to fetch weather data");
           document.getElementById('error-display').textContent = "Please enter a valid city name."
