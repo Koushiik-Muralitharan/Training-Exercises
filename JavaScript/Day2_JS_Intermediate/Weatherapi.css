@@ -1,0 +1,50 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  main {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+  }
+  .container {
+    border: 1px solid black;
+    padding: 15px;
+    width: 400px;
+    border-radius: 5px;
+  }
+  input {
+    height: 30px;
+    width: 83%;
+  }
+  h2{
+    margin-top: 10px;
+  }
+  button {
+    border: none;
+    background-color: blue;
+    color: white;
+    padding: 7px 15px;
+  }
+  .input-area {
+    display: flex;
+    margin: 15px 0px;
+  }
+  .info-part {
+    display: flex;
+    justify-content: space-between;
+  }
+  .container-info-part{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .weather-icon{
+    margin: 20px 0px;
+  }
+  #error-display{
+    color: red;
+    padding: 10px 0px;
+  }

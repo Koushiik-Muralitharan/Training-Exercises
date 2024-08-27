@@ -1,0 +1,86 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+  }
+  li {
+    list-style-type: none;
+  }
+  h1 {
+    margin-bottom: 10px;
+  }
+  input[type="text"] {
+    width: 60%;
+    height: 45px;
+  }
+  button {
+    border: none;
+    border-radius: 5px;
+  }
+  #wrapper {
+    display: inline-block;
+    width: 400px;
+    height: auto;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    padding-bottom: 10px;
+  }
+  .form-container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  .insiders {
+    padding: 35px;
+  }
+  #add {
+    padding: 15px 25px;
+    background-color: blue;
+    color: white;
+  }
+  #update-task {
+    padding: 15px 25px;
+    background-color: blue;
+    color: white;
+    display: none;
+  }
+  ::placeholder {
+    font-size: 15px;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(255, 185, 185);
+    border-radius: 5px;
+    margin: 0px 10px;
+    padding: 5px;
+    border-bottom: 2px solid grey;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  #error-display {
+    color: red;
+    font-size: small;
+    padding: 10px 0px;
+  }
+  .delete-button {
+    padding: 10px 15px;
+    background-color: red;
+    color: white;
+  }
+  .edit-button {
+    padding: 10px 15px;
+    background-color: blue;
+    color: white;
+  }

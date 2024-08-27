@@ -4,78 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      * {
-        margin: 0px;
-        padding: 0px;
-        box-sizing: border-box;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
-      main {
-        display: flex;
-        justify-content: center;
-        margin-top: 10%;
-      }
-      li {
-        list-style-type: none;
-      }
-      h1 {
-        margin-bottom: 10px;
-      }
-      input[type="text"] {
-        width: 60%;
-        height: 45px;
-      }
-      button {
-        border: none;
-        border-radius: 5px;
-      }
-      #wrapper {
-        display: inline-block;
-        width: 400px;
-        height: auto;
-        border: 1px solid rgb(0, 0, 0);
-        border-radius: 15px;
-        padding-bottom: 10px;
-      }
-      .form-container {
-        display: flex;
-        gap: 5px;
-        align-items: center;
-      }
-      .insiders {
-        padding: 35px;
-      }
-      #add {
-        padding: 15px 25px;
-        background-color: blue;
-        color: white;
-      }
-      ::placeholder {
-        font-size: 15px;
-      }
-      li {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        background-color: rgb(255, 185, 185);
-        border-radius: 5px;
-        margin: 0px 10px;
-        padding: 5px;
-        border-bottom: 2px solid grey;
-      }
-      ul {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-      #error-display{
-        color: red;
-        font-size: small;
-        padding: 10px 0px;
-      }
-    </style>
+    <link rel="stylesheet" href="TodoList.css">
   </head>
   <body>
     <main>
@@ -84,7 +13,8 @@
           <h1>To-Do List</h1>
           <form class="form-container">
             <input type="text" id="input" placeholder="Enter new task" />
-            <button id="add">Add Task</button>
+            <button id="add" onclick="addTasks(event)">Add Task</button>
+            <button id="update-task" onclick="updation(event)">Update Task</button>
           </form>
           <span id="error-display"></span>
         </div>
@@ -92,67 +22,6 @@
       </div>
     </main>
 
-    <script>
-      let button = document.getElementById("add");
-      let inputField = document.getElementById("input");
-      inputField.onfocus = function () {
-        inputField.placeholder = "Enter new task";
-        document.getElementById("input").style.borderColor = "black";
-      };
-      inputField.onblur = function () {
-        if (inputField.value === "") {
-          // inputField.placeholder = "Please add task to submit";
-          document.getElementById('error-display').textContent="please enter a task to add."
-          document.getElementById("input").style.borderColor = "red";
-        }
-      };
-
-      button.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (inputField.value === "") {
-          inputField.style.borderColor = "red";
-          // inputField.placeholder = "Please add a task to submit";
-          document.getElementById('error-display').textContent="please enter a task to add."
-        } else {
-          addtodo(inputField.value);
-          inputField.value = "";
-          inputField.style.borderColor = "";
-          document.getElementById('error-display').textContent=""
-        }
-      });
-
-      function addtodo(todo) {
-        let listContent = document.createElement("li");
-
-        let para = document.createElement("p");
-        para.innerText = todo;
-
-        let checkBox = document.createElement("input");
-        checkBox.type = "checkbox";
-
-        let deleteButton = document.createElement("button");
-        deleteButton.innerText = "Delete";
-        deleteButton.style.padding = "10px 15px";
-        deleteButton.style.backgroundColor = "red";
-        deleteButton.style.color = "white";
-
-        checkBox.addEventListener("change", () => {
-          if (checkBox.checked) {
-            para.style.textDecoration = "line-through";
-          } else {
-            para.style.textDecoration = "none";
-          }
-        });
-
-        deleteButton.addEventListener("click", () => {
-          todolist.removeChild(listContent);
-        });
-
-        listContent.append(checkBox);
-        listContent.append(para);
-        listContent.append(deleteButton);
-        todolist.append(listContent);
-      }
-    </script>
+    <script src="TodoList.js"></script>
   </body>
 </html>
