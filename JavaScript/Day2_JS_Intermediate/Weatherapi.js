@@ -1,4 +1,4 @@
-const API_KEY = "7d3bf8ad01e8bf2375ca7989b24980c2";
+   const API_KEY = "7d3bf8ad01e8bf2375ca7989b24980c2";
     const URL = 'https://api.openweathermap.org/data/2.5/weather';
     const getWeatherData = async (city) => {
       try {
@@ -38,8 +38,8 @@ const API_KEY = "7d3bf8ad01e8bf2375ca7989b24980c2";
     const showWeatherData = (weatherData) => {
      let icon=weatherData.weather[0].icon;
       document.getElementById('city-name').innerText = weatherData.name;
-      document.getElementById('temperature').innerText = weatherData.main.temp;
-      document.getElementById('humidity').innerText = weatherData.main.humidity;
+      document.getElementById('temperature').innerText = `${weatherData.main.temp}°C`;
+      document.getElementById('humidity').innerText =`${ weatherData.main.humidity}%`;
       document.getElementById('icon').src =  `https://openweathermap.org/img/wn/${icon}@2x.png`
     };    
     document.getElementById('search-city').addEventListener('click', searchCity);

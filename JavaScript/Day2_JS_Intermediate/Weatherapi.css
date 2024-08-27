@@ -16,7 +16,7 @@
     border-radius: 5px;
   }
   input {
-    height: 30px;
+    height: 35px;
     width: 83%;
   }
   h2{
@@ -24,7 +24,7 @@
   }
   button {
     border: none;
-    background-color: blue;
+    background-color: rgb(0, 132, 255);
     color: white;
     padding: 7px 15px;
   }
@@ -39,10 +39,10 @@
   .container-info-part{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
   }
   .weather-icon{
-    margin: 20px 0px;
+    margin: 0px;
   }
   #error-display{
     color: red;
