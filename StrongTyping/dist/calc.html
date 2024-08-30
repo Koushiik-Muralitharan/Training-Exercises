@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calc.css">
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div>
+          <div class="display-area" id="display-area-content"></div>
+        </div>
+        <span id="display-error-msg"></span>
+
+        <div class="parent-button-row">
+          <div class="buttons-row">
+            <button onclick="displayContent(7)">7</button>
+            <button onclick="displayContent(8)">8</button>
+            <button onclick="displayContent(9)">9</button>
+            <button onclick="displayContent('/')">/</button>
+          </div>
+          <div class="buttons-row">
+            <button onclick="displayContent(4)">4</button>
+            <button onclick="displayContent(5)">5</button>
+            <button onclick="displayContent(6)">6</button>
+            <button onclick="displayContent('*')">*</button>
+          </div>
+          <div class="buttons-row">
+            <button onclick="displayContent(1)">1</button>
+            <button onclick="displayContent(2)">2</button>
+            <button onclick="displayContent(3)">3</button>
+            <button onclick="displayContent('-')">-</button>
+          </div>
+          <div class="buttons-row">
+            <button onclick="displayContent(0)">0</button>
+            <button onclick="refresh()">C</button>
+            <button onclick="displayCalculate()">=</button>
+            <button onclick="displayContent('+')">+</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>

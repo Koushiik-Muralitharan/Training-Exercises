@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeSafe</title>
+    <link rel="stylesheet" href="Typesafe.css">
+<body>
+    <main>
+        <div class="container">
+            <div>
+                <h2>Add User</h2>
+            </div>
+            <form>
+                <div class="error-near-input">
+                    <div class="form-elements"><label for="name-field" >Name:</label><input type="text" id="name-field"></div>
+                    <span id="display-name-error"></span>
+                </div>
+                <div class="error-near-input">
+                    <div class="form-elements"><label for="" >Email:</label><input type="email" id="email-field"></div>
+                    <span id="display-email-error"></span>
+                </div>
+
+                <div class="error-near-input">
+                    <div class="form-elements">
+                        <label for="select-field">Role:</label>
+                        <select id="select-field">
+                            <option value="Admin">Admin</option>
+                            <option value="User">User</option>
+                        </select>   
+                    </div>
+                    <span></span>
+                </div>
+            
+                <div class="error-near-input">
+                    <div class="form-elements">
+                        <button id="formButton">Add User</button>
+                    </div>
+                    <span></span>
+                </div>
+                
+                
+            </form>
+            <div class="main-error">
+                <span id="display-main-error"></span>
+            </div>
+            
+            <div>
+                <h2>User List</h2>
+                <div class="user-search-form">
+                    <input type="text" id="user-search-field" placeholder=" Search">
+                    <button id="user-search">Search</button>
+                    <button id="user-display-all">Display All</button>
+                </div>
+                <table id="User-display-table">
+                    <span id="no-user"></span>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="index.js"></script>
+    
+</body>
+</html>
