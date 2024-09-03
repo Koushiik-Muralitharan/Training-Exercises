@@ -221,7 +221,7 @@ formButton.onclick = function (event: any): void {
 
     const isEmailExist = user.users.some((user) => user.email === userEmail && user.id !== userID);
         if (isEmailExist) {
-            mainErrors.innerText = "Email already exists. Please provide a unique email.";
+            mainErrors.innerText = "Email already exists.";
             return;
         }
         if (isValid && userRole) {
