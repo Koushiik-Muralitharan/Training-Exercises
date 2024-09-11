@@ -13,14 +13,18 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.totalSavingsdisplay = exports.categoryProgress = exports.userEmails = exports.userNames = void 0;
 exports.createRow = createRow;
 exports.createGoalCard = createGoalCard;
+const UserServices_1 = __webpack_require__(/*! ./services/UserServices */ "./services/UserServices.ts");
 const services_1 = __webpack_require__(/*! ./services/services */ "./services/services.ts");
 const chart_js_1 = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.cjs");
-let UserAccountArray = JSON.parse(localStorage.getItem("UserArray") || "[]");
+const usersRepo = new UserServices_1.UserRepository();
+let UserAccountArray = usersRepo.UsersLocalStorage();
+console.log(UserAccountArray);
 let profileName = document.getElementById("profile-name");
 let logoutIcon = document.getElementById("logout-icon");
 let remainingBalance = document.getElementById("remaining-balance-display");
 // Find the user with login status in
-let userAccount = UserAccountArray.find((user) => user.loggedStatus === "in");
+let userAccount = usersRepo.getLoggedUser(UserAccountArray);
+console.log(userAccount);
 if (userAccount) {
     profileName.innerText = userAccount.name;
     var userNames = userAccount.name;
@@ -40,27 +44,8 @@ logoutIcon.onclick = function () {
         }
     });
     localStorage.setItem("UserArray", JSON.stringify(UserAccountArray));
-    window.location.href = "SignIn.htm";
+    window.location.href = "index.html";
 };
-// // Instantiate the UserRepository
-// const userRepo = new UserRepository();
-// let profileName = document.getElementById("profile-name") as HTMLElement;
-// let logoutIcon = document.getElementById("logout-icon") as HTMLSpanElement;
-// let remainingBalance = document.getElementById("remaining-balance-display") as HTMLElement;
-// // Get the logged-in user from the repository
-// const loggedInUser = userRepo.getLoggedInUser();
-// if (loggedInUser) {
-//   profileName.innerText = loggedInUser.name;
-//   var userNames = loggedInUser.name;
-//   var userEmails = loggedInUser.email;
-//   console.log(userEmails);
-// } else {
-//   console.error("No user is logged in.");
-// }
-// // Logout functionality
-// logoutIcon.onclick = function () {
-//   userRepo.logoutUser();
-// };
 //category changing part ...
 const transactionType = document.getElementById("transaction-type");
 const categoryType = document.getElementById("category");
@@ -290,6 +275,10 @@ var addgoals = document.getElementById("add-goals");
 addgoals.onclick = function () {
     openGoalModal();
 };
+var closeInfo = document.getElementById("info-close-popup");
+closeInfo.onclick = function () {
+    infoModalClose();
+};
 function closeModal() {
     let contributionModal = document.getElementById("contribution-modal");
     contributionModal.style.display = "none";
@@ -324,6 +313,10 @@ function closeGoalModal() {
     let closeAddGoalModal = document.getElementById("add-goal-modal");
     closeAddGoalModal.style.display = "none";
 }
+function infoModalClose() {
+    let infoGoalModal = document.getElementById("info-modal");
+    infoGoalModal.style.display = "none";
+}
 let currentGoalID = null;
 function openModal(goalName, currentContribution, goalAmount, goalID) {
     const openContributionModel = document.getElementById("contribution-modal");
@@ -335,6 +328,16 @@ function openModal(goalName, currentContribution, goalAmount, goalID) {
     goalAmountStatus.innerText = `${goalAmount}`;
     goalHeading.innerText = goalName;
     currentGoalID = goalID;
+}
+function infoModal(goalName, currentContribution, goalAmount) {
+    const openInfoModal = document.getElementById('info-modal');
+    openInfoModal.style.display = "flex";
+    let contributionInfo = document.getElementById("contribution-info");
+    let amountInfo = document.getElementById("goal-amount-info");
+    let headingInfo = document.getElementById("goal-heading-info");
+    headingInfo.innerText = goalName;
+    contributionInfo.innerText = `${currentContribution}`;
+    amountInfo.innerText = `${goalAmount}`;
 }
 // creation of the object for Goal Class.
 const goalRepo = new services_1.GoalRepository();
@@ -375,6 +378,15 @@ function createGoalCard(goal) {
             openModal(goal.goalName, goal.goalContribution, goal.goalAmount, goal.goalId);
         };
         arrangeButtons.appendChild(contributeBtn);
+    }
+    else {
+        const infoBtn = document.createElement("button");
+        infoBtn.classList.add("contribute-btn");
+        infoBtn.textContent = "i";
+        infoBtn.onclick = function () {
+            infoModal(goal.goalName, goal.goalContribution, goal.goalAmount);
+        };
+        arrangeButtons.appendChild(infoBtn);
     }
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-goal-btn");
@@ -595,12 +607,19 @@ else {
     themeToggle.checked = false;
 }
 themeToggle.onchange = function () {
+    var _a, _b, _c, _d, _e, _f;
     if (themeToggle.checked) {
         document.body.classList.add("dark-mode");
+        (_a = document.getElementById("main-contents")) === null || _a === void 0 ? void 0 : _a.classList.add("dark-mode");
+        (_b = document.getElementById("sidebar-1")) === null || _b === void 0 ? void 0 : _b.classList.add("dark-mode");
+        (_c = document.getElementById("dark-header")) === null || _c === void 0 ? void 0 : _c.classList.add("dark-mode");
         localStorage.setItem("theme", "dark");
     }
     else {
         document.body.classList.remove("dark-mode");
+        (_d = document.getElementById("main-contents")) === null || _d === void 0 ? void 0 : _d.classList.remove("dark-mode");
+        (_e = document.getElementById("sidebar-1")) === null || _e === void 0 ? void 0 : _e.classList.remove("dark-mode");
+        (_f = document.getElementById("dark-header")) === null || _f === void 0 ? void 0 : _f.classList.remove("dark-mode");
         localStorage.setItem("theme", "light");
     }
 };
@@ -649,7 +668,7 @@ if (canvas) {
     }
 }
 else {
-    console.log("Canvas element with ID 'myChart' not found.");
+    console.log("Canvas element not found.");
 }
 document.addEventListener('DOMContentLoaded', () => {
     const hamburgerBtn = document.getElementById('hamburger-btn');
@@ -674,6 +693,61 @@ document.addEventListener('DOMContentLoaded', () => {
         transactionsSection.style.display = 'block';
     };
 });
+
+
+/***/ }),
+
+/***/ "./services/UserServices.ts":
+/*!**********************************!*\
+  !*** ./services/UserServices.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UserRepository = void 0;
+class UserRepository {
+    constructor() {
+        this.localstorageuserKey = "UserArray";
+        this.users = [];
+        this.users = this.UsersLocalStorage();
+    }
+    UsersLocalStorage() {
+        const storedUser = localStorage.getItem(this.localstorageuserKey);
+        return storedUser ? JSON.parse(storedUser) : [];
+    }
+    saveUsersToLocalStorage() {
+        localStorage.setItem(this.localstorageuserKey, JSON.stringify(this.users));
+    }
+    checkIfUserExists(useremail) {
+        return this.users.some((user) => user.email === useremail);
+    }
+    addUser(user) {
+        let result = this.checkIfUserExists(user.email);
+        if (result) {
+            const confirmPasswordError = document.getElementById("confirm-password-error");
+            confirmPasswordError.innerText = "User with this email already exists.";
+            return;
+        }
+        this.users.push(user);
+        this.saveUsersToLocalStorage();
+        //this.renderUsers();
+        window.location.href = "index.html";
+        console.log("User Added:", user);
+    }
+    getLoggedUser(userArray) {
+        let userAccounts = userArray.filter((user) => user.loggedStatus.trim().toLowerCase() === "in");
+        if (userAccounts.length === 0) {
+            console.log("No users found with loggedStatus 'in'");
+            return null;
+        }
+        let userAccount = userAccounts[0];
+        console.log(`The logged user: ${userAccount}`);
+        return userAccount;
+    }
+}
+exports.UserRepository = UserRepository;
 
 
 /***/ }),

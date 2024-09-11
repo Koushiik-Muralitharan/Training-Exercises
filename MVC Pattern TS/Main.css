@@ -1,8 +1,8 @@
 :root {
     --primary-color: #2c3e50;
-    --secondary-color: #1abc9c;
+    --secondary-color: #4eb8a2;
     --accent-color: #f39c12;
-    --background-color: #b7e6c5;
+    --background-color: #b7dbd3;
     --text-color: #ffffff;
     --error-color: #e74c3c;
   }
@@ -13,22 +13,41 @@
     padding: 0px;
     font-family: "Poppins", sans-serif;
   }
+
   body{
+    margin: 10px;
     background-color: var(--background-color);
   }
+
   .canvas-div{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 70vh;
-    
+    height: 50vh;  
   }
   
   
   body.dark-mode {
-    background-color: rgb(167, 167, 167);
+    background-color: rgb(0, 0, 0);
+    
   }
+
+  .dark-mode #main-contents {
+    background-color: #A9A9A9 /* Add your desired color */
+  }
+
+  .dark-mode #sidebar-1 {
+    background-color: #A9A9A9 /* Add your desired color */
+  }
+
+  .dark-mode #dark-header {
+    background-color: #A9A9A9 /* Add your desired color */
+  }
+
+
+
+ 
   
   #goal-name-error,
   #goal-amount-error,
@@ -56,6 +75,7 @@
     grid-template-areas:
       "h h h"
       "sb1 m m ";
+      gap: 10px;
   }
   
   .header {
@@ -64,9 +84,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px 2%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     background-color: var(--secondary-color);
     color: var(--text-color);
+    border-radius: 15px;
   }
   
   .img-container {
@@ -170,7 +191,9 @@
   
   .sidebar1 {
     grid-area: sb1;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    background-color: #def1f1;
+    border-radius: 15px;
   }
   
   
@@ -180,7 +203,7 @@
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    width: 300px;
+    width: 400px;
     text-align: center;
     position: relative;
   }
@@ -266,6 +289,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin: 2% 4%;
+    box-shadow: 3px 3px 5px black;
   }
   
   .add-goal-btn:hover {
@@ -279,13 +303,12 @@
   .goals-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
   }
   
   .goal-card {
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 3px 5px black;
     padding: 10px ;
     text-align: center;
     margin: 4%;
@@ -325,6 +348,7 @@
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
+    box-shadow: 3px 3px 5px black;
   }
   .sub-savings-contents{
     display: flex;
@@ -361,8 +385,10 @@
   }
   
   .main-content {
-    grid-area: m;
-    border: 1px solid black;
+    grid-area: m; 
+    /* border: 1px solid black; */
+    border-radius: 15px;
+    background-color: #def1f1;
   }
   
   .income-expenses {
@@ -375,10 +401,11 @@
   .total-income,
   .total-expenses {
     flex: 1;
-    padding: 10px;
+    padding: 20px;
     background-color: #88f1ff;
-    border-radius: 2%;
+    border-radius: 15px;
     text-align: center;
+    box-shadow: 3px 3px 5px black;
   }
   
   .total-expenses {
@@ -388,10 +415,11 @@
   .remaining-balance {
     text-align: center;
     margin-bottom: 20px;
-    padding: 10px;
+    padding: 20px;
     background-color: #8fd491;
-    border-radius: 2%;
+    border-radius: 15px;
     margin: 2%;
+    box-shadow: 3px 3px 5px black;
   }
   
   .savings-progress {
@@ -429,7 +457,7 @@
   }
   h2 {
     text-align: center;
-    margin: 20px 0px;
+    padding: 10px 0px 10px 0px;
   }
   .form-elements {
     margin-bottom: 25px;
@@ -626,6 +654,12 @@
     margin-left: 0;
     transition: margin-left 0.3s;
   }
+  @media screen and (max-width:410px) {
+    .modal-content{
+      width:300px;
+      margin: 0px 5px;
+    }
+  }
   
   @media screen and ( max-width: 400px) {
   
@@ -640,9 +674,9 @@
         .inner-toggle-profile{
           gap: 15px;
         }
-       .fa-arrow-right-from-bracket{
+       /* .fa-arrow-right-from-bracket{
         font-size: medium;
-       }
+       } */
        .profile-img{
         display: none;
        }
@@ -656,6 +690,21 @@
         height: auto;
        }
        
+  }
+
+  @media screen and (max-width:300px) {
+    .total-expenses{
+        font-size: x-small
+    }
+    .total-income{
+      font-size: x-small
+  }
+  .remaining-balance{
+    font-size: small;
+  }
+    .box{
+      font-size: small;
+    }
   }
  
   

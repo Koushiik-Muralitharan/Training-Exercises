@@ -1,45 +1,11 @@
-// Ensure localStorage is initialized with an empty array if not present
-if (!localStorage.getItem("UserArray")) {
-    localStorage.setItem("UserArray", "[]");
-}
+import { UserRepository } from "./services/UserServices";
+import { User } from "./models/models";
+const userRepo = new UserRepository();
+
 
 // Parse the UserArray from localStorage
-let UserArray: User[] = JSON.parse(localStorage.getItem("UserArray") || "[]");
-
-class User {
-    name: string;
-    email: string;
-    password: string;
-    loggedStatus: string;
-
-    // status: string = "out";
-
-    constructor(name: string, email: string, password: string) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.loggedStatus = "out";
-    }
-
-    checkIfUserExists(): boolean {
-        return UserArray.some(user => user.email === this.email);
-    }
-
-    addUser(): void {
-        let result = this.checkIfUserExists();
-
-        if (result) {
-            const confirmPasswordError = document.getElementById('confirm-password-error') as HTMLElement;
-            confirmPasswordError.innerText = "User with this email already exists.";
-            return;
-        }
-
-        UserArray.push(this);
-        localStorage.setItem("UserArray", JSON.stringify(UserArray));
-
-        window.location.href = "SignIn.htm";
-    }
-}
+let UserArray: User[] = userRepo.UsersLocalStorage();
+console.log(UserArray);
 
 // Retrieve elements by ID and type cast them
 const userName = document.getElementById('name') as HTMLInputElement;
@@ -120,8 +86,13 @@ UserSubmitbutton.onclick = function(event: Event) {
             PasswordError.innerText = 'Password must contain one lowercase letter.*';
             return;
         } else if (usersPasscode === usersConfirmPasscode) {
-            let newUser = new User(usersName, usersEmail, usersPasscode);
-            newUser.addUser();
+            const newUser: User = {
+                name: usersName,
+                email: usersEmail,
+                password: usersPasscode,
+                loggedStatus: "out",
+              };
+              userRepo.addUser(newUser);
         } else {
             confirmPasswordError.innerText = 'The confirm passcode must match the passcode.*';
             return;

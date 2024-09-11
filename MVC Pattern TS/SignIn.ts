@@ -1,3 +1,6 @@
+import { UserRepository } from "./services/UserServices";
+const usersRepo = new UserRepository();
+
 // Retrieve elements by ID and type cast them
 const emailId = document.getElementById('email') as HTMLInputElement;
 const password = document.getElementById('password') as HTMLInputElement;
@@ -6,13 +9,11 @@ const loginButton = document.getElementById('login-button') as HTMLButtonElement
 const emailErrors = document.getElementById('email-error') as HTMLElement;
 const passcodeError = document.getElementById('passcode-error') as HTMLElement;
 
-let UserArrays: { name: string; email: string; password: string; loggedStatus: string }[] = [];
+
 
 if (!localStorage.getItem("UserArray")) {
     displayError.innerText = "Please sign up to login.*";
-} else {
-    UserArrays = JSON.parse(localStorage.getItem("UserArray") || "[]");
-}
+} 
 
 let isValids = true;
 
@@ -36,10 +37,6 @@ password.onblur = function() {
     }
 };
 
-function checkIfUserExists(email: string): boolean {
-    return UserArrays.some(user => user.email === email);
-}
-
 loginButton.onclick = function(event: Event) {
     event.preventDefault(); 
 
@@ -51,28 +48,31 @@ loginButton.onclick = function(event: Event) {
     const emailValue = emailId.value;
     const passwordValue = password.value;
 
-    if (checkIfUserExists(emailValue)) {
+    if(emailValue === 'admin@gmail.com' && passwordValue === "admin" ){
+        window.location.href = "admin.htm";
+    }
+
+    if (usersRepo.checkIfUserExists(emailValue)) {
         emailId.value = "";
         password.value = "";
 
-        const userExists = UserArrays.some(user => user.email === emailValue && user.password === passwordValue);
+        const userExists = usersRepo.users.some(user => user.email === emailValue && user.password === passwordValue);
 
-        UserArrays.forEach((user) => {
+        usersRepo.users.forEach((user) => {
             if (user.email === emailValue && user.password === passwordValue) {
                 user.loggedStatus = "in";
             }
         });
 
-        localStorage.setItem('UserArray', JSON.stringify(UserArrays));
+        usersRepo.saveUsersToLocalStorage();
 
         if (userExists) {
             window.location.href = "Main.htm"; 
         } else {
+            
             displayError.innerText = "Invalid email or password.*";
         }
     } else {
         displayError.innerText = "User does not exist. Please sign up.*"; 
     }
 };
-
-

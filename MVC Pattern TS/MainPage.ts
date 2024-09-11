@@ -1,16 +1,19 @@
 import { Expense, Goal, User } from "./models/models";
+import { UserRepository } from "./services/UserServices";
 import { ExpenseRepository, GoalRepository } from "./services/services";
 import { Chart, PieController, ArcElement, Legend, Tooltip, Title, } from "chart.js";
 
-let UserAccountArray: { name: string; email: string; loggedStatus: string }[] =
-  JSON.parse(localStorage.getItem("UserArray") || "[]");
+const usersRepo = new UserRepository();
+let UserAccountArray:  User[] = usersRepo.UsersLocalStorage();
+console.log(UserAccountArray);
 
 let profileName = document.getElementById("profile-name") as HTMLElement;
 let logoutIcon = document.getElementById("logout-icon") as HTMLSpanElement;
 let remainingBalance = document.getElementById("remaining-balance-display") as HTMLElement;
 
 // Find the user with login status in
-let userAccount = UserAccountArray.find((user) => user.loggedStatus === "in");
+let userAccount = usersRepo.getLoggedUser(UserAccountArray);
+console.log(userAccount);
 
 if (userAccount) {
   profileName.innerText = userAccount.name;
@@ -309,6 +312,11 @@ addgoals.onclick = function () {
   openGoalModal();
 };
 
+var closeInfo = document.getElementById("info-close-popup") as HTMLSpanElement;
+closeInfo.onclick = function(){
+  infoModalClose()
+}
+
 function closeModal() {
   let contributionModal = document.getElementById("contribution-modal") as HTMLDivElement;
   contributionModal.style.display = "none";
@@ -349,6 +357,10 @@ function closeGoalModal() {
   let closeAddGoalModal = document.getElementById("add-goal-modal") as HTMLDivElement;
   closeAddGoalModal.style.display = "none";
 }
+function infoModalClose(){
+  let infoGoalModal = document.getElementById("info-modal") as HTMLDivElement;
+  infoGoalModal.style.display = "none";
+}
 
 let currentGoalID: number | null = null;
 
@@ -362,6 +374,18 @@ function openModal(goalName: string, currentContribution: number, goalAmount: nu
   goalAmountStatus.innerText = `${goalAmount}`;
   goalHeading.innerText = goalName;
   currentGoalID = goalID;
+}
+
+function infoModal(goalName: string, currentContribution: number, goalAmount: number){
+  const openInfoModal = document.getElementById('info-modal') as HTMLDivElement;
+  openInfoModal.style.display = "flex";
+  let contributionInfo = document.getElementById("contribution-info") as HTMLSpanElement;
+  let amountInfo = document.getElementById("goal-amount-info") as HTMLSpanElement;
+  let headingInfo = document.getElementById("goal-heading-info") as HTMLHeadElement;
+
+  headingInfo.innerText = goalName;
+  contributionInfo.innerText = `${currentContribution}`;
+  amountInfo.innerText = `${goalAmount}`;
 }
 
 
@@ -424,6 +448,15 @@ export function createGoalCard(goal: Goal): void {
     openModal( goal.goalName, goal.goalContribution, goal.goalAmount, goal.goalId );
   };
   arrangeButtons.appendChild(contributeBtn);
+ }else{
+  const infoBtn: HTMLButtonElement = document.createElement("button");
+  infoBtn.classList.add("contribute-btn");
+  infoBtn.textContent = "i";
+  infoBtn.onclick = function(){
+    infoModal(goal.goalName, goal.goalContribution, goal.goalAmount);
+  }
+
+  arrangeButtons.appendChild(infoBtn);
  }
   const deleteBtn: HTMLButtonElement = document.createElement("button");
   deleteBtn.classList.add("delete-goal-btn");
@@ -669,9 +702,15 @@ if (localStorage.getItem("theme") === "dark") {
 themeToggle.onchange = function () {
   if (themeToggle.checked) {
     document.body.classList.add("dark-mode");
+    document.getElementById("main-contents")?.classList.add("dark-mode");
+    document.getElementById("sidebar-1")?.classList.add("dark-mode");
+    document.getElementById("dark-header")?.classList.add("dark-mode");
     localStorage.setItem("theme", "dark");
   } else {
     document.body.classList.remove("dark-mode");
+    document.getElementById("main-contents")?.classList.remove("dark-mode");
+    document.getElementById("sidebar-1")?.classList.remove("dark-mode");
+    document.getElementById("dark-header")?.classList.remove("dark-mode");
     localStorage.setItem("theme", "light");
   }
 };
