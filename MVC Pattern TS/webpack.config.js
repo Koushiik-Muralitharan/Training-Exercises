@@ -32,6 +32,9 @@ module.exports = {
   // Resolve file extensions
   resolve: {
     extensions: ['.ts', '.js'],
+    fallback: {
+      "crypto": false, 
+    },
   },
   
 };

@@ -51,6 +51,11 @@
         <div class="goals-section">
           <h2 class="box">Savings Goals</h2>
          <div class="sub-savings-contents">
+          <button id="import-contents">Exports</button>
+          <label for="export-contents" class="custom-file-upload">
+            Import
+            <input type="file" accept=".csv" id="export-contents" /> 
+          </label>
           <button class="add-goal-btn" id="add-goals" >
             Add Goal
           </button> 
@@ -174,7 +179,6 @@
           <div class="form-elements-progress">
             <label for="category-progress">Category</label>
             <select id="category-progress">
-              <option>Default</option>
               <option value="food">Food</option>
               <option value="education">Education</option>
               <option value="medicine">Medicine</option>

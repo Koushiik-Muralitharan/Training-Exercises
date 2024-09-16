@@ -352,7 +352,7 @@
   }
   .sub-savings-contents{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-right: 4% ;
   }
@@ -444,6 +444,34 @@
     position: absolute;
     top: 0;
     left: 0;
+  }
+
+  /* import and export */
+  #import-contents{
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+  }
+
+  #export-contents {
+    display: none;
+  }
+
+  .custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
   }
   
   /* Transaction adding form */

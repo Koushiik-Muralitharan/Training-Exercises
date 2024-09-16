@@ -62,4 +62,5 @@ input[type="email"], input[type="password"] {
 span{
     color: red;
     font-size: small;
+    display: inline-block;
 }

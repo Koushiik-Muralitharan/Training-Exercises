@@ -1,5 +1,6 @@
 import { UserRepository } from "./services/UserServices";
 import { User } from "./models/models";
+import bcrypt from 'bcryptjs';
 const userRepo = new UserRepository();
 
 
@@ -75,7 +76,7 @@ UserSubmitbutton.onclick = function(event: Event) {
         const minLength = 6;
         const hasUpperCase = /[A-Z]/.test(usersPasscode);
         const hasLowerCase = /[a-z]/.test(usersPasscode);
-
+        const salt = 10;
         if (usersPasscode.length < minLength) {
             PasswordError.innerText = `Password must be at least ${minLength} characters long.*`;
             return;
@@ -86,13 +87,20 @@ UserSubmitbutton.onclick = function(event: Event) {
             PasswordError.innerText = 'Password must contain one lowercase letter.*';
             return;
         } else if (usersPasscode === usersConfirmPasscode) {
-            const newUser: User = {
-                name: usersName,
-                email: usersEmail,
-                password: usersPasscode,
-                loggedStatus: "out",
-              };
-              userRepo.addUser(newUser);
+            bcrypt.hash(usersPasscode, salt, (error, hash)=>{
+                if(error){
+                    console.log(error);
+                }else{
+                    const newUser: User = {
+                        name: usersName,
+                        email: usersEmail,
+                        password: hash,
+                        loggedStatus: "out",
+                      };
+                      userRepo.addUser(newUser);
+                }
+           })
+              
         } else {
             confirmPasswordError.innerText = 'The confirm passcode must match the passcode.*';
             return;

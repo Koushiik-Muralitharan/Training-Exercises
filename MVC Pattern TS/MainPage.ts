@@ -139,6 +139,90 @@ dateFieldElement.onblur = function () {
     isValidate = true;
   }
 };
+// Import Functionality
+
+let importBtn = document.getElementById('import-contents') as HTMLButtonElement;
+let exportInput = document.getElementById('export-contents') as HTMLInputElement;
+exportInput.onchange= function(e: Event){
+  importFromCSV(e);
+}
+
+importBtn.onclick = function() {
+  exportToCSV()
+}
+
+function exportToCSV() {
+  // Retrieve transaction data from local storage
+  // const transactions = JSON.parse(localStorage.getItem('expenses'));
+  const transactions = expenseRepo.ExpensesLocalStorage();
+  if (!transactions || transactions.length === 0) {
+      alert("No transaction data found to export.");
+      return;
+  }
+
+  // Convert the data to CSV format
+  let csvContent = "data:text/csv;charset=utf-8," 
+                  + "Transaction ID,Date,Amount,Category\n"; 
+
+  transactions.forEach(transaction => {
+      let row = `${transaction.id},${transaction.date},${transaction.amount},${transaction.category},${transaction.transactionType},${transaction.email}`;
+      csvContent += row + "\n"; 
+  });
+
+  // Create a link element to download the CSV
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", "transactions.csv");
+  document.body.appendChild(link);
+
+  link.click();
+  document.body.removeChild(link);
+}
+
+function importFromCSV(event :Event) {
+  const input = event.target as HTMLInputElement;
+  const file = input.files ? input.files[0] : null;
+
+  if (!file) {
+      alert("Please select a CSV file to import.");
+      return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function(e: ProgressEvent<FileReader>) {
+      const content = e.target?.result as string;
+      const rows = content.split("\n").slice(1); 
+
+      let newTransactions: Expense[] = [];
+      rows.forEach(row => {
+        const [id, date, amount, category, email, transactionType] = row.split(",");
+
+        if (id && date && amount && category && email && transactionType) {
+            const transaction: Expense = {
+                id: parseFloat(id),
+                email : email,
+                transactionType : transactionType,
+                category : category,
+                amount: parseFloat(amount),
+                date : date
+            };
+            newTransactions.push(transaction);
+        }
+    });
+      if (newTransactions.length > 0) {
+          const existingTransactions = expenseRepo.ExpensesLocalStorage();
+          const updatedTransactions = [...existingTransactions, ...newTransactions];
+          localStorage.setItem('expenses', JSON.stringify(updatedTransactions));
+          alert("Transactions successfully imported!");
+      } else {
+          alert("No valid transactions found in the file.");
+      }
+  };
+
+  reader.readAsText(file);
+}
+
 
 // Function to create transaction rows in the table
 export function createRow(Usertransactions: Expense) {
@@ -219,7 +303,7 @@ addButtonElement.onclick = function (event) {
       amountErrorElement.innerText = "";
     }
 
-    if (dateFieldElement.value === "") {
+    if (dateFieldElement.value == "") {
       dateErrorElement.innerText = "Please choose a date.*";
       isFormValid = false;
     } else if (!validateDate()) {
@@ -775,6 +859,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const transactionsSection = document.getElementById('main-contents') as HTMLDivElement;
   const GoalPage = document.getElementById('menu-goals') as HTMLAnchorElement;
   const TransactionPage = document.getElementById('menu-transactions') as HTMLAnchorElement;
+  const Logo = document.getElementById('logo-text') as HTMLSpanElement;
+
+  Logo.onclick = function(){
+    goalsSection.style.display = 'block';
+    transactionsSection.style.display = 'block';
+  }
 
   hamburgerBtn.onclick = function(){
     sidebarMenu.style.display = 'block';
