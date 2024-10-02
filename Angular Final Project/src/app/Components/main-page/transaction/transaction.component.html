@@ -1,0 +1,197 @@
+<main>
+  <div class="top-elements">
+    <p>
+      Income: <span> {{ income }}$</span>
+    </p>
+    <p>
+      Expense: <span> {{ expense }}$</span>
+    </p>
+    <p>
+      Balance: <span> {{ balance }}$</span>
+    </p>
+    <span class="add-transacation" (click)="transactionModal()">
+      <i class="fa-solid fa-plus"></i> Transaction
+    </span>
+  </div>
+  <div class="statistics">
+    <h2>Statistics</h2>
+    <div class="align-analytics">
+      <div class="button-container">
+        <button (click)="onChartChange('Food')">Food</button>
+        <button (click)="onChartChange('Transport')">transport</button>
+        <button (click)="onChartChange('Shopping')">Shopping</button>
+        <button (click)="onChartChange('Expense')">Show All</button>
+        <button (click)="onChartChange('Entertainment')">Entertainment</button>
+      </div>
+      <app-analytics
+        [refreshData]="refreshFlag"
+        [labelArray]="chartLabels"
+        [chartLabels]="chartDataLabels"
+        [chartColors]="chartColors"
+      ></app-analytics>
+    </div>
+  </div>
+  <div *ngIf="transactionPopUp" class="overlay">
+    <div class="transactionsModal">
+      <form
+        class="glass-form"
+        #transactiondata="ngForm"
+        (submit)="onTransactionSubmit(transactiondata)"
+      >
+        <span class="close-transaction" (click)="transactionModal()">X</span>
+        <div class="form-elements">
+          <label for="t-type">Transaction Type</label>
+          <select
+            [(ngModel)]="transactionType"
+            name="transactionstype"
+            id="t-type"
+            #ttype="ngModel"
+            (change)="onTransactionTypeChange(transactionType)"
+            required
+          >
+            <option value="">Select</option>
+            <option value="Income">Income</option>
+            <option value="Expense">Expense</option>
+          </select>
+
+          <div *ngIf="ttype.invalid && ttype.touched">
+            <small *ngIf="ttype.errors?.['required']"
+              >*This is a required field</small
+            >
+          </div>
+        </div>
+
+        <div class="form-elements">
+          <label for="e-type">Expense Type</label>
+          <select
+            name="expensetype"
+            id="e-type"
+            [(ngModel)]="expenseMethods"
+            required
+            #etype="ngModel"
+          >
+            <option value="">Select</option>
+            <option *ngFor="let type of expenseTypes" [value]="type">
+              {{ type }}
+            </option>
+          </select>
+          <div *ngIf="etype.invalid && etype.touched">
+            <small *ngIf="etype.errors?.['required']"
+              >*This is a required field</small
+            >
+          </div>
+        </div>
+
+        <div class="form-elements">
+          <label for="t-amount">Amount</label>
+          <input
+            type="text"
+            name="transactionAmount"
+            id="t-amount"
+            [(ngModel)]="transactionAmount"
+            required
+            pattern="^(0|[1-9][0-9]*)$"
+            #tamount="ngModel"
+          />
+          <div *ngIf="tamount.invalid && tamount.touched">
+            <small *ngIf="tamount.errors?.['required']"
+              >*amount is a required field</small
+            >
+            <small *ngIf="tamount.errors?.['pattern']"
+              >*Enter a valid amount</small
+            >
+          </div>
+          <div
+            *ngIf="
+              transactionType === 'Expense' &&
+              tamount.value > balance &&
+              tamount.touched
+            "
+          >
+            <small class="error"
+              >*Expense amount cannot exceed remaining balance</small
+            >
+          </div>
+        </div>
+
+        <div class="form-elements">
+          <label for="t-date">Date</label>
+          <input
+            type="date"
+            name="transactiondate"
+            id="t-date"
+            [max]="currentDate"
+            [(ngModel)]="transactionDate"
+            required
+            #tdate="ngModel"
+          />
+          <div *ngIf="tdate.invalid && tdate.touched">
+            <small *ngIf="tdate.errors?.['required']"
+              >*date is a required field</small
+            >
+          </div>
+        </div>
+
+        <div class="align-button">
+          <button
+            type="submit"
+            [disabled]="
+              !transactiondata.valid ||
+              (transactionType === 'Expense' && tamount.value > balance) ||
+              (transactionType === 'Expense' && income === 0)
+            "
+          >
+            {{ ButtonName }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div>
+    <h2>Transaction History</h2>
+    <div class="align-restore-buttons">
+      <button (click)="exportToCSV()" class="custom-file-upload">Export</button>
+      <label for="import" class="custom-file-upload">
+        Import
+        <input
+          type="file"
+          accept=".csv"
+          (change)="importFromCSV($event)"
+          id="import"
+        />
+      </label>
+    </div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Transaction</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of transactions; let i = index">
+            <td>{{ transaction.transactionMethod }}</td>
+            <td>{{ transaction.expenseMethod }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.date | date : "shortDate" }}</td>
+            <td>
+              <button (click)="edit(i)">
+                <i class="fa-regular fa-pen-to-square"></i>
+              </button>
+            </td>
+            <td>
+              <button (click)="delete(i)">
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,39 @@
+main {
+  margin: 5px;
+}
+
+.content-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "h h h"
+    "s m m";
+  gap: 10px;
+}
+
+div section {
+  border: 1px solid black;
+  background-color: rgb(221, 221, 221);
+  border-radius: 10px;
+}
+
+.navbar {
+  grid-area: h;
+}
+
+.sidebar {
+  grid-area: s;
+}
+
+.main-section {
+  grid-area: m;
+}
+
+@media screen and (max-width: 811px) {
+  .content-container {
+    grid-template-areas:
+      "h h h"
+      "m m m"
+      "s s s";
+  }
+}

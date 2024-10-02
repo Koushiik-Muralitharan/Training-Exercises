@@ -1,0 +1,26 @@
+<div class="align-form-center">
+    <form #logindata="ngForm" (submit)="onLogin(logindata)">
+        <h2>Login</h2>
+        <p class="align-contents">
+            <label for="email">Email:</label>
+            <input type="text" placeholder=" Enter the Username" name="loginemail" id="email" required email #lemail="ngModel" ngModel>
+            <small *ngIf="lemail.invalid && lemail.touched">
+                <span *ngIf="lemail.errors?.['required']">*email is required field</span>
+                <span *ngIf="lemail.errors?.['email']">*Enter a valid email.</span>
+            </small>
+        </p>
+
+        <p class="align-contents">
+            <label for="password">Password:</label>
+            <input type="password" placeholder=" Enter the Password" name="loginpassword" id="password" required #lpassword="ngModel" ngModel>
+            <small *ngIf="lpassword.invalid && lpassword.touched">
+                <span *ngIf="lpassword.errors?.['required']">*password is a required field.</span>
+            </small>
+        </p>
+        
+        <p class="button-align-center">
+            <button>Login</button>
+        </p>
+        <a href="/register">create a account...</a>
+    </form>
+</div>
