@@ -1,0 +1,7 @@
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Event_HandsOn\bin\Debug\Event_HandsOn.exe.config
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Event_HandsOn\bin\Debug\Event_HandsOn.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Event_HandsOn\bin\Debug\Event_HandsOn.pdb
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Event_HandsOn\obj\Debug\Event_HandsOn.csproj.AssemblyReference.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Event_HandsOn\obj\Debug\Event_HandsOn.csproj.CoreCompileInputs.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Event_HandsOn\obj\Debug\Event_HandsOn.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Event_HandsOn\obj\Debug\Event_HandsOn.pdb

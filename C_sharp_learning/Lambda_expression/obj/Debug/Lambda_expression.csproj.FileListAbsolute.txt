@@ -1,0 +1,7 @@
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Lambda_expression\bin\Debug\Lambda_expression.exe.config
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Lambda_expression\bin\Debug\Lambda_expression.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Lambda_expression\bin\Debug\Lambda_expression.pdb
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Lambda_expression\obj\Debug\Lambda_expression.csproj.AssemblyReference.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Lambda_expression\obj\Debug\Lambda_expression.csproj.CoreCompileInputs.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Lambda_expression\obj\Debug\Lambda_expression.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Lambda_expression\obj\Debug\Lambda_expression.pdb

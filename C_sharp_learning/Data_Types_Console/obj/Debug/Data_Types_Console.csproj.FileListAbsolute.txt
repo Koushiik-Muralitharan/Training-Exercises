@@ -1,0 +1,7 @@
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Data_Types_Console\bin\Debug\Data_Types_Console.exe.config
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Data_Types_Console\bin\Debug\Data_Types_Console.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Data_Types_Console\bin\Debug\Data_Types_Console.pdb
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Data_Types_Console\obj\Debug\Data_Types_Console.csproj.AssemblyReference.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Data_Types_Console\obj\Debug\Data_Types_Console.csproj.CoreCompileInputs.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Data_Types_Console\obj\Debug\Data_Types_Console.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Data_Types_Console\obj\Debug\Data_Types_Console.pdb

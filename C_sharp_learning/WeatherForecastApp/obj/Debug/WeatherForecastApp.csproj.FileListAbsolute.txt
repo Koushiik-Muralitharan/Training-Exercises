@@ -1,0 +1,10 @@
+C:\Users\koushiik.m\source\repos\C_sharp_learning\WeatherForecastApp\bin\Debug\WeatherForecastApp.exe.config
+C:\Users\koushiik.m\source\repos\C_sharp_learning\WeatherForecastApp\bin\Debug\WeatherForecastApp.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\WeatherForecastApp\bin\Debug\WeatherForecastApp.pdb
+C:\Users\koushiik.m\source\repos\C_sharp_learning\WeatherForecastApp\obj\Debug\WeatherForecastApp.csproj.AssemblyReference.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\WeatherForecastApp\obj\Debug\WeatherForecastApp.csproj.CoreCompileInputs.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\WeatherForecastApp\obj\Debug\WeatherForecastApp.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\WeatherForecastApp\obj\Debug\WeatherForecastApp.pdb
+C:\Users\koushiik.m\source\repos\C_sharp_learning\WeatherForecastApp\bin\Debug\Newtonsoft.Json.dll
+C:\Users\koushiik.m\source\repos\C_sharp_learning\WeatherForecastApp\bin\Debug\Newtonsoft.Json.xml
+C:\Users\koushiik.m\source\repos\C_sharp_learning\WeatherForecastApp\obj\Debug\WeatherF.64F08301.Up2Date

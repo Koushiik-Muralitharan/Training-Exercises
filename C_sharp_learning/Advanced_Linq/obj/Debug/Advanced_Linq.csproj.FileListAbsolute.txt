@@ -1,0 +1,7 @@
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Advanced_Linq\bin\Debug\Advanced_Linq.exe.config
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Advanced_Linq\bin\Debug\Advanced_Linq.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Advanced_Linq\bin\Debug\Advanced_Linq.pdb
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Advanced_Linq\obj\Debug\Advanced_Linq.csproj.AssemblyReference.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Advanced_Linq\obj\Debug\Advanced_Linq.csproj.CoreCompileInputs.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Advanced_Linq\obj\Debug\Advanced_Linq.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Advanced_Linq\obj\Debug\Advanced_Linq.pdb

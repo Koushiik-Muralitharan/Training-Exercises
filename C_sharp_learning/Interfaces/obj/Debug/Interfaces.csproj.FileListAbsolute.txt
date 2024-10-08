@@ -1,0 +1,7 @@
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Interfaces\bin\Debug\Interfaces.exe.config
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Interfaces\bin\Debug\Interfaces.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Interfaces\bin\Debug\Interfaces.pdb
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Interfaces\obj\Debug\Interfaces.csproj.AssemblyReference.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Interfaces\obj\Debug\Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Interfaces\obj\Debug\Interfaces.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Interfaces\obj\Debug\Interfaces.pdb

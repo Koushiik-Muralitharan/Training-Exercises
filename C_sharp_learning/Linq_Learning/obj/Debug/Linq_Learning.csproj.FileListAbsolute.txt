@@ -1,0 +1,7 @@
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Linq_Learning\obj\Debug\Linq_Learning.csproj.AssemblyReference.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Linq_Learning\obj\Debug\Linq_Learning.csproj.CoreCompileInputs.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Linq_Learning\bin\Debug\Linq_Learning.exe.config
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Linq_Learning\bin\Debug\Linq_Learning.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Linq_Learning\bin\Debug\Linq_Learning.pdb
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Linq_Learning\obj\Debug\Linq_Learning.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Linq_Learning\obj\Debug\Linq_Learning.pdb

@@ -1,0 +1,7 @@
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Delegates\bin\Debug\Delegates.exe.config
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Delegates\bin\Debug\Delegates.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Delegates\bin\Debug\Delegates.pdb
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Delegates\obj\Debug\Delegates.csproj.AssemblyReference.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Delegates\obj\Debug\Delegates.csproj.CoreCompileInputs.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Delegates\obj\Debug\Delegates.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Delegates\obj\Debug\Delegates.pdb

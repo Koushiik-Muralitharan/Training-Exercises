@@ -1,0 +1,7 @@
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Events\bin\Debug\Events.exe.config
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Events\bin\Debug\Events.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Events\bin\Debug\Events.pdb
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Events\obj\Debug\Events.csproj.AssemblyReference.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Events\obj\Debug\Events.csproj.CoreCompileInputs.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Events\obj\Debug\Events.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Events\obj\Debug\Events.pdb

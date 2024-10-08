@@ -1,0 +1,7 @@
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Reflection\bin\Debug\Reflection.exe.config
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Reflection\bin\Debug\Reflection.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Reflection\bin\Debug\Reflection.pdb
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Reflection\obj\Debug\Reflection.csproj.AssemblyReference.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Reflection\obj\Debug\Reflection.csproj.CoreCompileInputs.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Reflection\obj\Debug\Reflection.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Reflection\obj\Debug\Reflection.pdb

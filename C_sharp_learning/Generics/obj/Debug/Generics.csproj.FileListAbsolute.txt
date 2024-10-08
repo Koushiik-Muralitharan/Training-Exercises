@@ -1,0 +1,7 @@
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Generics\bin\Debug\Generics.exe.config
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Generics\bin\Debug\Generics.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Generics\bin\Debug\Generics.pdb
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Generics\obj\Debug\Generics.csproj.AssemblyReference.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Generics\obj\Debug\Generics.csproj.CoreCompileInputs.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Generics\obj\Debug\Generics.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Generics\obj\Debug\Generics.pdb

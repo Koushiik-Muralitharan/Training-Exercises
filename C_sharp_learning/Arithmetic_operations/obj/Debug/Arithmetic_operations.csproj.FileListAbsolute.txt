@@ -1,0 +1,7 @@
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Arithmetic_operations\bin\Debug\Arithmetic_operations.exe.config
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Arithmetic_operations\bin\Debug\Arithmetic_operations.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Arithmetic_operations\bin\Debug\Arithmetic_operations.pdb
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Arithmetic_operations\obj\Debug\Arithmetic_operations.csproj.AssemblyReference.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Arithmetic_operations\obj\Debug\Arithmetic_operations.csproj.CoreCompileInputs.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Arithmetic_operations\obj\Debug\Arithmetic_operations.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\Arithmetic_operations\obj\Debug\Arithmetic_operations.pdb

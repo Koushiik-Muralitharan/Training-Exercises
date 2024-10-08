@@ -1,0 +1,7 @@
+C:\Users\koushiik.m\source\repos\C_sharp_learning\C_sharp_learning\bin\Debug\C_sharp_learning.exe.config
+C:\Users\koushiik.m\source\repos\C_sharp_learning\C_sharp_learning\bin\Debug\C_sharp_learning.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\C_sharp_learning\bin\Debug\C_sharp_learning.pdb
+C:\Users\koushiik.m\source\repos\C_sharp_learning\C_sharp_learning\obj\Debug\C_sharp_learning.csproj.AssemblyReference.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\C_sharp_learning\obj\Debug\C_sharp_learning.csproj.CoreCompileInputs.cache
+C:\Users\koushiik.m\source\repos\C_sharp_learning\C_sharp_learning\obj\Debug\C_sharp_learning.exe
+C:\Users\koushiik.m\source\repos\C_sharp_learning\C_sharp_learning\obj\Debug\C_sharp_learning.pdb
