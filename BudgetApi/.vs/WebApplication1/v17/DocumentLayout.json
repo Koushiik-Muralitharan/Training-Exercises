@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\BudgetApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{298B09B9-D500-41AF-9920-767F7C2098D4}|WebApplication1\\MyAPI.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\budgetapi\\webapplication1\\filename.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{298B09B9-D500-41AF-9920-767F7C2098D4}|WebApplication1\\MyAPI.csproj|solutionrelative:webapplication1\\filename.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{298B09B9-D500-41AF-9920-767F7C2098D4}|WebApplication1\\MyAPI.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\budgetapi\\webapplication1\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{298B09B9-D500-41AF-9920-767F7C2098D4}|WebApplication1\\MyAPI.csproj|solutionrelative:webapplication1\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{298B09B9-D500-41AF-9920-767F7C2098D4}|WebApplication1\\MyAPI.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\budgetapi\\webapplication1\\repository\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{298B09B9-D500-41AF-9920-767F7C2098D4}|WebApplication1\\MyAPI.csproj|solutionrelative:webapplication1\\repository\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{298B09B9-D500-41AF-9920-767F7C2098D4}|WebApplication1\\MyAPI.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\budgetapi\\webapplication1\\model\\addtransactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{298B09B9-D500-41AF-9920-767F7C2098D4}|WebApplication1\\MyAPI.csproj|solutionrelative:webapplication1\\model\\addtransactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{298B09B9-D500-41AF-9920-767F7C2098D4}|WebApplication1\\MyAPI.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\budgetapi\\webapplication1\\repository\\goalrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{298B09B9-D500-41AF-9920-767F7C2098D4}|WebApplication1\\MyAPI.csproj|solutionrelative:webapplication1\\repository\\goalrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{298B09B9-D500-41AF-9920-767F7C2098D4}|WebApplication1\\MyAPI.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\budgetapi\\webapplication1\\controllers\\goalscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{298B09B9-D500-41AF-9920-767F7C2098D4}|WebApplication1\\MyAPI.csproj|solutionrelative:webapplication1\\controllers\\goalscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,30 +30,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 269,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "TransactionRepository.cs",
               "DocumentMoniker": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\BudgetApi\\WebApplication1\\Repository\\TransactionRepository.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Repository\\TransactionRepository.cs",
               "ToolTip": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\BudgetApi\\WebApplication1\\Repository\\TransactionRepository.cs",
               "RelativeToolTip": "WebApplication1\\Repository\\TransactionRepository.cs",
-              "ViewState": "AgIAAKAAAAAAAAAAAAAuwMcAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAUwNgAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-16T12:38:13.995Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "TransactionController.cs",
               "DocumentMoniker": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\BudgetApi\\WebApplication1\\Controllers\\TransactionController.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Controllers\\TransactionController.cs",
               "ToolTip": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\BudgetApi\\WebApplication1\\Controllers\\TransactionController.cs",
               "RelativeToolTip": "WebApplication1\\Controllers\\TransactionController.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAmwGwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAqwGcAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-17T06:55:06.064Z",
               "IsPinned": true,
@@ -53,15 +62,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FileName.txt",
-              "DocumentMoniker": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\BudgetApi\\WebApplication1\\FileName.txt",
-              "RelativeDocumentMoniker": "WebApplication1\\FileName.txt",
-              "ToolTip": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\BudgetApi\\WebApplication1\\FileName.txt",
-              "RelativeToolTip": "WebApplication1\\FileName.txt",
+              "DocumentIndex": 4,
+              "Title": "GoalsController.cs",
+              "DocumentMoniker": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\BudgetApi\\WebApplication1\\Controllers\\GoalsController.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Controllers\\GoalsController.cs",
+              "ToolTip": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\BudgetApi\\WebApplication1\\Controllers\\GoalsController.cs",
+              "RelativeToolTip": "WebApplication1\\Controllers\\GoalsController.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T10:03:38.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GoalRepository.cs",
+              "DocumentMoniker": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\BudgetApi\\WebApplication1\\Repository\\GoalRepository.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Repository\\GoalRepository.cs",
+              "ToolTip": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\BudgetApi\\WebApplication1\\Repository\\GoalRepository.cs",
+              "RelativeToolTip": "WebApplication1\\Repository\\GoalRepository.cs",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAkwKYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T09:55:19.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AddTransactions.cs",
+              "DocumentMoniker": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\BudgetApi\\WebApplication1\\Model\\AddTransactions.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Model\\AddTransactions.cs",
+              "ToolTip": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\BudgetApi\\WebApplication1\\Model\\AddTransactions.cs",
+              "RelativeToolTip": "WebApplication1\\Model\\AddTransactions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-10-17T11:05:50.41Z",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T09:37:41.698Z",
               "EditorCaption": ""
             }
           ]

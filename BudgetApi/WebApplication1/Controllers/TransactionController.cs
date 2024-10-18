@@ -104,5 +104,24 @@ namespace MyAPI.Controllers
             }
 
         }
+        [HttpPut]
+
+        public IActionResult UpdateTransaction(int userID, int transactionID, string transactionType, string category, string date, int amount)
+        {
+            if (userID == 0 || transactionID == 0 || transactionType == null || category == null || date == null || amount <0)
+            {
+                return BadRequest("Invalid request for update");
+            }
+
+            bool isUpdated = transactionRepository.EditTransaction( userID,  transactionID, transactionType, category, date, amount);
+            if (isUpdated)
+            {
+                return Ok(new { message = "Transaction is updated successfully." });
+            }
+            else
+            {
+                return StatusCode(404, "Transaction not found.");
+            }
+        }
     }
 }

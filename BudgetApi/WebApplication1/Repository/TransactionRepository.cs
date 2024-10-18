@@ -11,6 +11,8 @@ namespace MyAPI.Repository
         List<Transactions> GetUserExpenses(int userID);
         bool AddTransaction(AddTransactions addtransaction);
         bool DeleteTransaction(int transactionID);
+
+        bool EditTransaction(int userID, int transactionID, string transactionType, string category, string date, int amount );
     }
 
     public class TransactionRepository : ITransactionRepository
@@ -195,6 +197,52 @@ namespace MyAPI.Repository
                 connection.Close();
             }
             return transactionList;
+        }
+        public bool EditTransaction(int userID, int transactionID, string transactionType, string category, string date, int amount)
+        {
+            SqlConnection connection = conn.GetConnection();
+            try
+            {
+                string EditTransactionProcedure = "EditTransaction";
+                SqlCommand command = new SqlCommand(EditTransactionProcedure,connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@userID",userID);
+                command.Parameters.AddWithValue("@transactionID", transactionID);
+                command.Parameters.AddWithValue("@transactionType", transactionType);
+                command.Parameters.AddWithValue("@category", category);
+                command.Parameters.AddWithValue("@transactionDate", date);
+                command.Parameters.AddWithValue("@amount", amount);
+
+                SqlParameter resultParam = new SqlParameter("@result", System.Data.SqlDbType.Bit);
+                resultParam.Direction = System.Data.ParameterDirection.Output;
+                command.Parameters.Add(resultParam);
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+                bool isSuccess = (bool)command.Parameters["@result"].Value;
+
+                if (isSuccess)
+                {
+                    return true;
+                }
+                else if (isSuccess)
+                {
+                    Console.WriteLine("Transaction not found.");
+                    return false;
+                }
+                else
+                {
+                    Console.WriteLine("Error: Stored procedure returned " + isSuccess);
+                    return false;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
     }
 }
