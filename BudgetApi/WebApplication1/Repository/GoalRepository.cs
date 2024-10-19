@@ -8,8 +8,8 @@ namespace MyAPI.Repository
     {
         List<Goal> GetUserGoals(int userID);
         bool AddGoal(AddGoals newGoal);
-        bool AddContribution(int Contribution, int userID, int goalID);
-        bool UpdateGoal(int goalID, string goalName, int goalAmount);
+        bool AddContribution(decimal Contribution, int userID, int goalID);
+        bool UpdateGoal(int goalID, string goalName, decimal goalAmount);
 
         bool DeleteGoal(int goalID);
 
@@ -45,8 +45,8 @@ namespace MyAPI.Repository
                             UserID = Convert.ToInt32(reader["userID"]),
                             GoalID = Convert.ToInt32(reader["GoalID"]),
                             GoalName = reader["GoalName"].ToString(),
-                            GoalAmount = Convert.ToInt32(reader["GoalAmount"]),
-                            GoalContribution = Convert.ToInt32(reader["GoalContribution"]),
+                            GoalAmount = Convert.ToDecimal(reader["GoalAmount"]),
+                            GoalContribution = Convert.ToDecimal(reader["GoalContribution"]),
                         });
                 }
             }
@@ -98,7 +98,7 @@ namespace MyAPI.Repository
             }          
         }
 
-        public bool AddContribution(int Contribution, int userID, int goalID)
+        public bool AddContribution(decimal Contribution, int userID, int goalID)
         {
             SqlConnection connection = conn.GetConnection();
 
@@ -125,7 +125,7 @@ namespace MyAPI.Repository
             }
         }
 
-        public bool UpdateGoal(int goalID, string goalName, int goalAmount)
+        public bool UpdateGoal(int goalID, string goalName, decimal goalAmount)
         {
             SqlConnection connection = conn.GetConnection();
 

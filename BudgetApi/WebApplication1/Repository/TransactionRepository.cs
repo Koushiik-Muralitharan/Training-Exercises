@@ -12,7 +12,7 @@ namespace MyAPI.Repository
         bool AddTransaction(AddTransactions addtransaction);
         bool DeleteTransaction(int transactionID);
 
-        bool EditTransaction(int userID, int transactionID, string transactionType, string category, string date, int amount );
+        bool EditTransaction(int userID, int transactionID, string transactionType, string category, string date, decimal amount );
     }
 
     public class TransactionRepository : ITransactionRepository
@@ -44,7 +44,7 @@ namespace MyAPI.Repository
                         transactionType = reader["transactionType"].ToString(),
                         category = reader["category"].ToString(),
                         date = reader["transactionDate"].ToString(),
-                        amount = Convert.ToInt32(reader["amount"])
+                        amount = Convert.ToDecimal(reader["amount"])
 
                     });
 
@@ -82,7 +82,7 @@ namespace MyAPI.Repository
                         transactionType = reader["transactionType"].ToString(),
                         category = reader["category"].ToString(),
                         date = reader["transactionDate"].ToString(),
-                        amount = Convert.ToInt32(reader["amount"])
+                        amount = Convert.ToDecimal(reader["amount"])
 
                     });
                 }
@@ -181,7 +181,7 @@ namespace MyAPI.Repository
                         transactionType = reader["transactionType"].ToString(),
                         category = reader["category"].ToString(),
                         date = reader["transactionDate"].ToString(),
-                        amount = Convert.ToInt32(reader["amount"])
+                        amount = Convert.ToDecimal(reader["amount"])
 
                     });
                 }
@@ -198,7 +198,7 @@ namespace MyAPI.Repository
             }
             return transactionList;
         }
-        public bool EditTransaction(int userID, int transactionID, string transactionType, string category, string date, int amount)
+        public bool EditTransaction(int userID, int transactionID, string transactionType, string category, string date, decimal amount)
         {
             SqlConnection connection = conn.GetConnection();
             try

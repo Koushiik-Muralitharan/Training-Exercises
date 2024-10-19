@@ -25,7 +25,7 @@
     "Parameters": [
       {
         "Name": "Contribution",
-        "Type": "System.Int32",
+        "Type": "System.Decimal",
         "IsRequired": false
       },
       {
@@ -61,7 +61,7 @@
       },
       {
         "Name": "goalAmount",
-        "Type": "System.Int32",
+        "Type": "System.Decimal",
         "IsRequired": false
       }
     ],
@@ -166,7 +166,7 @@
       },
       {
         "Name": "amount",
-        "Type": "System.Int32",
+        "Type": "System.Decimal",
         "IsRequired": false
       }
     ],
@@ -250,11 +250,6 @@
       {
         "Name": "password",
         "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "age",
-        "Type": "System.Int32",
         "IsRequired": false
       }
     ],

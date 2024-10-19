@@ -4,7 +4,7 @@
     {
         public int UserID { get; set; }
         public string GoalName { get; set; }
-        public int GoalAmount { get; set; }
-        public int GoalContribution { get; set; }
+        public decimal GoalAmount { get; set; }
+        public decimal GoalContribution { get; set; }
     }
 }

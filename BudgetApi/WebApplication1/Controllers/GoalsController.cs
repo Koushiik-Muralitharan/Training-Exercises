@@ -52,7 +52,7 @@ namespace MyAPI.Controllers
         }
 
         [HttpPatch]
-        public IActionResult AddContribution(int Contribution, int userID, int goalID)
+        public IActionResult AddContribution(decimal Contribution, int userID, int goalID)
         {
             if(Contribution == 0 || userID == 0 || goalID == 0 )
             {
@@ -72,7 +72,7 @@ namespace MyAPI.Controllers
 
         [HttpPut]
 
-        public IActionResult EditGoal(int goalID, string goalName, int goalAmount)
+        public IActionResult EditGoal(int goalID, string goalName, decimal goalAmount)
         {
             if (goalAmount == 0 || goalName == null || goalID == 0)
             {

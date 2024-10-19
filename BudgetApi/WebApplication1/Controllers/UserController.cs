@@ -35,13 +35,13 @@ namespace MyAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddUser(string name, string email, string phone, string password, int age)
+        public IActionResult AddUser(string name, string email, string phone, string password)
         {
-            if (name == null || email == null || phone == null || password == null || age == 0)
+            if (name == null || email == null || phone == null || password == null)
             {
                 return BadRequest("Invalid user data");
             }
-            bool isAdded = userRepository.AddUser(name, email, phone, password, age);
+            bool isAdded = userRepository.AddUser(name, email, phone, password);
 
             if (isAdded)
             {
@@ -71,7 +71,7 @@ namespace MyAPI.Controllers
             }
             else
             {
-                return Ok(new { message = "User already exists" });
+                return Ok(new { message = "no such user exists" });
             }
         }
 

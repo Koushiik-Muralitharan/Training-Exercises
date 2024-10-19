@@ -106,7 +106,7 @@ namespace MyAPI.Controllers
         }
         [HttpPut]
 
-        public IActionResult UpdateTransaction(int userID, int transactionID, string transactionType, string category, string date, int amount)
+        public IActionResult UpdateTransaction(int userID, int transactionID, string transactionType, string category, string date, decimal amount)
         {
             if (userID == 0 || transactionID == 0 || transactionType == null || category == null || date == null || amount <0)
             {

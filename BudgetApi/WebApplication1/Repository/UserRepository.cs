@@ -9,7 +9,7 @@ namespace MyAPI.Repository
     {
         List<Users> GetUsers();
 
-        bool AddUser(string name, string email, string phone, string password, int age);
+        bool AddUser(string name, string email, string phone, string password);
 
         bool CheckUserExists(string userEmail);
     }
@@ -38,12 +38,11 @@ namespace MyAPI.Repository
                 {
                     users.Add(new Users
                     {
-                        userId = Convert.ToInt32(reader["usedId"]),
+                        userId = Convert.ToInt32(reader["userId"]),
                         name = reader["userName"].ToString(),
                         email = reader["userEmail"].ToString(),
                         phone = reader["mobileNumber"].ToString(),
-                        password = reader["passcode"].ToString(),
-                        age = Convert.ToInt32(reader["age"])
+                        password = reader["passcode"].ToString()
                     });
 
                 }
@@ -61,7 +60,7 @@ namespace MyAPI.Repository
             return users;
         }
 
-        public bool AddUser( string name, string email, string phone, string password, int age)
+        public bool AddUser( string name, string email, string phone, string password)
         {
             SqlConnection connection = conn.GetConnection();
             
@@ -74,7 +73,6 @@ namespace MyAPI.Repository
                 command.Parameters.AddWithValue("@userEmail",email );
                 command.Parameters.AddWithValue("@mobileNumber", phone);
                 command.Parameters.AddWithValue("@passcode", password);
-                command.Parameters.AddWithValue("@age", age);
 
                 connection.Open();
 
@@ -107,11 +105,10 @@ namespace MyAPI.Repository
                 connection.Open();
 
                 var result = command.ExecuteScalar();
-
-                if(result != null && int.TryParse(result.ToString(), out int isPresent))
+                Console.WriteLine($"Result from database: {result}");
+                if(result != null)
                 {
-                    isUserPresent = (isPresent == 1);
-
+                    isUserPresent = (bool)result;
                 }
 
             }
