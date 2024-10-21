@@ -10,9 +10,7 @@ namespace MyAPI.Repository
         bool AddGoal(AddGoals newGoal);
         bool AddContribution(decimal Contribution, int userID, int goalID);
         bool UpdateGoal(int goalID, string goalName, decimal goalAmount);
-
         bool DeleteGoal(int goalID);
-
     }
 
     public class GoalRepository : IGoalRepository
@@ -42,8 +40,8 @@ namespace MyAPI.Repository
                     Goals.Add(
                         new Goal
                         {
-                            UserID = Convert.ToInt32(reader["userID"]),
-                            GoalID = Convert.ToInt32(reader["GoalID"]),
+                            UserId = Convert.ToInt32(reader["userID"]),
+                            GoalId = Convert.ToInt32(reader["GoalID"]),
                             GoalName = reader["GoalName"].ToString(),
                             GoalAmount = Convert.ToDecimal(reader["GoalAmount"]),
                             GoalContribution = Convert.ToDecimal(reader["GoalContribution"]),

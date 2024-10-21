@@ -21,9 +21,9 @@ namespace MyAPI.Repository
     {
         private readonly IConnectivity conn;
 
-        public UserRepository(IConnectivity ConnectionString)
+        public UserRepository(IConnectivity connectionString)
         {
-            this.conn = ConnectionString;
+            this.conn = connectionString;
         }
 
         public List<Users> GetUsers()
@@ -41,11 +41,11 @@ namespace MyAPI.Repository
                 {
                     users.Add(new Users
                     {
-                        userId = Convert.ToInt32(reader["userId"]),
-                        name = reader["userName"].ToString(),
-                        email = reader["userEmail"].ToString(),
-                        phone = reader["mobileNumber"].ToString(),
-                        password = reader["passcode"].ToString()
+                        UserId = Convert.ToInt32(reader["userId"]),
+                        Name = reader["userName"].ToString(),
+                        Email = reader["userEmail"].ToString(),
+                        Phone = reader["mobileNumber"].ToString(),
+                        Password = reader["passcode"].ToString()
                     });
 
                 }
@@ -57,7 +57,7 @@ namespace MyAPI.Repository
 
             finally
             {
-               // connection.Close();
+                connection.Close();
             }
 
             return users;
@@ -69,8 +69,8 @@ namespace MyAPI.Repository
             
             try
             {
-                string AddUserProcedure = "InsertUser";
-                SqlCommand command = new SqlCommand(AddUserProcedure, connection);
+                string addUserProcedure = "InsertUser";
+                SqlCommand command = new SqlCommand(addUserProcedure, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@userName", name);
                 command.Parameters.AddWithValue("@userEmail",email );
@@ -102,13 +102,15 @@ namespace MyAPI.Repository
 
             try
             {
-                string query = "SELECT dbo.IsUserPresent(@UserEmail)";
-                SqlCommand command = new SqlCommand(query, connection);
+                // string query = "SELECT dbo.IsUserPresent(@UserEmail)";
+                string checkIfUserExists = "CheckUserPresence";
+                SqlCommand command = new SqlCommand(checkIfUserExists, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@UserEmail", userEmail);
                 connection.Open();
 
                 var result = command.ExecuteScalar();
-                Console.WriteLine($"Result from database: {result}");
+                //Console.WriteLine($"Result from database: {result}");
                 if(result != null)
                 {
                     isUserPresent = (bool)result;
@@ -149,11 +151,11 @@ namespace MyAPI.Repository
                 {
                     userInfo = new UserInfo
                     {
-                        userId = Convert.ToInt32(reader["userId"]),
-                        name = reader["userName"].ToString(),
-                        email = reader["userEmail"].ToString(),
-                        phone = reader["mobileNumber"].ToString(),
-                        password = reader["passcode"].ToString(),
+                        UserId = Convert.ToInt32(reader["userId"]),
+                        Name = reader["userName"].ToString(),
+                        Email = reader["userEmail"].ToString(),
+                        Phone = reader["mobileNumber"].ToString(),
+                        Password = reader["passcode"].ToString(),
                     };
 
                 }
@@ -164,15 +166,15 @@ namespace MyAPI.Repository
                     {
                         transactionsList.Add(new Transactions
                         {
-                            userId = Convert.ToInt32(reader["userID"]),
-                            transactionID = Convert.ToInt32(reader["transactionID"]),
-                            transactionType = reader["transactionType"].ToString(),
-                            category = reader["category"].ToString(),
-                            date = reader["transactionDate"].ToString(),
-                            amount = Convert.ToDecimal(reader["amount"])
+                            UserId = Convert.ToInt32(reader["userID"]),
+                            TransactionID = Convert.ToInt32(reader["transactionID"]),
+                            TransactionType = reader["transactionType"].ToString(),
+                            Category = reader["category"].ToString(),
+                            Date = reader["transactionDate"].ToString(),
+                            Amount = Convert.ToDecimal(reader["amount"])
                         }); 
                     }
-                    userInfo.userTransaction = transactionsList;
+                    userInfo.UserTransaction = transactionsList;
                 }
 
                 if(reader.NextResult())
@@ -181,14 +183,14 @@ namespace MyAPI.Repository
                     {
                         goalList.Add(new Goal
                         {
-                             UserID = Convert.ToInt32(reader["userID"]) ,
-                             GoalID = Convert.ToInt32(reader["GoalID"]),
+                             UserId = Convert.ToInt32(reader["userID"]) ,
+                             GoalId = Convert.ToInt32(reader["GoalID"]),
                              GoalName = reader["GoalName"].ToString(),
                              GoalAmount = Convert.ToDecimal(reader["GoalAmount"]) ,
                              GoalContribution = Convert.ToDecimal(reader["GoalContribution"]),
                         });
                     }
-                    userInfo.userGoals = goalList;
+                    userInfo.UserGoals = goalList;
                 }
                 return userInfo;
             }

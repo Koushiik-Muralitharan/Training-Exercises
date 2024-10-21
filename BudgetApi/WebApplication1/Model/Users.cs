@@ -2,22 +2,22 @@
 {
     public class Users
     {
-        public int userId { get; set; }
-        public string name { get; set; }
-        public string email { get; set; }
-        public string phone { get; set; }
-        public string password { get; set; }
+        public int UserId { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Password { get; set; }
     }
 
     public class UserInfo 
     {
-        public int userId { get; set; }
-        public string name { get; set; }
-        public string email { get; set; }
-        public string phone { get; set; }
-        public string password { get; set; }
-        public List<Transactions> userTransaction {  get; set; }
-        public List<Goal> userGoals { get; set; }
+        public int UserId { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Password { get; set; }
+        public List<Transactions> UserTransaction {  get; set; }
+        public List<Goal> UserGoals { get; set; }
     }
 
 }

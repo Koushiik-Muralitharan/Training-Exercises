@@ -39,12 +39,12 @@ namespace MyAPI.Repository
                 {
                     TransactionsList.Add(new Transactions
                     {
-                        userId = Convert.ToInt32(reader["userID"]),
-                        transactionID = Convert.ToInt32(reader["transactionID"]),
-                        transactionType = reader["transactionType"].ToString(),
-                        category = reader["category"].ToString(),
-                        date = reader["transactionDate"].ToString(),
-                        amount = Convert.ToDecimal(reader["amount"])
+                        UserId = Convert.ToInt32(reader["userID"]),
+                        TransactionID = Convert.ToInt32(reader["transactionID"]),
+                        TransactionType = reader["transactionType"].ToString(),
+                        Category = reader["category"].ToString(),
+                        Date = reader["transactionDate"].ToString(),
+                        Amount = Convert.ToDecimal(reader["amount"])
 
                     });
 
@@ -68,8 +68,10 @@ namespace MyAPI.Repository
 
             try
             {
-                string query = "select * from dbo.getUserTransactions(@loggedUserID)";
-                SqlCommand command = new SqlCommand(query, connection);
+                //string query = "select * from dbo.getUserTransactions(@loggedUserID)";
+                string getLoggedUserTransactionsProcedure = "GetLoggedUserTransactions";
+                SqlCommand command = new SqlCommand(getLoggedUserTransactionsProcedure, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@loggedUserID", userID);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
@@ -77,12 +79,12 @@ namespace MyAPI.Repository
                 {
                     TransactionsList.Add(new Transactions
                     {
-                        userId = Convert.ToInt32(reader["userID"]),
-                        transactionID = Convert.ToInt32(reader["transactionID"]),
-                        transactionType = reader["transactionType"].ToString(),
-                        category = reader["category"].ToString(),
-                        date = reader["transactionDate"].ToString(),
-                        amount = Convert.ToDecimal(reader["amount"])
+                        UserId = Convert.ToInt32(reader["userID"]),
+                        TransactionID = Convert.ToInt32(reader["transactionID"]),
+                        TransactionType = reader["transactionType"].ToString(),
+                        Category = reader["category"].ToString(),
+                        Date = reader["transactionDate"].ToString(),
+                        Amount = Convert.ToDecimal(reader["amount"])
 
                     });
                 }
@@ -164,8 +166,10 @@ namespace MyAPI.Repository
             var transactionList = new List<Transactions>();
             try
             {
-                string query = "select * from dbo.GetExpenses(@loggedUserId) ";
-                SqlCommand command = new SqlCommand(query, connection);
+                //string query = "select * from dbo.GetExpenses(@loggedUserId) ";
+                string getLoggedUserExpenseProcedure  = "GetLoggedUserExpenses";
+                SqlCommand command = new SqlCommand(getLoggedUserExpenseProcedure, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
 
                 command.Parameters.AddWithValue("@loggedUserId", userID);
 
@@ -176,13 +180,12 @@ namespace MyAPI.Repository
                 {
                     transactionList.Add(new Transactions
                     {
-                        userId = Convert.ToInt32(reader["userID"]),
-                        transactionID = Convert.ToInt32(reader["transactionID"]),
-                        transactionType = reader["transactionType"].ToString(),
-                        category = reader["category"].ToString(),
-                        date = reader["transactionDate"].ToString(),
-                        amount = Convert.ToDecimal(reader["amount"])
-
+                        UserId = Convert.ToInt32(reader["userID"]),
+                        TransactionID = Convert.ToInt32(reader["transactionID"]),
+                        TransactionType = reader["transactionType"].ToString(),
+                        Category = reader["category"].ToString(),
+                        Date = reader["transactionDate"].ToString(),
+                        Amount = Convert.ToDecimal(reader["amount"])
                     });
                 }
 

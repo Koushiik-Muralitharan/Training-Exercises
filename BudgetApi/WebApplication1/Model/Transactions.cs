@@ -2,11 +2,11 @@
 {
     public class Transactions
     {
-        public int userId { get; set; }
-        public int transactionID { get; set; }
-        public string transactionType { get; set; }
-        public string category { get; set; }
-        public string date { get; set; }
-        public decimal amount { get; set; }
+        public int UserId { get; set; }
+        public int TransactionID { get; set; }
+        public string TransactionType { get; set; }
+        public string Category { get; set; }
+        public string Date { get; set; }
+        public decimal Amount { get; set; }
     }
 }
