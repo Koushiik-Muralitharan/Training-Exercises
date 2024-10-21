@@ -29,8 +29,10 @@ namespace MyAPI.Repository
 
             try
             {
-                string query = "select * from dbo.getUserGoals(@loggedUserID)";
-                SqlCommand command = new SqlCommand(query, connection);
+                // string query = "select * from dbo.getUserGoals(@loggedUserID)";
+                string getLoggedUserGoalsProcedure = "getLoggedUserGoals";
+                SqlCommand command = new SqlCommand(getLoggedUserGoalsProcedure, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@loggedUserID", userID);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();

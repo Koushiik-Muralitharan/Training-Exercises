@@ -35,38 +35,52 @@ namespace MyAPI.Controllers
         [HttpPost]
         public IActionResult CreateGoal([FromBody] AddGoals newGoal)
         {
-            if(newGoal == null || !ModelState.IsValid)
+            try
             {
-                return BadRequest("Invalid goal data");
-            }
+                if (newGoal == null || !ModelState.IsValid)
+                {
+                    return BadRequest("Invalid goal data");
+                }
 
-            bool isAdded = goalRepository.AddGoal(newGoal);
-            if(isAdded)
-            {
-                return Ok(new { message = "Goal added successfully!" });
+                bool isAdded = goalRepository.AddGoal(newGoal);
+                if (isAdded)
+                {
+                    return Ok(new { message = "Goal added successfully!" });
+                }
+                else
+                {
+                    return StatusCode(500, "A problem happened while handling your request.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return StatusCode(500, "A problem happened while handling your request.");
+                return StatusCode(500, $"An error occurred: {ex.Message}"); 
             }
         }
 
         [HttpPatch]
         public IActionResult AddContribution(decimal Contribution, int userID, int goalID)
         {
-            if(Contribution == 0 || userID == 0 || goalID == 0 )
+            try
             {
-                return BadRequest("Invalid goal contribution data");
-            }
-            bool isUpdated = goalRepository.AddContribution(Contribution, userID, goalID);
+                if (Contribution == 0 || userID == 0 || goalID == 0)
+                {
+                    return BadRequest("Invalid goal contribution data");
+                }
+                bool isUpdated = goalRepository.AddContribution(Contribution, userID, goalID);
 
-            if (isUpdated)
-            {
-                return Ok(new { message = "Goal updated successfully!" });
+                if (isUpdated)
+                {
+                    return Ok(new { message = "Goal updated successfully!" });
+                }
+                else
+                {
+                    return StatusCode(400, "A problem happened while updating your goal update request.");
+                }
             }
-            else
+            catch (Exception ex) 
             {
-                return StatusCode(400, "A problem happened while updating your goal update request.");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
 
@@ -74,39 +88,53 @@ namespace MyAPI.Controllers
 
         public IActionResult EditGoal(int goalID, string goalName, decimal goalAmount)
         {
-            if (goalAmount == 0 || goalName == null || goalID == 0)
+            try
             {
-                return BadRequest("Invalid goal contribution data");
-            }
-            bool isUpdated = goalRepository.UpdateGoal(goalID, goalName, goalAmount);
+                if (goalAmount == 0 || goalName == null || goalID == 0)
+                {
+                    return BadRequest("Invalid goal contribution data");
+                }
+                bool isUpdated = goalRepository.UpdateGoal(goalID, goalName, goalAmount);
 
-            if (isUpdated)
-            {
-                return Ok(new { message = "Goal updated successfully!" });   
+                if (isUpdated)
+                {
+                    return Ok(new { message = "Goal updated successfully!" });
+                }
+                else
+                {
+                    return StatusCode(400, "A problem happened while updating your goal update request.");
+                }
             }
-            else
+            catch (Exception ex) 
             {
-                return StatusCode(400, "A problem happened while updating your goal update request.");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
 
         [HttpDelete]
         public IActionResult DeleteGoal(int goalID) 
         {
-            if(goalID == 0)
+            try
             {
-                return BadRequest("Invalid goalID");
-            }
+                if (goalID == 0)
+                {
+                    return BadRequest("Invalid goalID");
+                }
 
-            bool isDeleted = goalRepository.DeleteGoal(goalID);
+                bool isDeleted = goalRepository.DeleteGoal(goalID);
 
-            if (isDeleted)
-            {
-                return Ok(new { message = "Goal Deleted successfully!" });
+                if (isDeleted)
+                {
+                    return Ok(new { message = "Goal Deleted successfully!" });
+                }
+                else
+                {
+                    return StatusCode(404, "Goal not found.");
+                }
             }
-            else
+            catch (Exception ex) 
             {
-                return StatusCode(404, "Goal not found.");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
 
         }

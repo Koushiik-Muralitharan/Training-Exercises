@@ -37,19 +37,26 @@ namespace MyAPI.Controllers
         [HttpPost]
         public IActionResult AddUser(string name, string email, string phone, string password)
         {
-            if (name == null || email == null || phone == null || password == null)
+            try
             {
-                return BadRequest("Invalid user data");
-            }
-            bool isAdded = userRepository.AddUser(name, email, phone, password);
+                if (name == null || email == null || phone == null || password == null)
+                {
+                    return BadRequest("Invalid user data");
+                }
+                bool isAdded = userRepository.AddUser(name, email, phone, password);
 
-            if (isAdded)
-            {
-                return Ok(new { message = "User added successfully!" });
+                if (isAdded)
+                {
+                    return Ok(new { message = "User added successfully!" });
+                }
+                else
+                {
+                    return StatusCode(500, "A problem happened while handling your request.");
+                }
             }
-            else
+            catch (Exception ex) 
             {
-                return StatusCode(500, "A problem happened while handling your request.");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
 
@@ -57,21 +64,28 @@ namespace MyAPI.Controllers
 
         public IActionResult CheckUserExists(string userEmail)
         {
-            if (userEmail == null)
+            try
             {
-                return BadRequest("Invalid user data");
+                if (userEmail == null)
+                {
+                    return BadRequest("Invalid user data");
+                }
+
+                bool UserStatus = userRepository.CheckUserExists(userEmail);
+
+                if (UserStatus)
+                {
+                    return StatusCode(409, "User Already Exists.");
+
+                }
+                else
+                {
+                    return Ok(new { message = "no such user exists" });
+                }
             }
-
-            bool UserStatus = userRepository.CheckUserExists(userEmail);
-
-            if (UserStatus)
+            catch (Exception ex)
             {
-                return StatusCode(409, "User Already Exists.");
-
-            }
-            else
-            {
-                return Ok(new { message = "no such user exists" });
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
 
@@ -79,39 +93,45 @@ namespace MyAPI.Controllers
 
         public IActionResult GetLoggedUser(string email)
         {
-            if (email == null)
-            {
-                return BadRequest("Invalid data passed.");
-            }
-
             try
             {
+                if (email == null)
+                {
+                    return BadRequest("Invalid data passed.");
+                }
+
                 var users = userRepository.GetUserInfo(email);
                 return Ok(users);
             }
             catch (Exception ex)
             {
-                return BadRequest("Can't get the user");
+                return BadRequest($"Can't get the user {ex.Message}");
             }
         }
 
         [HttpDelete]
         public IActionResult DeleteUserAccount(string email)
         {
-            if (email == null)
+            try
             {
-                return BadRequest("Invalid Id is being sent.");
-            }
+                if (email == null)
+                {
+                    return BadRequest("Invalid Id is being sent.");
+                }
 
-            bool isDeleted = userRepository.DeleteAccount(email);
+                bool isDeleted = userRepository.DeleteAccount(email);
 
-            if (isDeleted)
+                if (isDeleted)
+                {
+                    return Ok(new { message = "User account deleted successfully!" });
+                }
+                else
+                {
+                    return StatusCode(404, "UserAccount not found.");
+                }
+            }catch (Exception ex)
             {
-                return Ok(new { message = "User account deleted successfully!" });
-            }
-            else
-            {
-                return StatusCode(404, "UserAccount not found.");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
 
@@ -119,37 +139,52 @@ namespace MyAPI.Controllers
 
         public IActionResult EditUserDetails(int userID, string userName, string userEmail, string phoneNumber)
         {
-            if(userID == 0 || userName== null|| userEmail == null || phoneNumber == null)
+            try
             {
-                return BadRequest("Invalid Data is sent for editing.");
+                if (userID == 0 || userName == null || userEmail == null || phoneNumber == null)
+                {
+                    return BadRequest("Invalid Data is sent for editing.");
+                }
+                bool isUpdated = userRepository.EditUserDetails(userID, userName, userEmail, phoneNumber);
+                if (isUpdated)
+                {
+                    return Ok(new { message = "User Details updated." });
+                }
+                else
+                {
+                    return StatusCode(400, "A problem happened while updating your goal update request., Email ID exists.");
+                }
             }
-            bool isUpdated = userRepository.EditUserDetails(userID, userName, userEmail,phoneNumber);
-            if(isUpdated)
+            catch (Exception ex) 
             {
-                return Ok(new { message = "User Details updated." });
-            }
-            else
-            {
-                return StatusCode(400, "A problem happened while updating your goal update request., Email ID exists.");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
 
         [HttpPatch]
         public IActionResult EditPassword(int userID, string oldPassword, string newPassword)
         {
-            if(userID == 0 || oldPassword == null || newPassword == null)
+            try
             {
-                return BadRequest("Invalid data is sent for edit.");
-            }
+                if (userID == 0 || oldPassword == null || newPassword == null)
+                {
+                    return BadRequest("Invalid data is sent for edit.");
+                }
 
-            bool isUpdated = userRepository.EditPassword(userID,oldPassword,newPassword);
-            if(isUpdated)
-            {
-                return Ok(new { message = "password updated successfully" });
+                bool isUpdated = userRepository.EditPassword(userID, oldPassword, newPassword);
+                if (isUpdated)
+                {
+                    return Ok(new { message = "password updated successfully" });
+                }
+                else
+                {
+                    return StatusCode(400, "A problem happened while updating your password update request.");
+                }
             }
-            else
+            catch (Exception ex) 
             {
-                return StatusCode(400, "A problem happened while updating your password update request.");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+
             }
         }
     }

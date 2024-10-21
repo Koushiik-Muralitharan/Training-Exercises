@@ -49,19 +49,26 @@ namespace MyAPI.Controllers
 
         public IActionResult AddTransaction(AddTransactions addtransaction)
         {
-            if (addtransaction == null || !ModelState.IsValid)
+            try
             {
-                return BadRequest("Invalid Transaction data");
-            }
+                if (addtransaction == null || !ModelState.IsValid)
+                {
+                    return BadRequest("Invalid Transaction data");
+                }
 
-            bool isAdded = transactionRepository.AddTransaction(addtransaction);
-            if (isAdded)
-            {
-                return Ok(new { message = "Transaction added successfully!" });
+                bool isAdded = transactionRepository.AddTransaction(addtransaction);
+                if (isAdded)
+                {
+                    return Ok(new { message = "Transaction added successfully!" });
+                }
+                else
+                {
+                    return StatusCode(500, "A problem happened while handling your request.");
+                }
             }
-            else
+            catch (Exception ex) 
             {
-                return StatusCode(500, "A problem happened while handling your request.");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
 
@@ -69,32 +76,41 @@ namespace MyAPI.Controllers
 
         public IActionResult DeleteTransaction(int transactionID)
         {
-            if(transactionID == 0)
+            try
             {
-                return BadRequest("Invalid Transaction ID");
-            }
+                if (transactionID == 0)
+                {
+                    return BadRequest("Invalid Transaction ID");
+                }
 
-            bool isDeleted = transactionRepository.DeleteTransaction(transactionID);
+                bool isDeleted = transactionRepository.DeleteTransaction(transactionID);
 
-            if (isDeleted)
-            {
-                return Ok(new {message = "Transaction is deleted successfully."});
+                if (isDeleted)
+                {
+                    return Ok(new { message = "Transaction is deleted successfully." });
+                }
+                else
+                {
+                    return StatusCode(404, "Transaction not found.");
+                }
             }
-            else
+            catch (Exception ex) 
             {
-                return StatusCode(404, "Transaction not found.");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+
             }
         }
         [HttpGet("UserExpenses")]
         public IActionResult GetUserExpenses(int userID)
         {
-            if(userID == 0)
-            {
-                return BadRequest("Cannot get user Expenses");
-            }
-
+           
             try
             {
+                if (userID == 0)
+                {
+                    return BadRequest("Cannot get user Expenses");
+                }
+
                 var TransactionsList = transactionRepository.GetUserExpenses(userID);
                 return Ok(TransactionsList);
             }
@@ -108,19 +124,26 @@ namespace MyAPI.Controllers
 
         public IActionResult UpdateTransaction(int userID, int transactionID, string transactionType, string category, string date, decimal amount)
         {
-            if (userID == 0 || transactionID == 0 || transactionType == null || category == null || date == null || amount <0)
+            try
             {
-                return BadRequest("Invalid request for update");
-            }
+                if (userID == 0 || transactionID == 0 || transactionType == null || category == null || date == null || amount < 0)
+                {
+                    return BadRequest("Invalid request for update");
+                }
 
-            bool isUpdated = transactionRepository.EditTransaction( userID,  transactionID, transactionType, category, date, amount);
-            if (isUpdated)
-            {
-                return Ok(new { message = "Transaction is updated successfully." });
+                bool isUpdated = transactionRepository.EditTransaction(userID, transactionID, transactionType, category, date, amount);
+                if (isUpdated)
+                {
+                    return Ok(new { message = "Transaction is updated successfully." });
+                }
+                else
+                {
+                    return StatusCode(404, "Transaction not found.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return StatusCode(404, "Transaction not found.");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
     }
