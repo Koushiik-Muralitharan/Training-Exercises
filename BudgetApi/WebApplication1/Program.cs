@@ -26,6 +26,12 @@ namespace WebApplication1
                 });
             var app = builder.Build();
 
+            app.UseCors(builder => builder
+                   .AllowAnyOrigin()
+                   .AllowAnyHeader()
+                   .AllowAnyMethod()
+                   .SetIsOriginAllowed(origin => true));
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
