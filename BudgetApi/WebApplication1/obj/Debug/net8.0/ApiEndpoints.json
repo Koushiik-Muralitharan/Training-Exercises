@@ -1,24 +1,8 @@
 [
   {
     "ContainingType": "MyAPI.Controllers.GoalsController",
-    "Method": "CreateGoal",
-    "RelativePath": "api/Goals",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "newGoal",
-        "Type": "MyAPI.Model.AddGoals",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MyAPI.Controllers.GoalsController",
     "Method": "AddContribution",
-    "RelativePath": "api/Goals",
+    "RelativePath": "api/Goals/AddContribution",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -43,8 +27,40 @@
   },
   {
     "ContainingType": "MyAPI.Controllers.GoalsController",
+    "Method": "CreateGoal",
+    "RelativePath": "api/Goals/AddGoal",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newGoal",
+        "Type": "MyAPI.Model.AddGoals",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyAPI.Controllers.GoalsController",
+    "Method": "DeleteGoal",
+    "RelativePath": "api/Goals/DeleteGoal",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "goalID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyAPI.Controllers.GoalsController",
     "Method": "EditGoal",
-    "RelativePath": "api/Goals",
+    "RelativePath": "api/Goals/EditGoal",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -69,22 +85,6 @@
   },
   {
     "ContainingType": "MyAPI.Controllers.GoalsController",
-    "Method": "DeleteGoal",
-    "RelativePath": "api/Goals",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "goalID",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MyAPI.Controllers.GoalsController",
     "Method": "GetGoals",
     "RelativePath": "api/Goals/UserGoals/{userID}",
     "HttpMethod": "GET",
@@ -102,7 +102,7 @@
   {
     "ContainingType": "MyAPI.Controllers.TransactionController",
     "Method": "AddTransaction",
-    "RelativePath": "api/Transaction",
+    "RelativePath": "api/Transaction/Addtransaction",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -118,7 +118,7 @@
   {
     "ContainingType": "MyAPI.Controllers.TransactionController",
     "Method": "DeleteTransaction",
-    "RelativePath": "api/Transaction",
+    "RelativePath": "api/Transaction/DeleteTransaction",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -134,7 +134,7 @@
   {
     "ContainingType": "MyAPI.Controllers.TransactionController",
     "Method": "UpdateTransaction",
-    "RelativePath": "api/Transaction",
+    "RelativePath": "api/Transaction/EditTransaction",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -216,18 +216,50 @@
   },
   {
     "ContainingType": "MyAPI.Controllers.UserController",
-    "Method": "getUsers",
-    "RelativePath": "api/User",
+    "Method": "AddCategory",
+    "RelativePath": "api/User/AddCategory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "transactionType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "category",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyAPI.Controllers.UserController",
+    "Method": "CheckUserExists",
+    "RelativePath": "api/User/CheckUserExists",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "userEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "MyAPI.Controllers.UserController",
     "Method": "AddUser",
-    "RelativePath": "api/User",
+    "RelativePath": "api/User/CreateUserAccount",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -258,7 +290,7 @@
   {
     "ContainingType": "MyAPI.Controllers.UserController",
     "Method": "DeleteUserAccount",
-    "RelativePath": "api/User",
+    "RelativePath": "api/User/DeleteAccount",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -273,8 +305,50 @@
   },
   {
     "ContainingType": "MyAPI.Controllers.UserController",
+    "Method": "DeleteCategory",
+    "RelativePath": "api/User/DeleteCategory",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyAPI.Controllers.UserController",
+    "Method": "EditPassword",
+    "RelativePath": "api/User/EditPassword",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "oldPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "newPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyAPI.Controllers.UserController",
     "Method": "EditUserDetails",
-    "RelativePath": "api/User",
+    "RelativePath": "api/User/EditUserAccount",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -304,44 +378,12 @@
   },
   {
     "ContainingType": "MyAPI.Controllers.UserController",
-    "Method": "EditPassword",
-    "RelativePath": "api/User",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userID",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "oldPassword",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "newPassword",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MyAPI.Controllers.UserController",
-    "Method": "CheckUserExists",
-    "RelativePath": "api/User/CheckUserExists",
+    "Method": "getUsers",
+    "RelativePath": "api/User/GetAllUsers",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userEmail",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

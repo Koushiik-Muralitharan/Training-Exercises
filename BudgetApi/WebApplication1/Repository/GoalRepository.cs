@@ -29,8 +29,7 @@ namespace MyAPI.Repository
 
             try
             {
-                // string query = "select * from dbo.getUserGoals(@loggedUserID)";
-                string getLoggedUserGoalsProcedure = "getLoggedUserGoals";
+                string getLoggedUserGoalsProcedure = "sp_get_logged_user_goals";
                 SqlCommand command = new SqlCommand(getLoggedUserGoalsProcedure, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@loggedUserID", userID);
@@ -70,7 +69,7 @@ namespace MyAPI.Repository
 
             try
             {
-                string AddGoalProcedure = "AddGoal";
+                string AddGoalProcedure = "sp_add_goal";
                 SqlCommand command = new SqlCommand(AddGoalProcedure, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
 
@@ -104,8 +103,8 @@ namespace MyAPI.Repository
 
             try
             {
-                string AddContributionProcedure = "AddContribution";
-                SqlCommand command = new SqlCommand(AddContributionProcedure, connection);
+                string addContributionProcedure = "sp_add_contribution";
+                SqlCommand command = new SqlCommand(addContributionProcedure, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
 
                 command.Parameters.AddWithValue("@userID", userID);
@@ -130,10 +129,9 @@ namespace MyAPI.Repository
             SqlConnection connection = conn.GetConnection();
 
             try
-            {
-                
-                string UpdateGoalProcedure = "UpdateGoal";
-                SqlCommand command = new SqlCommand(UpdateGoalProcedure, connection);
+            {   
+                string updateGoalProcedure = "sp_update_goal";
+                SqlCommand command = new SqlCommand(updateGoalProcedure, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@goalID", goalID);
                 command.Parameters.AddWithValue("@goalName", goalName);
@@ -183,9 +181,9 @@ namespace MyAPI.Repository
 
             try
             {
-                string DeleteGoalProcedure = "DeleteGoal";
+                string deleteGoalProcedure = "sp_delete_goal";
 
-                SqlCommand command = new SqlCommand(DeleteGoalProcedure, connection);
+                SqlCommand command = new SqlCommand(deleteGoalProcedure, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
 
                 command.Parameters.AddWithValue("@goalID", goalID);

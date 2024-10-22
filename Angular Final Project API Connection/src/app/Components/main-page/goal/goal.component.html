@@ -1,0 +1,311 @@
+<h2>Savings</h2>
+<div class="savings-header">
+  <button class="add-goal" (click)="addGoal()">
+    <i class="fa-solid fa-sack-dollar"></i>
+  </button>
+
+  <span class="add-transacation">Savings: {{ goalsSavings }}$</span>
+</div>
+<!-- add goal pop up -->
+<div *ngIf="addGoalPopUp" class="overlay">
+  <div
+    class="glass-form"
+    *ngIf="addGoalPopUp"
+    [ngClass]="{'add-goal-pop-up': addGoalPopUp, }"
+  >
+    <p class="align-close">
+      <span class="close-button" (click)="addGoal()">X</span>
+    </p>
+    <div>
+      <p>
+        Balance: <span>{{ currentBalance }}$</span>
+      </p>
+    </div>
+    <form #goaldata="ngForm" (submit)="onGoalSubmit(goaldata)">
+      <div class="form-elements">
+        <label for="gname">Goal Name</label>
+        <input
+          type="text"
+          name="goalname"
+          id="gname"
+          placeholder=" Goal Name"
+          ngModel
+          required
+          pattern="^[^\d]*$"
+          #gfname="ngModel"
+        />
+        <div *ngIf="gfname.invalid && gfname.touched && gfname.dirty">
+          <small *ngIf="gfname.errors?.['required']"
+            >*goal name is a required field</small
+          >
+          <small *ngIf="gfname.errors?.['pattern']">*Enter a valid name</small>
+        </div>
+        <div *ngIf="checkGoalName(gfname.value)">
+          <small>*goal name is already present.</small>
+        </div>
+      </div>
+
+      <div class="form-elements">
+        <label for="gamount">Target Amount</label>
+        <input
+          type="number"
+          name="goalamount"
+          id="gamount"
+          placeholder=" Goal Amount"
+          ngModel
+          required
+          min="0"
+          pattern="^[0-9]+$"
+          #gfamount="ngModel"
+        />
+        <div *ngIf="gfamount.invalid && gfamount.touched">
+          <small *ngIf="gfamount.errors?.['required']"
+            >*Amount is a required field</small
+          >
+          <small *ngIf="gfamount.errors?.['pattern']"
+            >*Enter a valid amount</small
+          >
+        </div>
+      </div>
+
+      <div class="form-elements">
+        <label for="gcontribution">Initial Contribution</label>
+        <input
+          type="number"
+          name="initalcontribution"
+          id="gcontribution"
+          placeholder=" Goal Contribution"
+          ngModel
+          pattern="^[0-9]+$"
+          min="0"
+          #gfcontribution="ngModel"
+        />
+        <div
+          *ngIf="
+            (gfcontribution.value > currentBalance ||
+              isContributionValid(gfcontribution.value, gfamount.value)) &&
+            gfcontribution.dirty
+          "
+        >
+          <small> *Contribution is greater than the balance or amount. </small>
+        </div>
+
+        <div *ngIf="gfcontribution.invalid && gfcontribution.touched">
+          <small *ngIf="gfcontribution.errors?.['pattern']"
+            >*Enter a valid Contribution</small
+          >
+        </div>
+      </div>
+
+      <div class="align-buttons">
+        <button
+          type="submit"
+          [disabled]="
+            !goaldata.valid ||
+            gfcontribution.value > currentBalance ||
+            isContributionValid(gfcontribution.value, gfamount.value) ||
+            checkGoalName(gfname.value)
+          "
+        >
+          Add
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- congrats pop up -->
+<div *ngIf="gCongrats" class="overlay">
+  <div class="congrats-pop-up">
+    <div class="congrats-align">
+      <span>Completed the goal successfully !</span>
+      <span (click)="closeCongrats()">X</span>
+    </div>
+  </div>
+</div>
+
+<!-- contribution pop up -->
+<div *ngIf="contributeGoalPopUp" class="overlay">
+  <div
+    class="glass-form"
+    *ngIf="contributeGoalPopUp"
+    [ngClass]="{ 'add-goal-pop-up': contributeGoalPopUp }"
+  >
+    <p class="align-close">
+      <span class="close-button" (click)="closeContribution()">X</span>
+    </p>
+    <div>
+      <p>
+        Balance: <span>{{ currentBalance }}$</span>
+      </p>
+      <p>
+        goal Amount: <span>{{ goaltarget }}$</span>
+      </p>
+      <p>
+        Contributed: <span>{{ goalContributed }}$</span>
+      </p>
+    </div>
+    <form
+      #contributiondata="ngForm"
+      (submit)="onContributionSubmit(contributiondata)"
+    >
+      <div class="form-elements">
+        <label for="contributeamount">Contribution Amount</label>
+        <input
+          type="number"
+          id="contributeamount"
+          name="ContributionAmount"
+          #gcfamount="ngModel"
+          ngModel
+          required
+          min="0"
+          pattern="^(0|[1-9][0-9]*)$"
+        />
+
+        <div *ngIf="gcfamount.invalid && gcfamount.touched">
+          <small *ngIf="gcfamount.errors?.['required']"
+            >*amount is a required field</small
+          >
+          <small *ngIf="gcfamount.errors?.['min']">*Enter a valid amount</small>
+        </div>
+        <div *ngIf="goalContributionCheck(gcfamount.value)">
+          <small>*This contribution will exceed the target</small>
+        </div>
+        <div *ngIf="contributionGreater(gcfamount.value)">
+          <small>*This contribution will exceed the balance</small>
+        </div>
+      </div>
+
+      <div class="align-buttons">
+        <button
+          type="submit"
+          [disabled]="
+            !contributiondata.valid ||
+            goalContributionCheck(gcfamount.value) ||
+            contributionGreater(gcfamount.value)
+          "
+        >
+          Add
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- update goal -->
+<div *ngIf="updateGoalPopUp" class="overlay">
+  <div class="update-pop-up">
+    <div class="align-close"><span (click)="updateGoal()">X</span></div>
+    <form #editGoalForm="ngForm" (submit)="goalUpdate(editGoalForm)">
+      <p class="form-elements">
+        <label for="editGoalName">Edit Goal Name</label>
+        <input
+          type="text"
+          name="eGoalName"
+          id="editGoalName"
+          required
+          pattern="^[^\d]*$"
+          [(ngModel)]="editGoalName"
+          #goalNameInput="ngModel"
+        />
+        <span
+          *ngIf="goalNameInput.invalid && goalNameInput.touched"
+          class="error-msg"
+        >
+          <span *ngIf="goalNameInput.errors?.['required']"
+            >Goal name is required.</span
+          >
+          <span *ngIf="goalNameInput.errors?.['pattern']"
+            >Goal name cannot contain numbers.</span
+          >
+        </span>
+        <span
+          *ngIf="
+            checkGoalNameUpdate(goalNameInput.value) && goalNameInput.dirty
+          "
+          >Name already exists</span
+        >
+      </p>
+
+      <p class="form-elements">
+        <label for="editGoalAmount">Goal Amount</label>
+        <input
+          type="number"
+          min="0"
+          name="eGoalAmount"
+          id="editGoalAmount"
+          required
+          [(ngModel)]="editGoalAmount"
+          #goalAmountInput="ngModel"
+        />
+        <span
+          *ngIf="goalAmountInput.invalid && goalAmountInput.touched"
+          class="error-msg"
+        >
+          <span *ngIf="goalAmountInput.errors?.['required']"
+            >Goal amount is required.</span
+          >
+          <span *ngIf="goalAmountInput.errors?.['min']"
+            >Goal amount cannot be negative.</span
+          >
+        </span>
+      </p>
+
+      <div>
+        <button
+          [disabled]="
+            !editGoalForm.valid || checkGoalNameUpdate(goalNameInput.value)
+          "
+        >
+          Update
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- display goal cards -->
+
+<div>
+  <div
+    class="goal-card"
+    *ngFor="let goal of goalsArray; let i = index"
+    [ngClass]="{ 'goal-completion': goalStatusCheck(i) }"
+  >
+    <span class="goal-heading">{{ goal.name }}</span>
+    <progress
+      [value]="(goal.camount / goal.gamount) * 100"
+      max="100"
+    ></progress>
+    <div class="goal-footer">
+      <div>
+        Progress:
+        <span
+          >{{ (goal.camount / goal.gamount) * 100 | number : "1.0-2" }}%</span
+        >
+      </div>
+      <div class="align-icons">
+        <div *ngIf="!goalStatusCheck(i)">
+          <span (click)="addContribution(i)"
+            ><i class="fa-solid fa-plus"></i
+          ></span>
+        </div>
+        <div *ngIf="goalStatusCheck(i)">
+          <span
+            ><i class="fa-solid fa-piggy-bank"></i>: {{ goal.camount }}$</span
+          >
+        </div>
+        <div>
+          <span (click)="updateGoal(i)"
+            ><i class="fa-regular fa-pen-to-square"></i
+          ></span>
+        </div>
+        <div>
+          <span (click)="deleteGoal(i)"
+            ><i class="fa-regular fa-trash-can"></i
+          ></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

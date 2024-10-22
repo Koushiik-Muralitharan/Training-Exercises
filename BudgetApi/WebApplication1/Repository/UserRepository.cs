@@ -15,6 +15,8 @@ namespace MyAPI.Repository
         bool DeleteAccount(string userEmail);
         bool EditUserDetails(int userID, string userName, string userEmail, string phoneNumber );
         bool EditPassword(int userID, string oldPassword, string newPassword);
+        bool AddCategory(int userID, string transactionType, string category, out string errorMessage);
+        bool DeleteCategory(int categoryID, out string errorMessage);
     }
 
     public class UserRepository : IUserRepository
@@ -26,6 +28,7 @@ namespace MyAPI.Repository
             this.conn = connectionString;
         }
 
+        //using for development purpose.
         public List<Users> GetUsers()
         {
             var users = new List<Users>();
@@ -69,7 +72,7 @@ namespace MyAPI.Repository
             
             try
             {
-                string addUserProcedure = "InsertUser";
+                string addUserProcedure = "sp_insert_user";
                 SqlCommand command = new SqlCommand(addUserProcedure, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@userName", name);
@@ -86,7 +89,6 @@ namespace MyAPI.Repository
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return false;
             }
             finally
@@ -102,15 +104,13 @@ namespace MyAPI.Repository
 
             try
             {
-                // string query = "SELECT dbo.IsUserPresent(@UserEmail)";
-                string checkIfUserExists = "CheckUserPresence";
+                string checkIfUserExists = "sp_check_user_presence";
                 SqlCommand command = new SqlCommand(checkIfUserExists, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@UserEmail", userEmail);
                 connection.Open();
 
                 var result = command.ExecuteScalar();
-                //Console.WriteLine($"Result from database: {result}");
                 if(result != null)
                 {
                     isUserPresent = (bool)result;
@@ -141,7 +141,7 @@ namespace MyAPI.Repository
 
             try
             {
-                string userInfoProcedure = "GetUserInfo";
+                string userInfoProcedure = "sp_get_user_info";
                 SqlCommand command = new SqlCommand(userInfoProcedure, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@userEmail", email);
@@ -211,8 +211,8 @@ namespace MyAPI.Repository
 
             try
             {
-                string DeleteAccountProcedure = "DeleteUserAccount";
-                SqlCommand command = new SqlCommand(DeleteAccountProcedure,connection);
+                string deleteAccountProcedure = "sp_delete_user_account";
+                SqlCommand command = new SqlCommand(deleteAccountProcedure,connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@userEmail",email);
                 connection.Open();
@@ -239,8 +239,8 @@ namespace MyAPI.Repository
 
             try
             {
-                string EditUserDetailsProcedure = "EditUserDetails";
-                SqlCommand command = new SqlCommand(EditUserDetailsProcedure,connection);
+                string editUserDetailsProcedure = "sp_edit_user_details";
+                SqlCommand command = new SqlCommand(editUserDetailsProcedure,connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@userID", userID);
                 command.Parameters.AddWithValue("@userName",userName);
@@ -267,7 +267,7 @@ namespace MyAPI.Repository
 
             try
             {
-                string EditPasswordProcedure = "EditPassword";
+                string EditPasswordProcedure = "sp_edit_password";
                 SqlCommand command = new SqlCommand(EditPasswordProcedure,connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@userID",userID);
@@ -284,6 +284,59 @@ namespace MyAPI.Repository
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        public bool AddCategory(int userID, string transactionType, string category, out string errorMessage)
+        {
+            SqlConnection connection = conn.GetConnection();
+
+            try
+            {
+                errorMessage = "";
+                string addCategoryProcedure = "sp_add_category";
+                SqlCommand command = new SqlCommand(addCategoryProcedure,connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@userID", userID);
+                command.Parameters.AddWithValue("@transactionType", transactionType);
+                command.Parameters.AddWithValue("@category", category);
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected > 0;   
+            }
+            catch (SqlException ex)
+            {
+                errorMessage = ex.Message;
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public bool DeleteCategory(int categoryID, out string errorMessage)
+        {
+            SqlConnection connection = conn.GetConnection();
+
+            try
+            {
+                errorMessage = "";
+                string deleteCategoryProcedure = "sp_delete_category";
+                SqlCommand command = new SqlCommand(deleteCategoryProcedure,connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@categoryID",categoryID);
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected > 0;
+            }
+            catch (SqlException ex)
+            {
+                errorMessage = ex.Message;
                 return false;
             }
             finally

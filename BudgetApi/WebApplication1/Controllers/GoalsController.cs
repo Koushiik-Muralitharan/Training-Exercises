@@ -32,7 +32,7 @@ namespace MyAPI.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("AddGoal")]
         public IActionResult CreateGoal([FromBody] AddGoals newGoal)
         {
             try
@@ -58,7 +58,7 @@ namespace MyAPI.Controllers
             }
         }
 
-        [HttpPatch]
+        [HttpPatch("AddContribution")]
         public IActionResult AddContribution(decimal Contribution, int userID, int goalID)
         {
             try
@@ -84,7 +84,7 @@ namespace MyAPI.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut("EditGoal")]
 
         public IActionResult EditGoal(int goalID, string goalName, decimal goalAmount)
         {
@@ -111,7 +111,7 @@ namespace MyAPI.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("DeleteGoal")]
         public IActionResult DeleteGoal(int goalID) 
         {
             try

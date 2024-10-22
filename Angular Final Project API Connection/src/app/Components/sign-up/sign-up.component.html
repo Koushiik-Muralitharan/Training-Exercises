@@ -1,0 +1,98 @@
+<div class="align-form-center">
+  <form #formdata="ngForm" (submit)="onSubmit(formdata)" appMatchpassword>
+    <h2>Register</h2>
+    <div class="align-contents">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        placeholder=" Enter the Name"
+        id="name"
+        name="username"
+        ngModel
+        required
+        #fname="ngModel"
+        pattern="^[a-zA-Z]+$"
+      />
+      <small *ngIf="fname.invalid && fname.touched">
+        <span *ngIf="fname.errors?.['required']">*Name field is must</span>
+        <span *ngIf="fname.errors?.['pattern']" >Name Should contain only Alphabets</span>
+      </small>
+    </div>
+
+    <p class="align-contents">
+      <label for="phno">Contact no:</label>
+      <input
+        type="text"
+        placeholder=" Enter the Contact number"
+        id="phno"
+        name="userphno"
+        ngModel
+        required
+        #fphno="ngModel"
+        pattern="^\d{10}$"
+      />
+      <small *ngIf="fphno.invalid && fphno.touched">
+        <span *ngIf="fphno.errors?.['required']">*Phno is required field</span>
+        <span *ngIf="fphno.errors?.['pattern']">*Enter a valid phone number</span>
+      </small>
+    </p>
+
+    <p class="align-contents">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        placeholder=" Enter the email"
+        id="email"
+        name="useremail"
+        ngModel
+        required
+        email
+        #femail="ngModel"
+      />
+      <small *ngIf="femail.invalid && femail.touched">
+        <span *ngIf="femail.errors?.['required']">*email is required field</span>
+        <span *ngIf="femail.errors?.['email']">*Enter a valid email.</span>
+      </small>
+    </p>
+
+    <p class="align-contents">
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          placeholder=" Enter the Password"
+          id="password"
+          name="userpassword"
+          ngModel
+          required
+          [ngModelOptions]="{ updateOn: 'change' }"
+          #fpass="ngModel"
+        />
+        <small *ngIf="fpass.invalid && fpass.touched"
+          >*password is required field</small
+        >
+      </p>
+
+    <p class="align-contents">
+      <label for="c_password">Confirm Password:</label>
+      <input
+        type="password"
+        placeholder=" Enter the Confirm Password"
+        id="c_password"
+        name="userconfirmpassword"
+        ngModel
+        required
+        [ngModelOptions]="{ updateOn: 'change' }"
+        #fcpass="ngModel"
+      />
+      <small *ngIf="fcpass.invalid && fcpass.touched">
+        <span *ngIf="fcpass.errors?.['required'] && fcpass.touched ">*Confirm password is required field</span>
+        <span *ngIf="fcpass.errors?.['passwordMismatch'] && fcpass.dirty"> Passwords do not match</span>
+      </small>
+    </p>
+
+    <p class="button-align-center">
+      <button type="submit" [disabled]="!formdata.valid">Sign Up</button>
+    </p>
+    <a href="/">have an account login...</a>
+  </form>
+</div>

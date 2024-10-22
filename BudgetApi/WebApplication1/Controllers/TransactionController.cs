@@ -45,7 +45,7 @@ namespace MyAPI.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("Addtransaction")]
 
         public IActionResult AddTransaction(AddTransactions addtransaction)
         {
@@ -72,7 +72,7 @@ namespace MyAPI.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("DeleteTransaction")]
 
         public IActionResult DeleteTransaction(int transactionID)
         {
@@ -120,7 +120,7 @@ namespace MyAPI.Controllers
             }
 
         }
-        [HttpPut]
+        [HttpPut("EditTransaction")]
 
         public IActionResult UpdateTransaction(int userID, int transactionID, string transactionType, string category, string date, decimal amount)
         {

@@ -20,7 +20,7 @@ namespace MyAPI.Controllers
             this.userRepository = userRepository;
         }
 
-        [HttpGet]
+        [HttpGet("GetAllUsers")]
         public IActionResult getUsers()
         {
             try
@@ -34,7 +34,7 @@ namespace MyAPI.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("CreateUserAccount")]
         public IActionResult AddUser(string name, string email, string phone, string password)
         {
             try
@@ -109,7 +109,7 @@ namespace MyAPI.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("DeleteAccount")]
         public IActionResult DeleteUserAccount(string email)
         {
             try
@@ -135,7 +135,7 @@ namespace MyAPI.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut("EditUserAccount")]
 
         public IActionResult EditUserDetails(int userID, string userName, string userEmail, string phoneNumber)
         {
@@ -161,7 +161,7 @@ namespace MyAPI.Controllers
             }
         }
 
-        [HttpPatch]
+        [HttpPatch("EditPassword")]
         public IActionResult EditPassword(int userID, string oldPassword, string newPassword)
         {
             try
@@ -185,6 +185,55 @@ namespace MyAPI.Controllers
             {
                 return StatusCode(500, $"An error occurred: {ex.Message}");
 
+            }
+        }
+        [HttpPost("AddCategory")]
+        public IActionResult AddCategory(int userID, string transactionType, string category)
+        {
+            try
+            {
+                if(userID == 0 || transactionType == null || category == null)
+                {
+                    return BadRequest("The data sent for adding category is Invalid.");
+                }
+                string errorMessage;
+                bool isAdded = userRepository.AddCategory(userID, transactionType,category, out errorMessage);
+                if(isAdded)
+                {
+                    return Ok(new { message = "Sucessfully added the category." });
+                }
+                else
+                {
+                    return StatusCode(409, $"Error Message: {errorMessage}");
+                }
+            }catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An internal server error occurred.", ex.Message });
+            }
+        }
+
+        [HttpDelete("DeleteCategory")]
+        public IActionResult DeleteCategory(int categoryID)
+        {
+            try
+            {
+                if(categoryID == 0)
+                {
+                    return BadRequest("Invalid categoryID sent for deletion.");
+                }
+                string errorMessage;
+                bool isDeleted = userRepository.DeleteCategory(categoryID, out errorMessage);
+                if(isDeleted)
+                {
+                    return Ok(new { message = "The Category is deleted." });
+                }
+                else
+                {
+                    return StatusCode(404, $"Message: {errorMessage}");
+                }
+            }catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An internal server error occurred.", ex.Message });
             }
         }
     }

@@ -11,7 +11,6 @@ namespace MyAPI.Repository
         List<Transactions> GetUserExpenses(int userID);
         bool AddTransaction(AddTransactions addtransaction);
         bool DeleteTransaction(int transactionID);
-
         bool EditTransaction(int userID, int transactionID, string transactionType, string category, string date, decimal amount );
     }
 
@@ -24,6 +23,7 @@ namespace MyAPI.Repository
             this.conn = ConnectionString;
         }
 
+        //using for development purpose.
         public List<Transactions> GetTransactions()
         {
             var TransactionsList = new List<Transactions>();
@@ -68,8 +68,7 @@ namespace MyAPI.Repository
 
             try
             {
-                //string query = "select * from dbo.getUserTransactions(@loggedUserID)";
-                string getLoggedUserTransactionsProcedure = "GetLoggedUserTransactions";
+                string getLoggedUserTransactionsProcedure = "sp_get_logged_user_transactions";
                 SqlCommand command = new SqlCommand(getLoggedUserTransactionsProcedure, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@loggedUserID", userID);
@@ -107,8 +106,8 @@ namespace MyAPI.Repository
 
             try
             {
-                string AddTransactionProcedure = "addTransaction";
-                SqlCommand command = new SqlCommand(AddTransactionProcedure, connection);
+                string addTransactionProcedure = "sp_add_transaction";
+                SqlCommand command = new SqlCommand(addTransactionProcedure, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
 
                 command.Parameters.AddWithValue("@UserID", addTransactions.userId);
@@ -141,8 +140,8 @@ namespace MyAPI.Repository
 
             try
             {
-                string DeleteTransactionProcedure = "DeleteTransaction";
-                SqlCommand command = new SqlCommand(DeleteTransactionProcedure,connection);
+                string deleteTransactionProcedure = "sp_delete_transaction";
+                SqlCommand command = new SqlCommand(deleteTransactionProcedure,connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@TransactionID", transactionID);
                 connection.Open();
@@ -166,7 +165,6 @@ namespace MyAPI.Repository
             var transactionList = new List<Transactions>();
             try
             {
-                //string query = "select * from dbo.GetExpenses(@loggedUserId) ";
                 string getLoggedUserExpenseProcedure  = "GetLoggedUserExpenses";
                 SqlCommand command = new SqlCommand(getLoggedUserExpenseProcedure, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
@@ -206,8 +204,8 @@ namespace MyAPI.Repository
             SqlConnection connection = conn.GetConnection();
             try
             {
-                string EditTransactionProcedure = "EditTransaction";
-                SqlCommand command = new SqlCommand(EditTransactionProcedure,connection);
+                string editTransactionProcedure = "sp_edit_transaction";
+                SqlCommand command = new SqlCommand(editTransactionProcedure,connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@userID",userID);
                 command.Parameters.AddWithValue("@transactionID", transactionID);
