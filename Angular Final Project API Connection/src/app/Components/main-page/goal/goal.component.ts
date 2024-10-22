@@ -32,9 +32,9 @@ export class GoalComponent {
     private transactionService: TranactionsService
   ) {}
   ngOnInit(): void {
-    this.currentBalance = this.transactionService.getCurrentBalance();
-    this.loadGoals();
-    this.transactionService.totalSavings();
+   // this.currentBalance = this.transactionService.getCurrentBalance();
+   // this.loadGoals();
+    //this.transactionService.totalSavings();
   }
 
   addGoal() {

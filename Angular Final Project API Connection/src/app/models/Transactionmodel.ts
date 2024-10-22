@@ -7,3 +7,4 @@ export interface transactionDetails{
     amount:number;
     date:string;
 }
+

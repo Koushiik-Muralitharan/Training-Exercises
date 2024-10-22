@@ -398,6 +398,11 @@
         "Name": "email",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

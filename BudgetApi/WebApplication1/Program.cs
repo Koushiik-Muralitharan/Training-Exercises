@@ -32,6 +32,17 @@ namespace WebApplication1
                    .AllowAnyMethod()
                    .SetIsOriginAllowed(origin => true));
 
+            //builder.Services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowAllOrigins",
+            //        builder => builder
+            //            .AllowAnyOrigin()
+            //            .AllowAnyHeader()
+            //            .AllowAnyMethod());
+            //});
+
+            //app.UseCors("AllowAllOrigins");
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {

@@ -13,12 +13,14 @@ import { MatchpasswordDirective } from '../../Validators/matchpassword.directive
 export class SignUpComponent  {
   
   constructor(private userServices:UserService){}
-
+   
     onSubmit(form:NgForm)
     {
+      //const { username, userphno, useremail, userpassword } = form.value;
       this.userServices.addUser(form);
       //console.log(form.value);
       //console.log(form)
+      
       
     }
 }

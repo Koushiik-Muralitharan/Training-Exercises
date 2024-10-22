@@ -17,23 +17,22 @@ export class SignInComponent {
   userArray: userdetails[] = [];
   constructor(private userServices:UserService, private router: Router){}
 
-  onLogin(logindata: NgForm){
-     //console.log(logindata);
-     const {loginemail,loginpassword} = logindata.value
-     this.canlogin = this.userServices.LoginUserExists(logindata);
-     //console.log(this.canlogin);
-     if(this.canlogin){
-        const loggedUerArray = this.userServices.getLoggedUser(loginemail);
-        this.userArray = loggedUerArray ;
-        const loggedUser: userdetails = loggedUerArray[0];
+  onLogin(logindata: NgForm) {
+    const { loginemail, loginpassword } = logindata.value;
+
+    // Check if the user exists and validate credentials using the API
+    this.userServices.getLoggedUser(loginemail, loginpassword).subscribe({
+      next: (loggedUser) => {
+        // If a user is found, save user details to session storage and redirect
         sessionStorage.setItem('loggedInUser', JSON.stringify(loggedUser));
-      this.router.navigate(['/home']);
-     }else{
-      if(this.userServices.EmailExists(loginemail)){
+        console.log(loggedUser);
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        // Handle error (invalid credentials)
         alert('Invalid email Id or password');
-      }else{
-        this.router.navigate(['/register']);
+        console.error(error);
       }
-     }
+    });
   }
 }

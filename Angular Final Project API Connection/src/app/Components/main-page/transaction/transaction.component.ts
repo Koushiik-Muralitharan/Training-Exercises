@@ -49,8 +49,9 @@ export class TransactionComponent {
   ngDoCheck(): void {
     if (this.transactionService.goalChanges) {
       this.loadTransactions();
-      this.updateTransactionSummary();
-      this.transactionService.goalChanges = false;
+      
+      //this.updateTransactionSummary();
+      //this.transactionService.goalChanges = false;
     }
   }
 
@@ -63,11 +64,11 @@ export class TransactionComponent {
   }
 
   updateTransactionSummary(): void {
-    const index = this.transactionService.getLoggedUserIndex();
-    const userArray: userdetails[] = this.userStorage.getUser();
-    this.income = userArray[index].income;
-    this.expense = userArray[index].expense;
-    this.balance = userArray[index].balance;
+    //const index = this.transactionService.getLoggedUserIndex();
+    const userArray: userdetails = this.userStorage.getUserDetail();
+    this.income = userArray.income;
+    this.expense = userArray.expense;
+    this.balance = userArray.balance;
   }
 
   onTransactionTypeChange(type: string): void {
@@ -148,8 +149,12 @@ export class TransactionComponent {
 
   loadTransactions(): void {
     this.transactions = this.transactionService.loggedUserTransaction();
+    this.transactions.forEach(element => {
+       console.log(element.id);
+    });
     this.transactionService.calculateAnalytics();
   }
+  
 
   exportToCSV() {
     const index = this.transactionService.getLoggedUserIndex();

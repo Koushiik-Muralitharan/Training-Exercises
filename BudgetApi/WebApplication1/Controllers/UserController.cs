@@ -91,21 +91,26 @@ namespace MyAPI.Controllers
 
         [HttpGet("LoggedUser")]
 
-        public IActionResult GetLoggedUser(string email)
+        public IActionResult GetLoggedUser(string email, string password)
         {
+           
             try
             {
-                if (email == null)
+                if (email == null || password==null)
                 {
                     return BadRequest("Invalid data passed.");
                 }
-
-                var users = userRepository.GetUserInfo(email);
+                string errorMessage = "";
+                var users = userRepository.GetUserInfo(email,password, out errorMessage);
+                if (users == null)
+                {
+                    return BadRequest(errorMessage); 
+                }
                 return Ok(users);
             }
             catch (Exception ex)
             {
-                return BadRequest($"Can't get the user {ex.Message}");
+                return BadRequest(ex.Message);
             }
         }
 

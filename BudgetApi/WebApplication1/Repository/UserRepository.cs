@@ -11,7 +11,7 @@ namespace MyAPI.Repository
         List<Users> GetUsers();
         bool AddUser(string name, string email, string phone, string password);
         bool CheckUserExists(string userEmail);
-        UserInfo GetUserInfo(string userEmail);
+        UserInfo GetUserInfo(string userEmail, string password, out string errorMessage);
         bool DeleteAccount(string userEmail);
         bool EditUserDetails(int userID, string userName, string userEmail, string phoneNumber );
         bool EditPassword(int userID, string oldPassword, string newPassword);
@@ -131,7 +131,7 @@ namespace MyAPI.Repository
             return isUserPresent;
         }
 
-        public UserInfo GetUserInfo(string email)
+        public UserInfo GetUserInfo(string email, string password, out string errorMessage)
         {
             UserInfo userInfo = null;
             List<Transactions> transactionsList = new List<Transactions>();
@@ -141,10 +141,12 @@ namespace MyAPI.Repository
 
             try
             {
-                string userInfoProcedure = "sp_get_user_info";
+                errorMessage = "";
+                string userInfoProcedure = "sp_get_user_details";
                 SqlCommand command = new SqlCommand(userInfoProcedure, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@userEmail", email);
+                command.Parameters.AddWithValue("@password", password);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
@@ -192,11 +194,40 @@ namespace MyAPI.Repository
                     }
                     userInfo.UserGoals = goalList;
                 }
+                if(reader.NextResult())
+                {
+                    if (reader.Read())
+                    {
+                        userInfo.Balance = Convert.ToDecimal(reader["Balance"]);
+                    }
+                }
+                if (reader.NextResult())
+                {
+                    if (reader.Read())
+                    {
+                        userInfo.Expense = Convert.ToDecimal(reader["Expense"]);
+                    }
+                }
+                if (reader.NextResult())
+                {
+                    if (reader.Read())
+                    {
+                        userInfo.Savings = Convert.ToDecimal(reader["Savings"]);
+                    }
+                }
+                if (reader.NextResult())
+                {
+                    if (reader.Read())
+                    {
+                        userInfo.Income = Convert.ToDecimal(reader["Income"]);
+                    }
+                }
                 return userInfo;
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine(ex.Message);
+                errorMessage = ex.Message;
                 return userInfo;
             }
             finally

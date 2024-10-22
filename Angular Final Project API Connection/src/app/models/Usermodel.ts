@@ -12,4 +12,7 @@ export interface userdetails{
     balance: number;
     income: number;
     expense: number;  
+    savings:number;
   }
+
+  

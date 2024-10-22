@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserStorageService } from '../../../Storage/user-storage.service';
-import { TranactionsService } from '../../../Services/tranactions.service';
+//import { TranactionsService } from '../../../Services/tranactions.service';
 import { userdetails } from '../../../models/Usermodel';
 import { Router } from '@angular/router';
 @Component({
@@ -14,14 +14,16 @@ export class NavbarComponent {
   userName!: string;
   constructor(
     private userStorage: UserStorageService,
-    private transactionService: TranactionsService,
+    // private transactionService: TranactionsService,
     private route: Router
   ) {}
 
   ngOnInit(): void {
-    const userArray: userdetails[] = this.userStorage.getUser();
-    const index = this.transactionService.getLoggedUserIndex();
-    this.userName = userArray[index].name;
+    const user: userdetails = this.userStorage.getUserDetail();
+    //const index = this.transactionService.getLoggedUserIndex();
+    this.userName = user.name;
+    console.log(user.name);
+    console.log(this.userName);
   }
 
   logout() {

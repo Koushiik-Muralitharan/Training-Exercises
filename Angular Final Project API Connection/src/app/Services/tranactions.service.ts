@@ -4,6 +4,7 @@ import { transactionDetails } from '../models/Transactionmodel';
 import { userdetails } from '../models/Usermodel';
 import { goalDetails } from '../models/goalsmodal';
 import { UserStorageService } from '../Storage/user-storage.service';
+import { userdetail } from '../models/GetUserModel';
 
 @Injectable({
   providedIn: 'root',
@@ -18,14 +19,13 @@ export class TranactionsService {
   constructor(private userStorage: UserStorageService) {}
 
   getIncome(): number {
-    const userArray: userdetails[] = this.userStorage.getUser();
-    const index = this.getLoggedUserIndex();
-    return userArray[index].income;
+    const user: userdetails = this.userStorage.getUserDetail();
+   
+    return user.income;
   }
   getExpense(): number {
-    const userArray: userdetails[] = this.userStorage.getUser();
-    const index = this.getLoggedUserIndex();
-    return userArray[index].expense;
+    const user: userdetails = this.userStorage.getUserDetail();
+    return user.expense;
   }
 
   // to get the details of the logged user.
@@ -43,9 +43,16 @@ export class TranactionsService {
 
   // load the logged user transactions.
   loggedUserTransaction(): transactionDetails[] {
-    const userArray: userdetails[] = this.userStorage.getUser();
-    const index = this.getLoggedUserIndex();
-    return userArray[index].transactions;
+    const userArray: userdetail = this.userStorage.getUserDetailing();
+    //const index = this.getLoggedUserIndex();
+    console.log(userArray.balance);
+    console.log(userArray.email);
+    //console.log(userArray.id);
+    //console.log(userArray.transactions)
+    userArray.userTransaction.forEach(element => {
+      console.log(element);
+   });
+    return userArray.userTransaction;
   }
 
   // change the expense categories based on the transaction.
@@ -137,24 +144,24 @@ export class TranactionsService {
   // load the income, expense, and balance.
   calculateTransaction(): void {
     const tranactions = this.loggedUserTransaction();
-    const userArray: userdetails[] = this.userStorage.getUser();
+    const userArray: userdetails = this.userStorage.getUserDetail();
 
     if (this.getLoggedUserIndex() > -1) {
       const index = this.getLoggedUserIndex();
-      userArray[index].income = 0;
-      userArray[index].expense = 0;
-      userArray[index].balance = 0;
+      userArray.income = 0;
+      userArray.expense = 0;
+      userArray.balance = 0;
       tranactions.forEach((tranaction) => {
         if (tranaction.transactionMethod === 'Income') {
-          userArray[index].income += tranaction.amount;
+          userArray.income += tranaction.amount;
         } else {
-          userArray[index].expense += tranaction.amount;
+          userArray.expense += tranaction.amount;
         }
       });
-      userArray[index].balance =
-        userArray[index].income -
-        (userArray[index].expense + this.totalSavings());
-      this.userStorage.setUser(userArray);
+      userArray.balance =
+        userArray.income -
+        (userArray.expense + this.totalSavings());
+      //this.userStorage.setUser(userArray);
     } else {
       console.log('no such user exists...');
     }
@@ -196,9 +203,9 @@ export class TranactionsService {
   // Goals Transaction services.
 
   getCurrentBalance(): number {
-    const userArray: userdetails[] = this.userStorage.getUser();
+    const user: userdetails = this.userStorage.getUserDetail();
     const index: number = this.getLoggedUserIndex();
-    return userArray[index].balance;
+    return user.balance;
   }
 
   addGoals(form: NgForm): void {
@@ -261,13 +268,13 @@ export class TranactionsService {
     transportCost: number;
   } {
     this.calculateTransaction;
-    const userArray: userdetails[] = this.userStorage.getUser();
+    const userArray: userdetails = this.userStorage.getUserDetail();
     const index: number = this.getLoggedUserIndex();
     var food = 0;
     var entertainment = 0;
     var shopping = 0;
     var transport = 0;
-    userArray[index].transactions.forEach((transaction) => {
+    userArray.transactions.forEach((transaction) => {
       if (transaction.expenseMethod === 'Food') {
         food += transaction.amount;
       }
