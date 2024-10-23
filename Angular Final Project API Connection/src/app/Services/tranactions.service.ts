@@ -5,18 +5,22 @@ import { userdetails } from '../models/Usermodel';
 import { goalDetails } from '../models/goalsmodal';
 import { UserStorageService } from '../Storage/user-storage.service';
 import { userdetail } from '../models/GetUserModel';
+import { transactionDetail } from '../models/NewTransactionModal';
+import { Observable } from 'rxjs';
+import {  HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TranactionsService {
+  private apiUrl = 'http://localhost:7197/api/Transaction/Addtransaction'
   public goalChanges = false;
   private expenseOptions: Record<'Income' | 'Expense', string[]> = {
     Income: ['Salary', 'Bonus', 'Investment'],
     Expense: ['Food', 'Transport', 'Shopping', 'Entertainment'],
   };
 
-  constructor(private userStorage: UserStorageService) {}
+  constructor(private userStorage: UserStorageService, private http: HttpClient) {}
 
   getIncome(): number {
     const user: userdetails = this.userStorage.getUserDetail();
@@ -34,6 +38,11 @@ export class TranactionsService {
     return JSON.parse(user);
   }
 
+  getLoggedInUsers(): userdetail {
+    const user = sessionStorage.getItem('loggedInUser') || '{}';
+    return JSON.parse(user);
+  }
+
   // to get the index of the logged user.
   getLoggedUserIndex(): number {
     const userInfo = this.getLoggedInUser();
@@ -42,16 +51,11 @@ export class TranactionsService {
   }
 
   // load the logged user transactions.
-  loggedUserTransaction(): transactionDetails[] {
+  loggedUserTransaction(): transactionDetail[] {
     const userArray: userdetail = this.userStorage.getUserDetailing();
     //const index = this.getLoggedUserIndex();
     console.log(userArray.balance);
     console.log(userArray.email);
-    //console.log(userArray.id);
-    //console.log(userArray.transactions)
-    userArray.userTransaction.forEach(element => {
-      console.log(element);
-   });
     return userArray.userTransaction;
   }
 
@@ -113,32 +117,29 @@ export class TranactionsService {
   }
 
   // add a transaction
-  addTransaction(form: NgForm) {
-    const userInfo = this.getLoggedInUser();
-    const userArray = this.userStorage.getUser();
+  addTransaction(form: NgForm): Observable<any> {
+    const userInfo = this.getLoggedInUsers();
     const {
       transactionstype,
       expensetype,
       transactionAmount,
       transactiondate,
     } = form.value;
-    const newTransaction: transactionDetails = {
-      tid: Date.now() + '',
-      id: userInfo.id,
+    const newTransaction: transactionDetail = {
+      userId: parseInt(userInfo.userId),
       email: userInfo.email,
-      transactionMethod: transactionstype,
-      expenseMethod: expensetype,
+      transactionType: transactionstype,
+      category: expensetype,
       amount: parseInt(transactionAmount),
       date: transactiondate,
     };
-    if (this.getLoggedUserIndex() > -1) {
-      const index = this.getLoggedUserIndex();
-      userArray[index].transactions.push(newTransaction);
-      this.userStorage.setUser(userArray);
-    } else {
-      console.log('no such user exists...');
-    }
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
     form.resetForm();
+    return this.http.post(this.apiUrl, newTransaction, { headers });
+
   }
 
   // load the income, expense, and balance.
@@ -152,7 +153,7 @@ export class TranactionsService {
       userArray.expense = 0;
       userArray.balance = 0;
       tranactions.forEach((tranaction) => {
-        if (tranaction.transactionMethod === 'Income') {
+        if (tranaction.transactionType === 'Income') {
           userArray.income += tranaction.amount;
         } else {
           userArray.expense += tranaction.amount;
@@ -203,8 +204,8 @@ export class TranactionsService {
   // Goals Transaction services.
 
   getCurrentBalance(): number {
-    const user: userdetails = this.userStorage.getUserDetail();
-    const index: number = this.getLoggedUserIndex();
+    const user: userdetail = this.userStorage.getUserDetailing();
+    //const index: number = this.getLoggedUserIndex();
     return user.balance;
   }
 
@@ -268,23 +269,24 @@ export class TranactionsService {
     transportCost: number;
   } {
     this.calculateTransaction;
-    const userArray: userdetails = this.userStorage.getUserDetail();
-    const index: number = this.getLoggedUserIndex();
+    const userArray: userdetail = this.userStorage.getUserDetailing();
+    // const index: number = this.getLoggedUserIndex();
     var food = 0;
     var entertainment = 0;
     var shopping = 0;
     var transport = 0;
-    userArray.transactions.forEach((transaction) => {
-      if (transaction.expenseMethod === 'Food') {
+    const transactions: transactionDetail[] = userArray.userTransaction; 
+    transactions.forEach((transaction) => {
+      if (transaction.category === 'Food') {
         food += transaction.amount;
       }
-      if (transaction.expenseMethod === 'Entertainment') {
+      if (transaction.category === 'Entertainment') {
         entertainment += transaction.amount;
       }
-      if (transaction.expenseMethod === 'Shopping') {
+      if (transaction.category === 'Shopping') {
         shopping += transaction.amount;
       }
-      if (transaction.expenseMethod === 'Transport') {
+      if (transaction.category === 'Transport') {
         transport += transaction.amount;
       }
     });

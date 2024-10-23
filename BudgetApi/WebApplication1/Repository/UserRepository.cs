@@ -12,6 +12,7 @@ namespace MyAPI.Repository
         bool AddUser(string name, string email, string phone, string password);
         bool CheckUserExists(string userEmail);
         UserInfo GetUserInfo(string userEmail, string password, out string errorMessage);
+        UserInfo GetUpdatedUserinfo(int userId, out string errorMessage);
         bool DeleteAccount(string userEmail);
         bool EditUserDetails(int userID, string userName, string userEmail, string phoneNumber );
         bool EditPassword(int userID, string oldPassword, string newPassword);
@@ -136,7 +137,6 @@ namespace MyAPI.Repository
             UserInfo userInfo = null;
             List<Transactions> transactionsList = new List<Transactions>();
             List<Goal> goalList = new List<Goal>();
-            
             SqlConnection connection = conn.GetConnection();
 
             try
@@ -369,6 +369,109 @@ namespace MyAPI.Repository
             {
                 errorMessage = ex.Message;
                 return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public UserInfo GetUpdatedUserinfo(int userId,out string errorMessage)
+        {
+            UserInfo userInfo = null;
+            List<Transactions> transactionsList = new List<Transactions>();
+            List<Goal> goalList = new List<Goal>();
+            SqlConnection connection = conn.GetConnection();
+            try
+            {
+                errorMessage = "";
+                string userUpdatedInfoProcedure = "sp_get_updated_user_info";
+                SqlCommand command = new SqlCommand(userUpdatedInfoProcedure, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@userId", userId);
+                
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    userInfo = new UserInfo
+                    {
+                        UserId = Convert.ToInt32(reader["userId"]),
+                        Name = reader["userName"].ToString(),
+                        Email = reader["userEmail"].ToString(),
+                        Phone = reader["mobileNumber"].ToString(),
+                        Password = reader["passcode"].ToString(),
+                    };
+
+                }
+
+                if (reader.NextResult())
+                {
+                    while (reader.Read())
+                    {
+                        transactionsList.Add(new Transactions
+                        {
+                            UserId = Convert.ToInt32(reader["userID"]),
+                            TransactionID = Convert.ToInt32(reader["transactionID"]),
+                            TransactionType = reader["transactionType"].ToString(),
+                            Category = reader["category"].ToString(),
+                            Date = reader["transactionDate"].ToString(),
+                            Amount = Convert.ToDecimal(reader["amount"])
+                        });
+                    }
+                    userInfo.UserTransaction = transactionsList;
+                }
+
+                if (reader.NextResult())
+                {
+                    while (reader.Read())
+                    {
+                        goalList.Add(new Goal
+                        {
+                            UserId = Convert.ToInt32(reader["userID"]),
+                            GoalId = Convert.ToInt32(reader["GoalID"]),
+                            GoalName = reader["GoalName"].ToString(),
+                            GoalAmount = Convert.ToDecimal(reader["GoalAmount"]),
+                            GoalContribution = Convert.ToDecimal(reader["GoalContribution"]),
+                        });
+                    }
+                    userInfo.UserGoals = goalList;
+                }
+                if (reader.NextResult())
+                {
+                    if (reader.Read())
+                    {
+                        userInfo.Balance = Convert.ToDecimal(reader["Balance"]);
+                    }
+                }
+                if (reader.NextResult())
+                {
+                    if (reader.Read())
+                    {
+                        userInfo.Expense = Convert.ToDecimal(reader["Expense"]);
+                    }
+                }
+                if (reader.NextResult())
+                {
+                    if (reader.Read())
+                    {
+                        userInfo.Savings = Convert.ToDecimal(reader["Savings"]);
+                    }
+                }
+                if (reader.NextResult())
+                {
+                    if (reader.Read())
+                    {
+                        userInfo.Income = Convert.ToDecimal(reader["Income"]);
+                    }
+                }
+                return userInfo;
+            }
+            catch (SqlException ex)
+            {
+                //Console.WriteLine(ex.Message);
+                errorMessage = ex.Message;
+                return userInfo;
             }
             finally
             {

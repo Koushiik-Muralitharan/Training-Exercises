@@ -241,5 +241,29 @@ namespace MyAPI.Controllers
                 return StatusCode(500, new { message = "An internal server error occurred.", ex.Message });
             }
         }
+
+        [HttpGet("GetUpdatedUserInfo")]
+        public IActionResult GetUpdatedUserInfo(int userId)
+        {
+
+            try
+            {
+                if (userId == 0)
+                {
+                    return BadRequest("Invalid data passed.");
+                }
+                string errorMessage = "";
+                var users = userRepository.GetUpdatedUserinfo(userId, out errorMessage);
+                if (users == null)
+                {
+                    return BadRequest(errorMessage);
+                }
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

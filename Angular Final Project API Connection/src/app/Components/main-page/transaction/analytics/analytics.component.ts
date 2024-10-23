@@ -37,9 +37,9 @@ export class AnalyticsComponent {
   }
 
   renderChart() {
-    const userArray = this.userStorage.getUser();
-    const index = this.transactionService.getLoggedUserIndex();
-    const expense = userArray[index].expense;
+    const userArray = this.userStorage.getUserDetailing();
+    //const index = this.transactionService.getLoggedUserIndex();
+    const expense = userArray.expense;
     const canvas = document.getElementById('myChart') as HTMLCanvasElement;
     Chart.register(PieController, ArcElement, Title, Legend, Tooltip);
     console.log('Hi ' + this.labelArray);

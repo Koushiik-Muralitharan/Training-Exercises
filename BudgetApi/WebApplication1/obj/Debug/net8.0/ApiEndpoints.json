@@ -388,6 +388,22 @@
   },
   {
     "ContainingType": "MyAPI.Controllers.UserController",
+    "Method": "GetUpdatedUserInfo",
+    "RelativePath": "api/User/GetUpdatedUserInfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyAPI.Controllers.UserController",
     "Method": "GetLoggedUser",
     "RelativePath": "api/User/LoggedUser",
     "HttpMethod": "GET",

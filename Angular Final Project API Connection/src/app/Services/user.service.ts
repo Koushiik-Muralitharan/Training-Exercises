@@ -32,6 +32,18 @@ export class UserService {
       );
   }
 
+  //http://localhost:7197/api/User/GetUpdatedUserInfo?userId=1012
+  getUpdatedUserInfo(userId: number): Observable<userdetails> {
+    return this.http
+      .get<userdetails>(`${this.apiUrl}/User/GetUpdatedUserInfo?userId=${userId}`)
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching logged user', error);
+          return throwError(error);
+        })
+      );
+  }
+
   // LoginUserExists(form: NgForm): Boolean {
   //   const usersArray: userdetails[] = this.userStorage.getUser();
   //   const { loginemail, loginpassword } = form.value;

@@ -175,10 +175,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let transaction of transactions; let i = index">
-            <td>{{ transaction.transactionMethod }}</td>
-            <td>{{ transaction.expenseMethod }}</td>
+            <td>{{ transaction.transactionType }}</td>
+            <td>{{ transaction.category }}</td>
             <td>{{ transaction.amount }}</td>
-            <td>{{ transaction.date | date : "shortDate" }}</td>
+            <td>{{ transaction.date  }}</td>
             <td>
               <button (click)="edit(i)">
                 <i class="fa-regular fa-pen-to-square"></i>

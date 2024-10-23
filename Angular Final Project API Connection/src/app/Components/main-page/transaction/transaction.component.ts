@@ -6,7 +6,9 @@ import { transactionDetails } from '../../../models/Transactionmodel';
 import { UserStorageService } from '../../../Storage/user-storage.service';
 import { userdetails } from '../../../models/Usermodel';
 import { AnalyticsComponent } from './analytics/analytics.component';
-
+import { transactionDetail } from '../../../models/NewTransactionModal';
+import { UserService } from '../../../Services/user.service';
+import { userdetail } from '../../../models/GetUserModel';
 @Component({
   selector: 'app-transaction',
   standalone: true,
@@ -23,7 +25,7 @@ export class TransactionComponent {
   balance: number = 0;
   income: number = 0;
   expense: number = 0;
-  transactions: transactionDetails[] = [];
+  transactions: transactionDetail[] = [];
   transactionAmount: number | null = null;
   transactionDate: string = '';
   expenseMethods: string = '';
@@ -32,10 +34,11 @@ export class TransactionComponent {
   currentDate!: string;
   transactionPopUp: Boolean = false;
   refreshFlag: boolean = false;
-
+  userDetails!:userdetail;
   constructor(
     private transactionService: TranactionsService,
-    private userStorage: UserStorageService
+    private userStorage: UserStorageService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +47,7 @@ export class TransactionComponent {
     this.loadTransactions();
     this.transactionService.calculateTransaction();
     this.updateTransactionSummary();
+    this.userDetails = this.userStorage.getUserDetailing(); 
   }
 
   ngDoCheck(): void {
@@ -135,7 +139,31 @@ export class TransactionComponent {
       this.onChartChange('Expense');
       this.refreshContent();
     } else {
-      this.transactionService.addTransaction(form);
+      // this.transactionService.addTransaction(form);
+      this.transactionService.addTransaction(form).subscribe(
+        (response) => {
+          console.log('Transaction added successfully!', response);
+          form.resetForm(); // Reset form after success
+          
+          this.userService.getUpdatedUserInfo(parseInt(this.userDetails.userId)).subscribe({
+            next: (loggedUser) => {
+              // If a user is found, save user details to session storage and redirect
+              sessionStorage.setItem('loggedInUser', JSON.stringify(loggedUser));
+              console.log(loggedUser);
+              this.loadTransactions();
+            },
+            error: (error) => {
+              // Handle error (invalid credentials)
+              alert('Invalid email Id or password');
+              console.error(error);
+            }
+          });
+
+        },
+        (error) => {
+          console.error('Error adding transaction:', error);
+        }
+      );
       this.onChartChange('Expense');
       this.refreshContent();
     }
@@ -149,9 +177,6 @@ export class TransactionComponent {
 
   loadTransactions(): void {
     this.transactions = this.transactionService.loggedUserTransaction();
-    this.transactions.forEach(element => {
-       console.log(element.id);
-    });
     this.transactionService.calculateAnalytics();
   }
   
