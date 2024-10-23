@@ -143,17 +143,17 @@ export class TransactionComponent {
       this.transactionService.addTransaction(form).subscribe(
         (response) => {
           console.log('Transaction added successfully!', response);
-          form.resetForm(); // Reset form after success
+          form.resetForm(); 
           
           this.userService.getUpdatedUserInfo(parseInt(this.userDetails.userId)).subscribe({
             next: (loggedUser) => {
-              // If a user is found, save user details to session storage and redirect
+              
               sessionStorage.setItem('loggedInUser', JSON.stringify(loggedUser));
               console.log(loggedUser);
               this.loadTransactions();
             },
             error: (error) => {
-              // Handle error (invalid credentials)
+              
               alert('Invalid email Id or password');
               console.error(error);
             }

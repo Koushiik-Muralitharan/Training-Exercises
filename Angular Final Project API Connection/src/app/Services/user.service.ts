@@ -65,16 +65,13 @@ export class UserService {
   addUser(form: NgForm): void {
     const { username, userphno, useremail, userpassword } = form.value;
   
-  // First, check if the user exists using the API
   this.EmailExists(useremail).subscribe({
     next: (response) => {
-      // If the user does not exist
       if (response.message === "no such user exists") {
-        // Proceed to add the user
         this.addUserToAPI(username, useremail, userphno, userpassword).subscribe({
           next: (addUserResponse) => {
             alert(addUserResponse.message);
-            this.router.navigate(['/']);  // Redirect after successful user creation
+            this.router.navigate(['/']);  
           },
           error: (error) => {
             alert('Error occurred while adding the user');
@@ -82,13 +79,11 @@ export class UserService {
           },
         });
       } else {
-        // User already exists
         alert('User with this email already exists.');
       }
     },
     error: (error) => {
       if (error.status === 409) {
-        // Conflict: User already exists
         alert('User with this email already exists.');
       } else {
         alert('Error occurred while checking the user existence');

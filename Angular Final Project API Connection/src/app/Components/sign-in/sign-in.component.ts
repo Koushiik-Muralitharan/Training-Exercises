@@ -16,20 +16,15 @@ export class SignInComponent {
   canlogin!:Boolean;
   userArray: userdetails[] = [];
   constructor(private userServices:UserService, private router: Router){}
-
   onLogin(logindata: NgForm) {
     const { loginemail, loginpassword } = logindata.value;
-
-    // Check if the user exists and validate credentials using the API
     this.userServices.getLoggedUser(loginemail, loginpassword).subscribe({
       next: (loggedUser) => {
-        // If a user is found, save user details to session storage and redirect
         sessionStorage.setItem('loggedInUser', JSON.stringify(loggedUser));
         console.log(loggedUser);
         this.router.navigate(['/home']);
       },
       error: (error) => {
-        // Handle error (invalid credentials)
         alert('Invalid email Id or password');
         console.error(error);
       }

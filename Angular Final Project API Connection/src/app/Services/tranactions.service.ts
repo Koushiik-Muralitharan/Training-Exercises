@@ -14,6 +14,8 @@ import {  HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class TranactionsService {
   private apiUrl = 'http://localhost:7197/api/Transaction/Addtransaction'
+  private apiurl = 'http://localhost:7197/api/Transaction/UserTransactions/1012'
+
   public goalChanges = false;
   private expenseOptions: Record<'Income' | 'Expense', string[]> = {
     Income: ['Salary', 'Bonus', 'Investment'],
@@ -57,6 +59,17 @@ export class TranactionsService {
     console.log(userArray.balance);
     console.log(userArray.email);
     return userArray.userTransaction;
+  }
+
+  loggedUserTransactions(): Observable<transactionDetail> {
+    //const transactionArray: transactionDetail = 
+    const user: userdetail = this.getLoggedInUsers();
+    // const headers = new HttpHeaders({
+    //   'Content-Type': 'application/json',
+    // });
+
+    return this.http
+    .get<transactionDetail>(`${this.apiurl}/${parseInt(user.userId)}`);
   }
 
   // change the expense categories based on the transaction.
