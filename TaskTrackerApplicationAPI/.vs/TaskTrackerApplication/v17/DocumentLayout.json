@@ -1,0 +1,179 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\source\\repos\\tasktrackerapplication\\tasktrackerapplication\\modals\\activitymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\modals\\activitymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\source\\repos\\tasktrackerapplication\\tasktrackerapplication\\repository\\activityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\repository\\activityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\source\\repos\\tasktrackerapplication\\tasktrackerapplication\\controllers\\activitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\controllers\\activitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\source\\repos\\tasktrackerapplication\\tasktrackerapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\source\\repos\\tasktrackerapplication\\tasktrackerapplication\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\source\\repos\\tasktrackerapplication\\tasktrackerapplication\\repository\\taskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\repository\\taskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\source\\repos\\tasktrackerapplication\\tasktrackerapplication\\modals\\taskmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\modals\\taskmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\source\\repos\\tasktrackerapplication\\tasktrackerapplication\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\source\\repos\\tasktrackerapplication\\tasktrackerapplication\\modals\\usermodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\modals\\usermodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 425,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ActivityController.cs",
+              "DocumentMoniker": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Controllers\\ActivityController.cs",
+              "RelativeDocumentMoniker": "TaskTrackerApplication\\Controllers\\ActivityController.cs",
+              "ToolTip": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Controllers\\ActivityController.cs",
+              "RelativeToolTip": "TaskTrackerApplication\\Controllers\\ActivityController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAcwFEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T12:47:39.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TaskRepository.cs",
+              "DocumentMoniker": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Repository\\TaskRepository.cs",
+              "RelativeDocumentMoniker": "TaskTrackerApplication\\Repository\\TaskRepository.cs",
+              "ToolTip": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Repository\\TaskRepository.cs",
+              "RelativeToolTip": "TaskTrackerApplication\\Repository\\TaskRepository.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAABwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T11:14:54.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ActivityModel.cs",
+              "DocumentMoniker": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Modals\\ActivityModel.cs",
+              "RelativeDocumentMoniker": "TaskTrackerApplication\\Modals\\ActivityModel.cs",
+              "ToolTip": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Modals\\ActivityModel.cs",
+              "RelativeToolTip": "TaskTrackerApplication\\Modals\\ActivityModel.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T12:47:00.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "TaskTrackerApplication\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Controllers\\UserController.cs",
+              "RelativeToolTip": "TaskTrackerApplication\\Controllers\\UserController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T11:31:41.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Program.cs",
+              "RelativeDocumentMoniker": "TaskTrackerApplication\\Program.cs",
+              "ToolTip": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Program.cs",
+              "RelativeToolTip": "TaskTrackerApplication\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T11:42:35.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TaskModel.cs",
+              "DocumentMoniker": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Modals\\TaskModel.cs",
+              "RelativeDocumentMoniker": "TaskTrackerApplication\\Modals\\TaskModel.cs",
+              "ToolTip": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Modals\\TaskModel.cs",
+              "RelativeToolTip": "TaskTrackerApplication\\Modals\\TaskModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T10:37:10.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserModal.cs",
+              "DocumentMoniker": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Modals\\UserModal.cs",
+              "RelativeDocumentMoniker": "TaskTrackerApplication\\Modals\\UserModal.cs",
+              "ToolTip": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Modals\\UserModal.cs",
+              "RelativeToolTip": "TaskTrackerApplication\\Modals\\UserModal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T10:38:25.234Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 487,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ActivityRepository.cs",
+              "DocumentMoniker": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Repository\\ActivityRepository.cs",
+              "RelativeDocumentMoniker": "TaskTrackerApplication\\Repository\\ActivityRepository.cs",
+              "ToolTip": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Repository\\ActivityRepository.cs",
+              "RelativeToolTip": "TaskTrackerApplication\\Repository\\ActivityRepository.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAcwGkAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T12:48:26.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TaskController.cs",
+              "DocumentMoniker": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Controllers\\TaskController.cs",
+              "RelativeDocumentMoniker": "TaskTrackerApplication\\Controllers\\TaskController.cs",
+              "ToolTip": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\Controllers\\TaskController.cs",
+              "RelativeToolTip": "TaskTrackerApplication\\Controllers\\TaskController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowCAAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T11:13:47.445Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
