@@ -1,1 +1,102 @@
-<a href="/taskpage">Add Task</a>
+
+    <header>
+        <div class="header-left">
+            <img src="claysys-logo.png" alt="Claysys Logo" class="logo">
+            <h1>Task Tracker</h1>
+        </div>
+        <div class="header-right">
+            <span class="user-info">koushik.m</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="tasks-overview">
+            <div class="tasks-header">
+                <h2>Tasks</h2>
+                <span>0 Item(s) In Total</span>
+            </div>
+            <!-- <div class="task-warning">
+                <p>You have not updated your last day task</p>
+            </div> -->
+            <div class="controls">
+                <button class="clients-projects-btn">Clients & Projects</button>
+                <button class="refresh-btn">&#x21bb;</button>
+                <a href="/taskpage">
+                    <button class="add-task-btn" >+ Add Task</button>
+                </a>
+            </div>
+            <div class="date-picker">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="tdates" (change)="GetTasks($event)">
+            </div>
+        </section>
+
+        <section class="added-tasks">
+            <h3>Added Tasks</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Task Completed</th>
+                        <th>Client</th>
+                        <th>Project</th>
+                        <th>Task Title</th>
+                        <th>Assigned To</th>
+                        <th>Date</th>
+                        <th>Edit</th> 
+                        <th>Add Activity</th>
+                        <th>Delete</th>
+                        <th>Hours</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="tasks.length === 0">
+                        <td colspan="10" class="no-tasks">No tasks to display</td>
+                    </tr>
+                    <tr *ngFor="let task of tasks">
+                        <td><input type="checkbox"/></td>
+                        <td>{{ task.clientName }}</td>
+                        <td>{{ task.projectName }}</td>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.assignedTo }}</td>
+                        <td>{{ task.taskDate }}</td>
+                        <td><button>Edit</button></td>
+                        <td><button (click)="AddActivity(task.taskId)">Add Activity</button></td>
+                        <td><button (click)="DeleteTask(task.taskId)">Delete</button></td>
+                        <td>{{ task.eta }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="added-activities">
+            <h3>Added Activities</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Client</th>
+                        <th>Project</th>
+                        <th>Task Title</th>
+                        <th>Activity</th>
+                        <th>Description</th>
+                        <th>Hours</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="activityArray.length === 0">
+                        <td colspan="6" class="no-activities">No activities to display</td>
+                    </tr>
+                    <ng-container *ngFor="let item of activityArray">
+                        <tr *ngFor="let activity of item.activities">
+                            <td>{{ item.task.clientName }}</td>
+                            <td>{{ item.task.projectName }}</td>
+                            <td>{{ item.task.title }}</td>
+                            <td>{{ activity.title }}</td>
+                            <td>{{ activity.descriptionField }}</td>
+                            <td>{{ activity.activityHours }}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </section>
+    </main>
+

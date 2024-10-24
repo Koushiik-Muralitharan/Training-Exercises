@@ -1,5 +1,6 @@
 export class Task{
   userId: number
+  taskId!: number
   clientName: string
   projectName: string
   title: string

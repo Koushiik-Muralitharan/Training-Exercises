@@ -15,5 +15,10 @@ export class TaskService {
   AddTask(obj:Task): Observable<Task>{
     return this.http.post<Task>(`${environment.TASK_API_URL}/Addtask`,obj);
   }
-  
+  DeleteTask(taskId: number): Observable<any>{
+    return this.http.delete(`${environment.TASK_API_URL}/DeleteTask?TaskId=${taskId}`)
+  }
+  GetTask(date:string, userId:number): Observable<Task>{
+    return this.http.get<Task>(`${environment.TASK_API_URL}/GetTasksByDate?date=${date}&userId=${userId}`);
+  }
 }

@@ -9,10 +9,12 @@ import { UserService } from '../../Services/user.service';
 import { User } from '../../Modal/User';
 import { ActivityService } from '../../Services/activity.service';
 import { Activity } from '../../Modal/Activity';
+import { AddTaskComponent } from './add-task/add-task.component';
+import { AddActivityComponent } from './add-activity/add-activity.component';
 @Component({
   selector: 'app-add-task-page',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,AddTaskComponent,AddActivityComponent],
   templateUrl: './add-task-page.component.html',
   styleUrl: './add-task-page.component.css'
 })

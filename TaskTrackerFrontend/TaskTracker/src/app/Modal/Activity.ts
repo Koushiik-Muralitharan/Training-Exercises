@@ -1,5 +1,6 @@
 export class Activity{
   taskId!: number
+  activityId!:number
   title: string
   descriptionField: string
   activityHours: number

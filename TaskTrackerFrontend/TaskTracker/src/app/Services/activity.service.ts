@@ -12,6 +12,10 @@ export class ActivityService {
   AddActivity(obj:Activity): Observable<Activity>{
     return this.http.post<Activity>(`${environment.ACTIVITY_API_URL}/AddActivity`,obj)
   }
+ //http://localhost:7032/api/Activity/GetActivity?taskId=101
+  GetActivity(taskId:number): Observable<Activity[]>{
+    return this.http.get<Activity[]>(`${environment.ACTIVITY_API_URL}/GetActivity?taskId=${taskId}`);
+  }
 
   GetCurrentTaskIdFromSession():number{
         const taskId = sessionStorage.getItem("CurrentTaskId");
