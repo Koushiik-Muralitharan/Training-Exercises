@@ -1,17 +1,17 @@
 <p>Hi sign up</p>
 
 <div>
-    <form #SignUpFormData="ngForm" (ngSubmit)="onSubmit(SignUpFormData)">
+    <form #signupForm="ngForm" (ngSubmit)="onSaveUser(signupForm)">
         <div class="align-contents">
             <label  for="username">
                 Name:
-                <input type="text" name="uname" id="username" placeholder="Enter your name" required ngModel>
+                <input type="text" name="uname" id="username" placeholder="Enter your name" required [(ngModel)]="user.userName">
              </label>
         </div>
         <div class="align-contents">
             <label for="passcode">
                 Password:
-                <input type="text" name="upasscode" id="passcode" placeholder="Enter an password" required ngModel>
+                <input type="text" name="upasscode" id="passcode" placeholder="Enter an password" required [(ngModel)]="user.password"l>
              </label>
         </div>
         <button type="submit">Submit</button>

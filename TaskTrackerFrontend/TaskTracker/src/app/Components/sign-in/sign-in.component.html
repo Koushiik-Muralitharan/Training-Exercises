@@ -1,1 +1,48 @@
-<p>sign-in works!</p>
+<div class="container">
+  <div class="sub-container">
+    <div>
+        <p class="text-part">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla itaque iste
+          dolorum iure eum deleniti delectus, quod eveniet quasi animi eligendi
+          tenetur deserunt ducimus saepe cupiditate! Dicta vel tempore praesentium
+          natus mollitia libero eaque, molestiae eum obcaecati delectus ipsa. Quasi
+          incidunt nisi obcaecati commodi ipsam blanditiis a veritatis quidem animi
+          totam impedit deserunt aliquam ratione placeat eos laudantium illo
+          dignissimos 
+        </p>
+      </div>
+      <form #signInForm="ngForm" (ngSubmit)="GetLoggedUserInfo(signInForm)">
+        <div class="center-form-content">
+         <div class="align-contents">
+          <label for="username"> Name: </label>
+          <input
+            type="text"
+            name="uname"
+            id="username"
+            placeholder="Enter your name"
+            required
+            [(ngModel)]="userName"
+          />
+        </div>
+        <div class="align-contents">
+          <label for="passcode"> Password: </label>
+          <input
+            type="text"
+            name="upasscode"
+            id="passcode"
+            placeholder="Enter an password"
+            required
+            [(ngModel)]="password"
+          />
+        </div>
+        <div class="align-contents">
+          <button type="submit">Sign Up</button>
+        </div>
+        <div class="align-contents">
+            <p>already have an account...</p>
+        </div>
+        
+        </div>
+      </form>
+  </div>
+</div>
