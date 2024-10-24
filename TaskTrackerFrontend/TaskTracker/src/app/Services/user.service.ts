@@ -17,4 +17,9 @@ export class UserService {
   GetLoggedUserInfo(userName:string, password:string){
     return this.http.get<User>(`${environment.USER_API_URL}/LoggedUserInfo?UserName=${userName}&Password=${password}`);
   }
+
+  GetLoggedUserFromSession(): User{
+    const user = sessionStorage.getItem('LoggedUser');
+    return user ? JSON.parse(user) : -1;
+  }
 }

@@ -27,6 +27,7 @@ export class SignInComponent {
           if (res) {
             alert('User logged in successfully.');
             console.log(res);  
+            sessionStorage.setItem('LoggedUser',JSON.stringify(res));
             this.router.navigate(['/home']);
           }
          },
@@ -39,6 +40,6 @@ export class SignInComponent {
             alert('Unexpected error occurred.');
           }
         }
-    })
+    });
   }
 }
