@@ -79,7 +79,6 @@ export class HomeComponent {
       this.TaskService.DeleteTask(taskId).subscribe({
         next: (response: any) => {
           alert(response.message);
-          // Remove the deleted task from the task array
           this.tasks = this.tasks.filter(task => task.taskId !== taskId);
         },
         error: (error: HttpErrorResponse) => {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5EW/K1OCI+8=",
+  "dgSpecHash": "9YpDRLHQt1M=",
   "success": true,
-  "projectFilePath": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\TaskTrackerApplication.csproj",
+  "projectFilePath": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\TaskTrackerApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\koushiik.m\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\koushiik.m\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

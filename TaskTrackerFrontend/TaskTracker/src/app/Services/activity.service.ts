@@ -16,9 +16,23 @@ export class ActivityService {
   GetActivity(taskId:number): Observable<Activity[]>{
     return this.http.get<Activity[]>(`${environment.ACTIVITY_API_URL}/GetActivity?taskId=${taskId}`);
   }
+  GetSingleActivity(activityId:number): Observable<Activity>{
+    return this.http.get<Activity>(`${environment.ACTIVITY_API_URL}/GetSingleActivity?activityId=${activityId}`);
+  }
+  GetAllActivity(userId:number):Observable<Activity[]>{
+    return this.http.get<Activity[]>(`${environment.ACTIVITY_API_URL}/GetAllActivityByUser?userId=${userId}`);
+  }
 
   GetCurrentTaskIdFromSession():number{
         const taskId = sessionStorage.getItem("CurrentTaskId");
         return taskId ? parseInt(JSON.parse(taskId)) : -1;
+  }
+
+  DeleteActivity(activityId: number): Observable<any>{
+    return this.http.delete(`${environment.ACTIVITY_API_URL}/DeleteActivity?activityId=${activityId}`);
+  }
+
+  EditActivity(activity:Activity) : Observable<any>{
+    return this.http.put(`${environment.ACTIVITY_API_URL}/`,activity);
   }
 }

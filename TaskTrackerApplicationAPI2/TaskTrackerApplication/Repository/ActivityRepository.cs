@@ -11,6 +11,8 @@ namespace TaskTrackerApplication.Repository
         bool DeleteActivity(int activityId);
         bool EditActivity(ActivityModel activity);
         List<ActivityModel> GetActivity(int taskId);
+        List<ActivityModel> GetActivities(int userId);
+        ActivityModel GetSingleActivity(int activityID);
 
     }
 
@@ -156,5 +158,90 @@ namespace TaskTrackerApplication.Repository
             }
             return activities;
         }
+
+        public List<ActivityModel> GetActivities(int userId)
+        {
+            SqlConnection connection = conn.GetConnection();
+            List<ActivityModel> activities = new List<ActivityModel>();
+
+            try
+            {
+                string getActivityProcedure = "get_activities_by_uId";
+                SqlCommand command = new SqlCommand(getActivityProcedure, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@UserId", userId);
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ActivityModel activity = new ActivityModel
+                    {
+                        TaskId = Convert.ToInt32(reader["TaskId"]),
+                        ActivityId = Convert.ToInt32(reader["ActivityId"]),
+                        Title = reader["Title"].ToString(),
+                        DescriptionField = reader["DescriptionField"].ToString(),
+                        ActivityHours = Convert.ToDecimal(reader["ActivityHours"])
+                    };
+                    activities.Add(activity);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return activities;
+        }
+
+        public ActivityModel GetSingleActivity(int activityId)
+        {
+            SqlConnection connection = conn.GetConnection();
+            //List<ActivityModel> activities = new List<ActivityModel>();
+            ActivityModel currentActivity = null;
+
+            try
+            {
+                string getActivityProcedure = "sp_to_get_single_activity";
+                SqlCommand command = new SqlCommand(getActivityProcedure, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@activityId", activityId);
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    currentActivity  = new ActivityModel
+                    {
+                        TaskId = Convert.ToInt32(reader["TaskId"]),
+                        ActivityId = Convert.ToInt32(reader["ActivityId"]),
+                        Title = reader["Title"].ToString(),
+                        DescriptionField = reader["DescriptionField"].ToString(),
+                        ActivityHours = Convert.ToDecimal(reader["ActivityHours"])
+                    };
+                   
+                }
+                Console.WriteLine(currentActivity.Title);
+                Console.WriteLine(currentActivity.TaskId);
+                Console.WriteLine(currentActivity.ActivityId);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return currentActivity;
+        }
+
+
     }
 }

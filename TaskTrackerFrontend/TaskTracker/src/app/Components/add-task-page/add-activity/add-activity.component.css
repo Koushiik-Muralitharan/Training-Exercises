@@ -1,3 +1,44 @@
+.tabs ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+  }
+  
+  .tabs ul li {
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .tabs ul li.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .activity-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .activity-table th,
+  .activity-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .activity-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .no-activities {
+    color: red;
+    text-align: center;
+  }
 main {
     margin-top: 60px; /* For space under the fixed navbar */
     padding: 20px;

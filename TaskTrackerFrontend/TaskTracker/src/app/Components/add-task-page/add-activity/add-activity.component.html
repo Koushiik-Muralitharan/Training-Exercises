@@ -1,43 +1,81 @@
-<main>
-    <section class="activity-section">
-        <div class="activity-header">
-            <h2>New Activity</h2>
-            <div class="activity-status">
-                <span class="activity-count">Number of Activities: 0</span>
-                <span class="total-hours">Total Hours:</span>
-            </div>
-        </div>
-
-        <form class="activity-form" #addActivityForm="ngForm" (ngSubmit)="onSaveActivity(addActivityForm)">
-            <!-- New Activity Title -->
-            <h3>New Activity</h3>
-
-            <!-- First Row: Title -->
-            <div class="form-group">
-                <label for="activityTitle">Title <span class="required">*</span></label>
-                <input type="text" id="activityTitle" name="aTable" required [(ngModel)]="activity.title">
-            </div>
-
-            <!-- Second Row: Description -->
-            <div class="form-group">
-                <label for="activityDescription">Description</label>
-                <textarea id="activityDescription" rows="4" name="aDescription" [(ngModel)]="activity.descriptionField"></textarea>
-            </div>
-
-            <!-- Third Row: Hours and Error Message -->
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="activityHours">Hours <span class="required">*</span></label>
-                    <input type="number" id="activityHours" name="aHours" required [(ngModel)]="activity.activityHours">
-                    <span class="error-message">Please add realistic hours. An Activity should not exceed 2 hours.</span>
+<div class="tabs">
+    <ul>
+      <li [ngClass]="{active: currentTab === 'activities'}" (click)="switchTab('activities')">
+        <button (click)="GetActivitiesByUser()">Activities</button>
+      </li>
+      <li [ngClass]="{active: currentTab === 'new-activity'}" (click)="switchTab('new-activity')">
+        <button>New Activities</button>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Content based on selected tab -->
+  <div *ngIf="currentTab === 'activities'">
+    <table class="activity-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Hours</th>
+            <th>Description</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>  
+          <tr *ngIf="activityArray.length === 0">
+            <td colspan="5" class="no-activities">No activities to display</td>
+          </tr>
+          <tr *ngFor="let activity of activityArray">
+            <td>{{ activity.title }}</td>
+            <td>{{ activity.activityHours }}</td>
+            <td>{{ activity.descriptionField }}</td>
+            <td><button (click)="EditActivity(activity)">Edit</button></td>
+            <td><button (click)="DeleteActivity(activity.activityId)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  
+  <div *ngIf="currentTab === 'new-activity'">
+    <main>
+        <section class="activity-section">
+            <div class="activity-header">
+                <h2>New Activity</h2>
+                <div class="activity-status">
+                    <span class="activity-count">Number of Activities: 0</span>
+                    <span class="total-hours">Total Hours:</span>
                 </div>
             </div>
+    
+            <form class="activity-form" #addActivityForm="ngForm" (ngSubmit)="onSaveActivity(addActivityForm)">
+                <h3>New Activity</h3>
+                
+                <div class="form-group">
+                    <label for="activityTitle">Title <span class="required">*</span></label>
+                    <input type="text" id="activityTitle" name="aTable" required [(ngModel)]="activity.title">
+                </div>
 
-            <!-- Buttons: Clear and Save -->
-            <div class="form-actions">
-                <button class="clear-btn">Clear</button>
-                <button type="submit" class="save-btn">Save</button>
-            </div>
-        </form>
-    </section>
-</main>
+                <div class="form-group">
+                    <label for="activityDescription">Description</label>
+                    <textarea id="activityDescription" rows="4" name="aDescription" [(ngModel)]="activity.descriptionField"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="activityHours">Hours <span class="required">*</span></label>
+                        <input type="number" id="activityHours" name="aHours" required [(ngModel)]="activity.activityHours">
+                        <span class="error-message">Please add realistic hours. An Activity should not exceed 2 hours.</span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="clear-btn">Clear</button>
+                    <button *ngIf="!editMode" type="submit" class="save-btn">Save</button>
+                    <button (click)="UpdateActivity()" *ngIf="editMode" class="save-btn">Edit</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    
+  </div>
+  

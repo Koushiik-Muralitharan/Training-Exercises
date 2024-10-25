@@ -2128,11 +2128,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\TaskTrackerApplication.csproj",
+      "projectUniqueName": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\TaskTrackerApplication.csproj",
       "projectName": "TaskTrackerApplication",
-      "projectPath": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\TaskTrackerApplication.csproj",
+      "projectPath": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\TaskTrackerApplication.csproj",
       "packagesPath": "C:\\Users\\koushiik.m\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\koushiik.m\\source\\repos\\TaskTrackerApplication\\TaskTrackerApplication\\obj\\",
+      "outputPath": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\koushiik.m\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -23,7 +23,13 @@ export class AddActivityComponent {
   TaskService = inject(TaskService);
   UserService = inject(UserService);
   ActivityService = inject(ActivityService);
+  activityArray:Activity[] =[];
+  currentTab: string = 'new-activity';  
+  editMode: boolean = false;
 
+  switchTab(tab: string) {
+    this.currentTab = tab;
+  }
   onSaveActivity(form:NgForm){
     if(form.invalid){
       alert('Please fill out the form correctly.');
@@ -53,5 +59,85 @@ export class AddActivityComponent {
     }else{
       alert('Add a task to add activity');
     }
+  }
+  GetActivitiesByUser(){
+    this.activityArray = [];
+    const user:User = this.UserService.GetLoggedUserFromSession();
+    const userId: number = user.userId;
+    this.ActivityService.GetAllActivity(userId).subscribe({
+      next: (res)=>{
+        if(res){
+           this.activityArray = res;
+        }
+      },
+      error: (error: HttpErrorResponse) => {
+        if(error.status === 400){
+         alert('cannot get activity');
+        }
+        else if (error.status === 500) {
+         alert('Internal server error: ' + error.error);
+       } else {
+         alert('Unexpected error occurred.');
+       }
+      }
+    })
+  }
+
+  DeleteActivity(activityId:number){
+    if(confirm('Are you sure you want to delete this task?')){
+      this.ActivityService.DeleteActivity(activityId).subscribe({
+          next: (res:any) =>{
+            alert(res.message);
+            this.activityArray = this.activityArray.filter(activity => activity.activityId != activityId)
+          },
+          error: (error: HttpErrorResponse) => {
+            if (error.status === 404) {
+              alert('Task cannot be deleted.');
+            } else if (error.status === 500) {
+              alert('Internal server error: ' + error.error);
+            } else {
+              alert('Unexpected error occurred.');
+            }
+          }  
+      })
+    }      
+  }
+
+  EditActivity(activity: Activity){
+    console.log(activity.activityId);
+      this.ActivityService.GetSingleActivity(activity.activityId).subscribe({
+        
+        next: (res) =>{
+          console.log(res);
+           this.LoadDataIntoForm(res);
+        },
+        error: (error: HttpErrorResponse) => {
+          if (error.status === 404) {
+            alert('Activity cannot be fetched.');
+          } else if (error.status === 500) {
+            alert('Internal server error: ' + error.error);
+          } else {
+            alert('Unexpected error occurred.');
+          }
+        }  
+      })
+  }
+
+  LoadDataIntoForm(act: Activity){
+    
+    this.currentTab = "new-activity"
+
+    this.activity.title = act.title,
+    this.activity.descriptionField = act.descriptionField,
+    this.activity.activityHours = act.activityHours
+    this.editMode = true;
+  }
+
+  UpdateActivity(){
+     this.ActivityService.EditActivity(this.activity).subscribe({
+       next: (res) =>{
+         
+       }
+     })
   }
 }

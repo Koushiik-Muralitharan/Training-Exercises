@@ -107,5 +107,41 @@ namespace TaskTrackerApplication.Controllers
                 return StatusCode(500, "Internal server error.");
             }
         }
+
+        [HttpGet("GetAllActivityByUser")]
+        public IActionResult GetActivities(int userId)
+        {
+            try
+            {
+                if (userId == null)
+                {
+                    return BadRequest("Invalid data request sent for the getting activity.");
+                }
+                List<ActivityModel> activities = activityRepository.GetActivities(userId);
+                return Ok(activities);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error.");
+            }
+        }
+
+        [HttpGet("GetSingleActivity")]
+        public IActionResult GetSingleActivity(int activityId)
+        {
+            try
+            {
+                if (activityId == 0)
+                {
+                    return BadRequest("Invalid data request sent for the getting activity.");
+                }
+                ActivityModel activity = activityRepository.GetSingleActivity(activityId);
+                return Ok(activity);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error.");
+            }
+        }
     }
 }

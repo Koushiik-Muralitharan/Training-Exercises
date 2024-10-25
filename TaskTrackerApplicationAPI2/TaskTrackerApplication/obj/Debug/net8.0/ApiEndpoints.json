@@ -64,6 +64,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "TaskTrackerApplication.Controllers.ActivityController",
+    "Method": "GetActivities",
+    "RelativePath": "api/Activity/GetAllActivityByUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskTrackerApplication.Controllers.ActivityController",
+    "Method": "GetSingleActivity",
+    "RelativePath": "api/Activity/GetSingleActivity",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "activityId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TaskTrackerApplication.Controllers.TaskController",
     "Method": "AddTask",
     "RelativePath": "api/Task/Addtask",
