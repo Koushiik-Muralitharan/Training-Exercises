@@ -109,15 +109,15 @@ namespace TaskTrackerApplication.Controllers
         }
 
         [HttpGet("GetAllActivityByUser")]
-        public IActionResult GetActivities(int userId)
+        public IActionResult GetActivities(int taskId)
         {
             try
             {
-                if (userId == null)
+                if (taskId == null)
                 {
                     return BadRequest("Invalid data request sent for the getting activity.");
                 }
-                List<ActivityModel> activities = activityRepository.GetActivities(userId);
+                List<ActivityModel> activities = activityRepository.GetActivities(taskId);
                 return Ok(activities);
             }
             catch (Exception ex)

@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\tasktrackerapplicationapi2\\tasktrackerapplication\\controllers\\activitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\controllers\\activitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\tasktrackerapplicationapi2\\tasktrackerapplication\\repository\\taskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\repository\\taskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\tasktrackerapplicationapi2\\tasktrackerapplication\\repository\\activityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\repository\\activityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\tasktrackerapplicationapi2\\tasktrackerapplication\\modals\\activitymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\modals\\activitymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\tasktrackerapplicationapi2\\tasktrackerapplication\\repository\\taskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\repository\\taskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\tasktrackerapplicationapi2\\tasktrackerapplication\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\tasktrackerapplicationapi2\\tasktrackerapplication\\controllers\\activitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\controllers\\activitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\tasktrackerapplicationapi2\\tasktrackerapplication\\modals\\taskmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\modals\\taskmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\tasktrackerapplicationapi2\\tasktrackerapplication\\modals\\activitymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|solutionrelative:tasktrackerapplication\\modals\\activitymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EAFCEBED-3F71-48B6-865E-DE78E898A820}|TaskTrackerApplication\\TaskTrackerApplication.csproj|c:\\users\\koushiik.m\\onedrive - claysys technologies pvt ltd -1\\desktop\\training_exercises\\tasktrackerapplicationapi2\\tasktrackerapplication\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,30 +54,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 526,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "ActivityController.cs",
               "DocumentMoniker": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\Controllers\\ActivityController.cs",
               "RelativeDocumentMoniker": "TaskTrackerApplication\\Controllers\\ActivityController.cs",
               "ToolTip": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\Controllers\\ActivityController.cs",
               "RelativeToolTip": "TaskTrackerApplication\\Controllers\\ActivityController.cs",
-              "ViewState": "AgIAAIQAAAAAAAAAAAAqwJMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAQwGoAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-23T12:47:39.119Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "TaskRepository.cs",
               "DocumentMoniker": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\Repository\\TaskRepository.cs",
               "RelativeDocumentMoniker": "TaskTrackerApplication\\Repository\\TaskRepository.cs",
               "ToolTip": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\Repository\\TaskRepository.cs",
               "RelativeToolTip": "TaskTrackerApplication\\Repository\\TaskRepository.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAqwHwAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAM8AAAAAAAAAAAAAAN4AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-23T11:14:54.328Z",
               "EditorCaption": ""
@@ -154,47 +154,48 @@
               "Title": "ActivityRepository.cs",
               "DocumentMoniker": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\Repository\\ActivityRepository.cs",
               "RelativeDocumentMoniker": "TaskTrackerApplication\\Repository\\ActivityRepository.cs",
-              "ToolTip": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\Repository\\ActivityRepository.cs",
-              "RelativeToolTip": "TaskTrackerApplication\\Repository\\ActivityRepository.cs",
-              "ViewState": "AgIAAMgAAAAAAAAAAAA4wNUAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\Repository\\ActivityRepository.cs*",
+              "RelativeToolTip": "TaskTrackerApplication\\Repository\\ActivityRepository.cs*",
+              "ViewState": "AgIAAMcAAAAAAAAAAAAUwOYAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-24T16:43:51.742Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "TaskController.cs",
               "DocumentMoniker": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\Controllers\\TaskController.cs",
               "RelativeDocumentMoniker": "TaskTrackerApplication\\Controllers\\TaskController.cs",
               "ToolTip": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\Controllers\\TaskController.cs",
               "RelativeToolTip": "TaskTrackerApplication\\Controllers\\TaskController.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAgwFUAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAcwHsAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-23T15:19:11.631Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "TaskModel.cs",
               "DocumentMoniker": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\Modals\\TaskModel.cs",
               "RelativeDocumentMoniker": "TaskTrackerApplication\\Modals\\TaskModel.cs",
               "ToolTip": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\Modals\\TaskModel.cs",
               "RelativeToolTip": "TaskTrackerApplication\\Modals\\TaskModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T10:37:10.394Z"
+              "WhenOpened": "2024-10-23T10:37:10.394Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "ActivityModel.cs",
               "DocumentMoniker": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\Modals\\ActivityModel.cs",
               "RelativeDocumentMoniker": "TaskTrackerApplication\\Modals\\ActivityModel.cs",
               "ToolTip": "C:\\Users\\koushiik.m\\OneDrive - Claysys Technologies Pvt Ltd -1\\Desktop\\Training_Exercises\\TaskTrackerApplicationAPI2\\TaskTrackerApplication\\Modals\\ActivityModel.cs",
               "RelativeToolTip": "TaskTrackerApplication\\Modals\\ActivityModel.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAxwAYAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAIwAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-23T12:47:00.881Z",
               "EditorCaption": ""

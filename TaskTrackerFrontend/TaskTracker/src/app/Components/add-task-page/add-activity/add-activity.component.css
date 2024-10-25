@@ -2,6 +2,7 @@
     list-style-type: none;
     padding: 0;
     display: flex;
+    margin-left: 30px;
   }
   
   .tabs ul li {
@@ -16,9 +17,20 @@
     background-color: #007bff;
     color: white;
   }
+
+  li button{
+    background: none;
+    border: none;
+  }
   
+  .activity-table-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px ;
+  }
   .activity-table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
     margin-top: 20px;
   }
@@ -40,7 +52,7 @@
     text-align: center;
   }
 main {
-    margin-top: 60px; /* For space under the fixed navbar */
+    margin-top: 20px; 
     padding: 20px;
 }
 
@@ -156,7 +168,9 @@ textarea {
     background-color: #ccc;
 }
 
-/* Responsive Design */
+
+
+
 @media (max-width: 768px) {
     .activity-status {
         flex-direction: column;

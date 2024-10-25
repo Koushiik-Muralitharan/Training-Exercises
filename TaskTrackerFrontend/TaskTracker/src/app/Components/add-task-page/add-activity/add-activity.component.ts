@@ -9,6 +9,7 @@ import { Activity } from '../../../Modal/Activity';
 import { ActivityService } from '../../../Services/activity.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { EditActivityModel } from '../../../Modal/EditActivity';
 
 @Component({
   selector: 'app-add-activity',
@@ -18,15 +19,16 @@ import { CommonModule } from '@angular/common';
   styleUrl: './add-activity.component.css'
 })
 export class AddActivityComponent {
-  constructor(private router: Router){}
   activity:Activity = new Activity();
+  edit:EditActivityModel  = new EditActivityModel();
   TaskService = inject(TaskService);
   UserService = inject(UserService);
   ActivityService = inject(ActivityService);
   activityArray:Activity[] =[];
   currentTab: string = 'new-activity';  
   editMode: boolean = false;
-
+  constructor(private router: Router){}
+  
   switchTab(tab: string) {
     this.currentTab = tab;
   }
@@ -36,7 +38,7 @@ export class AddActivityComponent {
       return;
     }
     const taskId:number = this.ActivityService.GetCurrentTaskIdFromSession();
-    if(taskId != -1){
+    if(taskId != -1 || this.editMode === false){
       this.activity.taskId = taskId;
       this.ActivityService.AddActivity(this.activity).subscribe({
            next: (res: any) => {
@@ -60,27 +62,29 @@ export class AddActivityComponent {
       alert('Add a task to add activity');
     }
   }
-  GetActivitiesByUser(){
-    this.activityArray = [];
-    const user:User = this.UserService.GetLoggedUserFromSession();
-    const userId: number = user.userId;
-    this.ActivityService.GetAllActivity(userId).subscribe({
-      next: (res)=>{
-        if(res){
-           this.activityArray = res;
+  
+    GetActivitiesByUser(){
+      this.activityArray = [];
+      const user:User = this.UserService.GetLoggedUserFromSession();
+      //const userId: number = user.userId;
+      const taskId: number = this.ActivityService.GetCurrentTaskIdFromSession();
+      this.ActivityService.GetAllActivity(taskId).subscribe({
+        next: (res)=>{
+          if(res){
+             this.activityArray = res;
+          }
+        },
+        error: (error: HttpErrorResponse) => {
+          if(error.status === 400){
+           alert('cannot get activity');
+          }
+          else if (error.status === 500) {
+           alert('Internal server error: ' + error.error);
+         } else {
+           alert('Unexpected error occurred.');
+         }
         }
-      },
-      error: (error: HttpErrorResponse) => {
-        if(error.status === 400){
-         alert('cannot get activity');
-        }
-        else if (error.status === 500) {
-         alert('Internal server error: ' + error.error);
-       } else {
-         alert('Unexpected error occurred.');
-       }
-      }
-    })
+      })
   }
 
   DeleteActivity(activityId:number){
@@ -123,21 +127,32 @@ export class AddActivityComponent {
       })
   }
 
-  LoadDataIntoForm(act: Activity){
-    
+  LoadDataIntoForm(act: Activity){  
     this.currentTab = "new-activity"
-
+    this.activity.taskId = act.taskId,
+    this.activity.activityId = act.activityId,
     this.activity.title = act.title,
     this.activity.descriptionField = act.descriptionField,
     this.activity.activityHours = act.activityHours
     this.editMode = true;
   }
 
-  UpdateActivity(){
-     this.ActivityService.EditActivity(this.activity).subscribe({
+  UpdateActivity(form:NgForm){
+    console.log("entered...");
+    this.ActivityService.EditActivity(this.activity).subscribe({
        next: (res) =>{
-         
-       }
+         console.log(typeof(res));
+         alert(res.message);
+       },
+       error: (error: HttpErrorResponse) => {
+        if (error.status === 404) {
+          alert('Activity cannot be fetched.');
+        } else if (error.status === 500) {
+          alert('Internal server error: ' + error.error);
+        } else {
+          alert('Unexpected error occurred.');
+        }
+      }  
      })
   }
 }

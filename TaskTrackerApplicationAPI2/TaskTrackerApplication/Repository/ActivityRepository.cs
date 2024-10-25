@@ -159,17 +159,17 @@ namespace TaskTrackerApplication.Repository
             return activities;
         }
 
-        public List<ActivityModel> GetActivities(int userId)
+        public List<ActivityModel> GetActivities(int taskId)
         {
             SqlConnection connection = conn.GetConnection();
             List<ActivityModel> activities = new List<ActivityModel>();
 
             try
             {
-                string getActivityProcedure = "get_activities_by_uId";
+                string getActivityProcedure = "sp_get_activity_by_task";
                 SqlCommand command = new SqlCommand(getActivityProcedure, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@UserId", userId);
+                command.Parameters.AddWithValue("@taskId", taskId);
                 connection.Open();
 
                 SqlDataReader reader = command.ExecuteReader();
@@ -226,9 +226,9 @@ namespace TaskTrackerApplication.Repository
                     };
                    
                 }
-                Console.WriteLine(currentActivity.Title);
-                Console.WriteLine(currentActivity.TaskId);
-                Console.WriteLine(currentActivity.ActivityId);
+                //Console.WriteLine(currentActivity.Title);
+                //Console.WriteLine(currentActivity.TaskId);
+                //Console.WriteLine(currentActivity.ActivityId);
 
             }
             catch (Exception ex)

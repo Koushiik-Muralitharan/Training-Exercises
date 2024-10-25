@@ -1,34 +1,43 @@
 <div class="container">
-    <div class="sub-container">
-      <div>
-          <p class="text-part">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla itaque iste
-            dolorum iure eum deleniti delectus, quod eveniet quasi animi eligendi
-            tenetur deserunt ducimus saepe cupiditate! Dicta vel tempore praesentium
-            natus mollitia libero eaque, molestiae eum obcaecati delectus ipsa. Quasi
-            incidunt nisi obcaecati commodi ipsam blanditiis a veritatis quidem animi
-            totam impedit deserunt aliquam ratione placeat eos laudantium illo
-            dignissimos 
-          </p>
-        </div>
-        <form #signupForm="ngForm" (ngSubmit)="onSaveUser(signupForm)">
-          <div class="center-form-content">
-           <div class="align-contents">
-            <label for="username"> Name: </label>
-            <input type="text" name="uname" id="username" placeholder="Enter your name" required [(ngModel)]="user.userName">
-          </div>
-          <div class="align-contents">
-            <label for="passcode"> Password: </label>
-            <input type="password" name="upasscode" id="passcode" placeholder="Enter an password" required [(ngModel)]="user.password">
-          </div>
-          <div class="align-contents">
-            <button type="submit">Sign Up</button>
-          </div>
-          <div class="align-contents">
-              <a href="/">already have an account...</a>
-          </div> 
-          </div>
-        </form>
+  <div class="sub-container">
+    <div>
+      <p class="text-part">
+        Appforms is a platform which enables you to build business forms and
+        extend them to include complex business logic, working with data from
+        SQL Server databases, Web Services, and WCF services.
+      </p>
     </div>
+    <form #signupForm="ngForm" (ngSubmit)="onSaveUser(signupForm)">
+      <div class="center-form-content">
+        <div class="align-contents">
+          <label for="username"> Name: </label>
+          <input
+            type="text"
+            name="uname"
+            id="username"
+            placeholder="Enter your name"
+            required
+            [(ngModel)]="user.userName"
+          />
+        </div>
+        <div class="align-contents">
+          <label for="passcode"> Password: </label>
+          <input
+            type="password"
+            name="upasscode"
+            id="passcode"
+            placeholder="Enter an password"
+            required
+            [(ngModel)]="user.password"
+          />
+        </div>
+        <div class="align-contents">
+          <button type="submit">Sign Up</button>
+        </div>
+        <div class="align-contents">
+          <a href="/">already have an account...</a>
+        </div>
+      </div>
+    </form>
   </div>
-  
+</div>

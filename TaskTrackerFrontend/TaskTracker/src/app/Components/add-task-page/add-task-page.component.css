@@ -1,60 +1,4 @@
-/* .container{
-    margin: 15px;
-}
-form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start
-}
 
-form div {
-    flex: 1 1 30%; 
-    margin: 10px;
-}
-
-.activity-form-wrapper {
-    width: 70%; 
-    margin: 0; 
-    padding-left: 10px; 
-}
-
-.activity-form-wrapper form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.activity-form-wrapper form div {
-    flex: 1 1 100%; 
-    margin: 10px;
-}
-
-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
-}
-
-form input, form select {
-    width: 100%; 
-    padding: 8px;
-}
-
-form textarea {
-    width: 60%;
-    height: 100px; 
-}
-
- button {
-   width: auto; 
-   padding: 5px 10px; 
-   align-self: flex-end;
-} 
-
-.activity-header{
-    margin-top: 10px;
-} */
 
 header {
     position: fixed;
@@ -66,7 +10,7 @@ header {
     justify-content: space-between;
     align-items: center;
     color: #fff;
-    z-index: 1000; /* Ensure it stays on top */
+    z-index: 1000; 
 }
 
 .header-left {
@@ -74,16 +18,7 @@ header {
     align-items: center;
 }
 
-.logo {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-h1 {
-    font-size: 20px;
-}
-
-.header-right {
-    font-size: 14px;
+a{
+    text-decoration: none;
+    color: white;
 }

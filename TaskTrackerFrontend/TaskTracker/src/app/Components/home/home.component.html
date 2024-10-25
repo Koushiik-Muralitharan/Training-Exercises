@@ -1,8 +1,7 @@
 
     <header>
         <div class="header-left">
-            <img src="claysys-logo.png" alt="Claysys Logo" class="logo">
-            <h1>Task Tracker</h1>
+            <span>Task Tracker</span>
         </div>
         <div class="header-right">
             <span class="user-info">koushik.m</span>
@@ -11,19 +10,18 @@
 
     <main>
         <section class="tasks-overview">
-            <div class="tasks-header">
-                <h2>Tasks</h2>
-                <span>0 Item(s) In Total</span>
-            </div>
-            <!-- <div class="task-warning">
-                <p>You have not updated your last day task</p>
-            </div> -->
-            <div class="controls">
-                <button class="clients-projects-btn">Clients & Projects</button>
-                <button class="refresh-btn">&#x21bb;</button>
-                <a href="/taskpage">
-                    <button class="add-task-btn" >+ Add Task</button>
-                </a>
+            <div class="controls-container">
+                <div class="tasks-header">
+                    <h4>Tasks</h4>
+                    <span>0 Item(s) In Total</span>
+                </div>
+                <div class="controls">
+                    <button class="clients-projects-btn">Clients & Projects</button>
+                    <button class="refresh-btn">&#x21bb;</button>
+                    <a href="/taskpage">
+                        <button class="add-task-btn" >+ Add Task</button>
+                    </a>
+                </div>
             </div>
             <div class="date-picker">
                 <label for="date">Date</label>
@@ -36,11 +34,12 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Task Completed</th>
+                        <th><input type="checkbox"></th>
                         <th>Client</th>
                         <th>Project</th>
                         <th>Task Title</th>
                         <th>Assigned To</th>
+                        <th>Task Completed</th>
                         <th>Date</th>
                         <th>Edit</th> 
                         <th>Add Activity</th>
@@ -50,7 +49,7 @@
                 </thead>
                 <tbody>
                     <tr *ngIf="tasks.length === 0">
-                        <td colspan="10" class="no-tasks">No tasks to display</td>
+                        <td colspan="11" class="no-tasks">No tasks to display</td>
                     </tr>
                     <tr *ngFor="let task of tasks">
                         <td><input type="checkbox"/></td>
@@ -58,8 +57,9 @@
                         <td>{{ task.projectName }}</td>
                         <td>{{ task.title }}</td>
                         <td>{{ task.assignedTo }}</td>
+                        <td>completed</td>
                         <td>{{ task.taskDate }}</td>
-                        <td><button>Edit</button></td>
+                        <td><button (click)="EditTask(task)">Edit</button></td>
                         <td><button (click)="AddActivity(task.taskId)">Add Activity</button></td>
                         <td><button (click)="DeleteTask(task.taskId)">Delete</button></td>
                         <td>{{ task.eta }}</td>
@@ -73,6 +73,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th><input type="checkbox"></th>
                         <th>Client</th>
                         <th>Project</th>
                         <th>Task Title</th>
@@ -83,18 +84,18 @@
                 </thead>
                 <tbody>
                     <tr *ngIf="activityArray.length === 0">
-                        <td colspan="6" class="no-activities">No activities to display</td>
+                        <td colspan="7" class="no-activities">No activities to display</td>
                     </tr>
-                    <ng-container *ngFor="let item of activityArray">
-                        <tr *ngFor="let activity of item.activities">
+                    
+                        <tr *ngFor="let item of activityArray">
+                            <td><input type="checkbox"></td>
                             <td>{{ item.task.clientName }}</td>
                             <td>{{ item.task.projectName }}</td>
                             <td>{{ item.task.title }}</td>
-                            <td>{{ activity.title }}</td>
-                            <td>{{ activity.descriptionField }}</td>
-                            <td>{{ activity.activityHours }}</td>
+                            <td>{{ item.activities.title }}</td>
+                            <td>{{ item.activities.descriptionField }}</td>
+                            <td>{{ item.activities.activityHours }}</td>
                         </tr>
-                    </ng-container>
                 </tbody>
             </table>
         </section>

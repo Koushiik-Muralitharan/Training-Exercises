@@ -12,6 +12,7 @@ namespace TaskTrackerApplication.Repository
         bool EditTask(TaskModel task);
         bool DeleteTask(int taskId);
         List<TaskModel> GetTasks(DateTime date, int userId);
+        TaskModel GetTask(int taskId);
 
     }
 
@@ -174,6 +175,52 @@ namespace TaskTrackerApplication.Repository
                 connection.Close();
             }
             return tasks;
+        }
+
+        public TaskModel GetTask(int taskId)
+        {
+            SqlConnection connection = conn.GetConnection();
+            
+            TaskModel task = null;
+            try
+            {
+                string getTaskProcedure = "sp_get_task_by_taskId";
+                SqlCommand command = new SqlCommand(getTaskProcedure,connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@taskId", taskId);
+
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    task = new TaskModel
+                    {
+                        UserId = Convert.ToInt32(reader["FUserId"]),
+                        TaskId = Convert.ToInt32(reader["TaskID"]),
+                        ClientName = reader["ClientName"].ToString(),
+                        ProjectName = reader["ProjectName"].ToString(),
+                        title = reader["title"].ToString(),
+                        ETA = reader.GetDecimal(reader.GetOrdinal("ETA")),
+                        TaskDate = reader["TaskDate"].ToString(),
+                        AssignedTo = reader["AssignedTo"].ToString(),
+                        AssignedBy = reader["AssignedBy"].ToString(),
+                        SupportType = reader["SupportType"].ToString(),
+                        PriorityType = reader["PriorityType"].ToString(),
+                        DescriptionField = reader["DescriptionField"].ToString()
+                    };
+                }
+            }catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return task;
         }
     }
 }

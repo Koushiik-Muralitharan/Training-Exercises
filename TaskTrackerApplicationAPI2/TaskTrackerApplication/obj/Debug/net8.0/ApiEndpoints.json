@@ -72,7 +72,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
+        "Name": "taskId",
         "Type": "System.Int32",
         "IsRequired": false
       }
@@ -139,6 +139,22 @@
         "Name": "task",
         "Type": "TaskTrackerApplication.Modals.TaskModel",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskTrackerApplication.Controllers.TaskController",
+    "Method": "GetTask",
+    "RelativePath": "api/Task/GetEditDate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taskId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

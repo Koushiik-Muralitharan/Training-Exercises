@@ -3,7 +3,7 @@
         <h2>New Task</h2>
 
         <form class="task-form" #addTaskForm="ngForm" (ngSubmit)="onSaveTask(addTaskForm)">
-            <!-- First Row -->
+            
             <div class="form-row">
                 <div class="form-group">
                     <label for="clientName">Client Name <span class="required">*</span></label>
@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <!-- Second Row -->
+            
             <div class="form-row">
                 <div class="form-group">
                     <label for="eta">ETA (Hours) <span class="required">*</span></label>
@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-            <!-- Third Row -->
+            
             <div class="form-row">
                 <div class="form-group">
                     <label for="assignedBy">Assigned By <span class="required">*</span></label>
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <!-- Fourth Row -->
+       
             <div class="form-row">
                 <div class="form-group description-group">
                     <label for="description">Description</label>
@@ -71,7 +71,7 @@
                 </div>
             </div>
 
-            <!-- Buttons -->
+       
             <div class="form-actions">
                 <button class="cancel-btn">Cancel</button>
                 <button type="submit" class="save-btn">Save</button>

@@ -106,5 +106,23 @@ namespace TaskTrackerApplication.Controllers
                 return StatusCode(500, "Internal server error.");
             }
         }
+        [HttpGet("GetEditTaskDetails")]
+
+        public IActionResult GetTask(int taskId)
+        {
+            try
+            {
+                if (taskId == null)
+                {
+                    return BadRequest("Invalid data sent for getting the editted task.");
+                }
+                TaskModel task = taskRepository.GetTask(taskId);
+                return Ok(task);
+            }
+            catch
+            {
+                return StatusCode(500, "Internal server error.");
+            }
+        }
     }
 }

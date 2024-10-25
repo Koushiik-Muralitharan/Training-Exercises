@@ -13,65 +13,69 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  constructor(private router:Router){}
+  constructor(private router: Router) {}
   //selectedDate!:string;
-  tasks:Task[] = [];
+  tasks: Task[] = [];
   // activityArray:Activity[] =[];
-  activityArray: { task: Task; activities: Activity[] }[] = [];
-  currentUserId!:number;
-  task:Task = new Task();
-  user:User = new User();
-  activity:Activity = new Activity();
+  activityArray: { task: Task; activities: Activity }[] = [];
+  currentUserId!: number;
+  task: Task = new Task();
+  user: User = new User();
+  activity: Activity = new Activity();
   TaskService = inject(TaskService);
   UserService = inject(UserService);
   ActivityService = inject(ActivityService);
-  GetTasks(event: Event){
+  GetTasks(event: Event) {
     const date = (event.target as HTMLInputElement).value;
     console.log('Selected date:', date);
     //this.selectedDate = date;
-    const user:User = this.UserService.GetLoggedUserFromSession();
+    const user: User = this.UserService.GetLoggedUserFromSession();
     this.currentUserId = user.userId;
     this.tasks = [];
     this.activityArray = [];
     this.TaskService.GetTask(date, this.currentUserId).subscribe({
-      next: (res:any) => {
-        if (res){
-            alert("recieved the tasks");
-            this.tasks = res;
-            console.log(res);
-            if(this.tasks.length>0){
-              this.tasks.forEach(task => {
-                this.ActivityService.GetActivity(task.taskId).subscribe({
-                  next: (activities: Activity[]) => {
-                    console.log(`Activities for Task ${task.taskId}:`, activities);
-                    activities.forEach(activity => {
-                      this.activityArray.push({ task: task, activities: activities });
+      next: (res: any) => {
+        if (res) {
+          alert('recieved the tasks');
+          this.tasks = res;
+          console.log(res);
+          if (this.tasks.length > 0) {
+            this.tasks.forEach((task) => {
+              this.ActivityService.GetActivity(task.taskId).subscribe({
+                next: (activities: Activity[]) => {
+                  console.log(
+                    `Activities for Task ${task.taskId}:`,
+                    activities
+                  );
+                  activities.forEach((activity) => {
+                    this.activityArray.push({
+                      task: task,
+                      activities: activity,
                     });
-    
-                    console.log('Updated activityArray:', this.activityArray);
-                    
-                  }
-                })
+                  });
+
+                  console.log('Updated activityArray:', this.activityArray);
+                },
               });
-            }
+            });
+          }
         }
       },
       error: (error: HttpErrorResponse) => {
-        if(error.status === 400){
-         alert('cannot get tasks');
+        if (error.status === 400) {
+          alert('cannot get tasks');
+        } else if (error.status === 500) {
+          alert('Internal server error: ' + error.error);
+        } else {
+          alert('Unexpected error occurred.');
         }
-        else if (error.status === 500) {
-         alert('Internal server error: ' + error.error);
-       } else {
-         alert('Unexpected error occurred.');
-       }
-      }
-    })
+      },
+    });
   }
 
   DeleteTask(taskId: number) {
@@ -79,7 +83,7 @@ export class HomeComponent {
       this.TaskService.DeleteTask(taskId).subscribe({
         next: (response: any) => {
           alert(response.message);
-          this.tasks = this.tasks.filter(task => task.taskId !== taskId);
+          this.tasks = this.tasks.filter((task) => task.taskId !== taskId);
         },
         error: (error: HttpErrorResponse) => {
           if (error.status === 404) {
@@ -89,13 +93,20 @@ export class HomeComponent {
           } else {
             alert('Unexpected error occurred.');
           }
-        }
+        },
       });
     }
   }
 
-  AddActivity(taskId: number){
+  AddActivity(taskId: number) {
     sessionStorage.setItem('CurrentTaskId', JSON.stringify(taskId));
     this.router.navigate(['/taskpage']);
   }
+
+  EditTask(task:Task){
+        console.log(task);
+        sessionStorage.setItem('editForTask',JSON.stringify(task.taskId));
+        this.router.navigate(['/taskpage']);
+  }
+
 }

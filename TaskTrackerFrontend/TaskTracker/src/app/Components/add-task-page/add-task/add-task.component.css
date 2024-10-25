@@ -1,15 +1,14 @@
 main {
-    margin-top: 60px; /* For space under the fixed navbar */
+    margin-top: 60px; 
     padding: 20px;
 }
 
 .new-task-section h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .task-form {
-    background-color: #fff;
+    background-color: #f4f5f9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -22,7 +21,7 @@ main {
 }
 
 .form-group {
-    flex: 1; /* Ensures all form fields have equal width */
+    flex: 1; 
     display: flex;
     flex-direction: column;
 }
@@ -53,7 +52,7 @@ textarea {
 }
 
 .description-group {
-    flex: 1; /* Full row for description */
+    flex: 1; 
 }
 
 .form-actions {
@@ -90,7 +89,7 @@ textarea {
     background-color: #ccc;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .form-row {
         flex-direction: column;

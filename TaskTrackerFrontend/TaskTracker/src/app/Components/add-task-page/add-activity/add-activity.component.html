@@ -9,9 +9,10 @@
     </ul>
   </div>
   
-  <!-- Content based on selected tab -->
+
   <div *ngIf="currentTab === 'activities'">
-    <table class="activity-table">
+    <div class="activity-table-container">
+      <table class="activity-table">
         <thead>
           <tr>
             <th>Title</th>
@@ -34,6 +35,7 @@
           </tr>
         </tbody>
       </table>
+    </div>
   </div>
   
   <div *ngIf="currentTab === 'new-activity'">
@@ -47,7 +49,7 @@
                 </div>
             </div>
     
-            <form class="activity-form" #addActivityForm="ngForm" (ngSubmit)="onSaveActivity(addActivityForm)">
+            <form class="activity-form" #addActivityForm="ngForm" (ngSubmit)="editMode ? UpdateActivity(addActivityForm) : onSaveActivity(addActivityForm)">
                 <h3>New Activity</h3>
                 
                 <div class="form-group">
@@ -71,7 +73,7 @@
                 <div class="form-actions">
                     <button class="clear-btn">Clear</button>
                     <button *ngIf="!editMode" type="submit" class="save-btn">Save</button>
-                    <button (click)="UpdateActivity()" *ngIf="editMode" class="save-btn">Edit</button>
+                    <button *ngIf="editMode" type="submit" class="save-btn">Edit</button>
                 </div>
             </form>
         </section>
