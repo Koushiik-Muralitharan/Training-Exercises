@@ -9,7 +9,6 @@
     </ul>
   </div>
   
-
   <div *ngIf="currentTab === 'activities'">
     <div class="activity-table-container">
       <table class="activity-table">
@@ -44,8 +43,8 @@
             <div class="activity-header">
                 <h2>New Activity</h2>
                 <div class="activity-status">
-                    <span class="activity-count">Number of Activities: 0</span>
-                    <span class="total-hours">Total Hours:</span>
+                    <span class="activity-count">Number of Activities: {{ activityCount }}</span>
+                    <span class="total-hours">Total Hours: {{ hour }}</span>
                 </div>
             </div>
     

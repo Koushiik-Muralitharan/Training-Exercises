@@ -18,8 +18,10 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  constructor(private router: Router) {}
+  //const today = new Date().toISOString().split('T')[0];
   //selectedDate!:string;
+  taskCount:number = 0;
+  username!:string;
   tasks: Task[] = [];
   // activityArray:Activity[] =[];
   activityArray: { task: Task; activities: Activity }[] = [];
@@ -30,7 +32,16 @@ export class HomeComponent {
   TaskService = inject(TaskService);
   UserService = inject(UserService);
   ActivityService = inject(ActivityService);
+  users:User = this.UserService.GetLoggedUserFromSession(); 
+  constructor(private router: Router) {}
+  ngOnInit(){
+    const user:User = this.UserService.GetLoggedUserFromSession();
+    this.username = user.userName;
+    console.log(this.username);
+    this.TasksCount();
+  }
   GetTasks(event: Event) {
+    this.TasksCount();
     const date = (event.target as HTMLInputElement).value;
     console.log('Selected date:', date);
     //this.selectedDate = date;
@@ -41,7 +52,7 @@ export class HomeComponent {
     this.TaskService.GetTask(date, this.currentUserId).subscribe({
       next: (res: any) => {
         if (res) {
-          alert('recieved the tasks');
+          //alert('recieved the tasks');
           this.tasks = res;
           console.log(res);
           if (this.tasks.length > 0) {
@@ -84,6 +95,7 @@ export class HomeComponent {
         next: (response: any) => {
           alert(response.message);
           this.tasks = this.tasks.filter((task) => task.taskId !== taskId);
+          this.TasksCount();
         },
         error: (error: HttpErrorResponse) => {
           if (error.status === 404) {
@@ -109,4 +121,21 @@ export class HomeComponent {
         this.router.navigate(['/taskpage']);
   }
 
+  TasksCount(){
+      this.TaskService.TotalTaskCount(this.users.userId).subscribe({
+        next: (res)=>{
+          this.taskCount = res;
+        },
+        error: (error: HttpErrorResponse) => {
+          if (error.status === 404) {
+            alert('Task cannot be counted.');
+          } else if (error.status === 500) {
+            alert('Internal server error: ' + error.error);
+          } else {
+            alert('Unexpected error occurred.');
+          }
+        }
+      })
+
+  }
 }

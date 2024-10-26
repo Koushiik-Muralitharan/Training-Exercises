@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using TaskTrackerApplication.Modals;
 using TaskTrackerApplication.Repository;
@@ -141,6 +142,26 @@ namespace TaskTrackerApplication.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, "Internal server error.");
+            }
+        }
+
+        [HttpGet("ActivityInfo")]
+        public IActionResult GetActivityInfo(int userId)
+        {
+            try
+            {
+                var result = activityRepository.GetActivityInfo(userId);
+                var response = new
+                {
+                    ActivityCount = result.activityCount,
+                    TotalActivityHours = result.activityHour
+                };
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "An error occurred while retrieving activity information.", Details = ex.Message });
             }
         }
     }

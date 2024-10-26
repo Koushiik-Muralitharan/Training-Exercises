@@ -34,4 +34,12 @@ export class TaskService {
       `${environment.TASK_API_URL}/GetEditTaskDetails?taskId=${taskId}`
     );
   }
+
+  EditTask(task:Task): Observable<any> {
+     return this.http.put(`${environment.TASK_API_URL}/EditTask`,task);
+  }
+
+  TotalTaskCount(userId: number): Observable<any>{
+    return this.http.get<number>(`${environment.TASK_API_URL}/TotalTaskCount?userId=${userId}`);
+  }
 }

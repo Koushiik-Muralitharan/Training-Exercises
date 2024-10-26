@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using TaskTrackerApplication.Modals;
 using TaskTrackerApplication.Repository;
 
@@ -118,6 +119,33 @@ namespace TaskTrackerApplication.Controllers
                 }
                 TaskModel task = taskRepository.GetTask(taskId);
                 return Ok(task);
+            }
+            catch
+            {
+                return StatusCode(500, "Internal server error.");
+            }
+        }
+
+        [HttpGet("TotalTaskCount")]
+
+        public IActionResult GetTotalResult(int userId)
+        {
+            try
+            {
+                if (userId == 0)
+                {
+                    return BadRequest("Invalid data sent for getting the editted task.");
+                }
+                int count = taskRepository.TaskCount(userId);
+                if (count != -1)
+                {
+                    return Ok(count);
+
+                }
+                else
+                {
+                    return StatusCode(404, "Task count cannot be calculated.");
+                }
             }
             catch
             {

@@ -37,16 +37,17 @@
                 </div>
                 <div class="form-group">
                     <label for="assignedTo">Assigned To <span class="required">*</span></label>
-                    <input type="text" id="assignedTo" name="assignT" required [(ngModel)]="task.assignedTo">
+                    <input type="text" id="assignedTo" name="assignT" disabled [(ngModel)]="task.assignedTo">
                 </div>
             </div>
 
-            
             <div class="form-row">
+                
                 <div class="form-group">
                     <label for="assignedBy">Assigned By <span class="required">*</span></label>
                     <input type="text" id="assignedBy" name="assignB" required [(ngModel)]="task.assignedBy">
                 </div>
+
                 <div class="form-group">
                     <label for="supportType">Support Type</label>
                     <select id="supportType" name="Stype" [(ngModel)]="task.supportType">
@@ -54,6 +55,7 @@
                         <option value="Junior">Junior</option>
                     </select>
                 </div>
+
                 <div class="form-group">
                     <label for="priority">Priority</label>
                     <select id="priority" name="Prior" [(ngModel)]="task.priorityType">
@@ -62,7 +64,6 @@
                     </select>
                 </div>
             </div>
-
        
             <div class="form-row">
                 <div class="form-group description-group">
@@ -71,10 +72,10 @@
                 </div>
             </div>
 
-       
             <div class="form-actions">
                 <button class="cancel-btn">Cancel</button>
-                <button type="submit" class="save-btn">Save</button>
+                <button *ngIf="taskEdit === -1" type="submit" class="save-btn">Save</button>
+                <button *ngIf="taskEdit !== -1" type="submit" class="save-btn">Edit</button>
             </div>
         </form>
     </section>

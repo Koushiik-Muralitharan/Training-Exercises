@@ -3,6 +3,7 @@ import { Activity } from '../Modal/Activity';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
+import { ActivityInfo } from '../Modal/ActivityInfoModal';
 @Injectable({
   providedIn: 'root'
 })
@@ -34,5 +35,9 @@ export class ActivityService {
 
   EditActivity(activity:Activity) : Observable<any>{
     return this.http.put(`${environment.ACTIVITY_API_URL}/EditActivity`,activity);
+  }
+
+  GetActivityInfo(userId: number) : Observable<ActivityInfo>{
+    return this.http.get<ActivityInfo>(`${environment.ACTIVITY_API_URL}/ActivityInfo?userId=${userId}`);
   }
 }

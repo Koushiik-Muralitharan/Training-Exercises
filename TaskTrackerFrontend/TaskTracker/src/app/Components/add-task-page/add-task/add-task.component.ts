@@ -18,26 +18,28 @@ import { DatePipe } from '@angular/common';
 })
 export class AddTaskComponent {
     
-  constructor(private router: Router, private d:DatePipe){
-
-  }
+  constructor(private router: Router, private d:DatePipe){}
   task:Task = new Task();
   user:User = new User();
   editTask:Task = new Task();
   TaskService = inject(TaskService);
   UserService = inject(UserService);
+  u:User = this.UserService.GetLoggedUserFromSession();
+  assignedTo:string = this.u.userName; 
+  taskEdit:number = this.TaskService.GetTaskEditStatusFromSession();
   ngOnInit(){
+    this.task.assignedTo = this.assignedTo;
     const editTaskId = this.TaskService.GetTaskEditStatusFromSession();
     if(editTaskId !== -1){
       this.TaskService.GetEditTask(editTaskId).subscribe({
         next: (res) =>{
-          this.editTask = res;
+          this.editTask = res; 
           const dateString = this.editTask.taskDate;
           const [datePart, timePart] = dateString.split(' ');
           const [day, month, year] = datePart.split('-');
           const date = new Date(`${year}-${month}-${day}T${timePart}`);
           this.task.assignedBy = this.editTask.assignedBy;
-          this.task.assignedTo = this.editTask.assignedTo;
+          this.task.assignedTo = this.assignedTo;
           this.task.clientName = this.editTask.clientName;
           this.task.descriptionField = this.editTask.descriptionField;
           this.task.eta = this.editTask.eta;
@@ -46,6 +48,8 @@ export class AddTaskComponent {
           this.task.taskDate = this.d.transform(date,"yyyy-MM-dd")||"";
           this.task.title = this.editTask.title;
           this.task.projectName = this.editTask.projectName;
+          this.task.userId = this.editTask.userId;
+          this.task.taskId = this.editTask.taskId;
           console.log(this.editTask.taskDate)
         }
       })
@@ -58,7 +62,7 @@ export class AddTaskComponent {
       return;
     }
     const editTaskId = this.TaskService.GetTaskEditStatusFromSession();
-    //if(editTaskId === -1){
+    if(editTaskId === -1){
       this.user = this.UserService.GetLoggedUserFromSession();
       this.task.userId = this.user.userId;
       console.log("UserId:"+ this.user.userId);
@@ -82,6 +86,25 @@ export class AddTaskComponent {
           }
         }
       })
-    //}
+    }else{
+      this.TaskService.EditTask(this.task).subscribe({
+        next: (res) =>{
+          console.log(typeof(res));
+          sessionStorage.setItem("editForTask",JSON.stringify(-1));
+          alert(res.message);
+          form.reset();
+          this.taskEdit = -1;
+        },
+        error: (error: HttpErrorResponse) => {
+         if (error.status === 404) {
+           alert('Task cannot be fetched.');
+         } else if (error.status === 500) {
+           alert('Internal server error: ' + error.error);
+         } else {
+           alert('Unexpected error occurred.');
+         }
+       }
+      })
+    }
   }
 }

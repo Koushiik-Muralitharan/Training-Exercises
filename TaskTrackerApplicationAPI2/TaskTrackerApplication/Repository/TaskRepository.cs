@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using System.Threading.Tasks;
 using TaskTrackerApplication.Connection;
 using TaskTrackerApplication.Modals;
@@ -13,7 +14,7 @@ namespace TaskTrackerApplication.Repository
         bool DeleteTask(int taskId);
         List<TaskModel> GetTasks(DateTime date, int userId);
         TaskModel GetTask(int taskId);
-
+        int TaskCount(int userId);
     }
 
     public class TaskRepository:ITaskrepository
@@ -222,5 +223,34 @@ namespace TaskTrackerApplication.Repository
             }
             return task;
         }
+
+        public int TaskCount(int userId)
+        {
+            SqlConnection connection = conn.GetConnection();
+
+            try
+            {
+                string totalTask = "sp_get_total_tasks";
+                SqlCommand command = new SqlCommand(totalTask, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@userId", userId);
+
+                connection.Open();
+
+                int count = Convert.ToInt32(command.ExecuteScalar());
+
+                return count;  
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+            finally
+            {
+                    connection.Close();
+            }
+        }
+
     }
 }

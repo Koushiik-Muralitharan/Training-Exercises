@@ -10,6 +10,7 @@ import { ActivityService } from '../../../Services/activity.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EditActivityModel } from '../../../Modal/EditActivity';
+import { ActivityInfo } from '../../../Modal/ActivityInfoModal';
 
 @Component({
   selector: 'app-add-activity',
@@ -27,11 +28,16 @@ export class AddActivityComponent {
   activityArray:Activity[] =[];
   currentTab: string = 'new-activity';  
   editMode: boolean = false;
+  hour: number = 0;
+  activityCount: number = 0;
   constructor(private router: Router){}
   
   switchTab(tab: string) {
     this.currentTab = tab;
   }
+   ngOnInit(){
+    this.GetActivityInfo();
+   }
   onSaveActivity(form:NgForm){
     if(form.invalid){
       alert('Please fill out the form correctly.');
@@ -72,6 +78,7 @@ export class AddActivityComponent {
         next: (res)=>{
           if(res){
              this.activityArray = res;
+             this.GetActivityInfo();
           }
         },
         error: (error: HttpErrorResponse) => {
@@ -92,7 +99,8 @@ export class AddActivityComponent {
       this.ActivityService.DeleteActivity(activityId).subscribe({
           next: (res:any) =>{
             alert(res.message);
-            this.activityArray = this.activityArray.filter(activity => activity.activityId != activityId)
+            this.activityArray = this.activityArray.filter(activity => activity.activityId != activityId);
+            this.GetActivityInfo();
           },
           error: (error: HttpErrorResponse) => {
             if (error.status === 404) {
@@ -143,6 +151,7 @@ export class AddActivityComponent {
        next: (res) =>{
          console.log(typeof(res));
          alert(res.message);
+         this.GetActivityInfo();
        },
        error: (error: HttpErrorResponse) => {
         if (error.status === 404) {
@@ -154,5 +163,28 @@ export class AddActivityComponent {
         }
       }  
      })
+  }
+
+  GetActivityInfo(){
+    const user:User = this.UserService.GetLoggedUserFromSession();
+    const userId = user.userId;
+
+    this.ActivityService.GetActivityInfo(userId).subscribe({
+      next: (res:ActivityInfo)=>{
+          this.activityCount = res.activityCount;
+          this.hour = res.hour;
+          console.log(res.activityCount);
+          console.log(res.hour);
+      },
+      error: (error: HttpErrorResponse) => {
+        if (error.status === 404) {
+          alert('Activity cannot be fetched.');
+        } else if (error.status === 500) {
+          alert('Internal server error: ' + error.error);
+        } else {
+          alert('Unexpected error occurred.');
+        }
+      }  
+    })
   }
 }

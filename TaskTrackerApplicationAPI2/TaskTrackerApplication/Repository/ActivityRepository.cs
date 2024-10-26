@@ -13,6 +13,7 @@ namespace TaskTrackerApplication.Repository
         List<ActivityModel> GetActivity(int taskId);
         List<ActivityModel> GetActivities(int userId);
         ActivityModel GetSingleActivity(int activityID);
+        (int activityCount , decimal activityHour) GetActivityInfo(int userId);
 
     }
 
@@ -242,6 +243,47 @@ namespace TaskTrackerApplication.Repository
             return currentActivity;
         }
 
+        public (int activityCount, decimal activityHour) GetActivityInfo(int userId)
+        {
+            SqlConnection connection = conn.GetConnection();
+
+            int activityCount = 0;
+            decimal activityHour = 0;
+            try
+            {
+                string getActivityInfoProcedure = "get_activities_by_usrId";
+                SqlCommand command = new SqlCommand(getActivityInfoProcedure, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@UserId", userId);
+
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    activityCount = reader.GetInt32(0);
+                    Console.WriteLine("Activity Count: " + activityCount);
+                }
+
+                if (reader.NextResult() && reader.Read())
+                {
+                    activityHour = reader.IsDBNull(0) ? 0 : reader.GetDecimal(0);
+                    Console.WriteLine("Activity Hours: " + activityHour);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return (activityCount, activityHour);
+        }
 
     }
 }

@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "TaskTrackerApplication.Controllers.ActivityController",
+    "Method": "GetActivityInfo",
+    "RelativePath": "api/Activity/ActivityInfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskTrackerApplication.Controllers.ActivityController",
     "Method": "AddActivity",
     "RelativePath": "api/Activity/AddActivity",
     "HttpMethod": "POST",
@@ -146,7 +162,7 @@
   {
     "ContainingType": "TaskTrackerApplication.Controllers.TaskController",
     "Method": "GetTask",
-    "RelativePath": "api/Task/GetEditDate",
+    "RelativePath": "api/Task/GetEditTaskDetails",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -172,6 +188,22 @@
         "Type": "System.DateTime",
         "IsRequired": false
       },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskTrackerApplication.Controllers.TaskController",
+    "Method": "GetTotalResult",
+    "RelativePath": "api/Task/TotalTaskCount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "userId",
         "Type": "System.Int32",
