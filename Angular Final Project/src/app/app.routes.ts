@@ -6,4 +6,5 @@ export const routes: Routes = [
     {path:'', component:SignInComponent},
     {path:'register', component:SignUpComponent},
     {path:'home', component:MainPageComponent}
+    
 ];
